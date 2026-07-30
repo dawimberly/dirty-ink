@@ -1,5 +1,5 @@
 -- ChairHunt: shops table for tracking LA tattoo shop guest spots / chair rentals
--- Run this in the Supabase SQL editor (or via supabase db push)
+-- Safe to re-run in the Supabase SQL editor
 
 create extension if not exists "pgcrypto";
 
@@ -30,6 +30,13 @@ create index if not exists shops_priority_idx on public.shops (priority);
 create index if not exists shops_follow_up_date_idx on public.shops (follow_up_date);
 
 alter table public.shops enable row level security;
+
+-- Drop any prior policy names so this script is idempotent
+drop policy if exists "Allow authenticated users full access" on public.shops;
+drop policy if exists "Authenticated users can select shops" on public.shops;
+drop policy if exists "Authenticated users can insert shops" on public.shops;
+drop policy if exists "Authenticated users can update shops" on public.shops;
+drop policy if exists "Authenticated users can delete shops" on public.shops;
 
 -- Single-user app: any authenticated user can manage shops
 create policy "Authenticated users can select shops"

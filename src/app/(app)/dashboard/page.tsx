@@ -27,7 +27,7 @@ export default async function DashboardPage() {
             {total} shop{total === 1 ? "" : "s"} tracked · guest spots & chairs
           </p>
         </div>
-        <Button render={<Link href="/shops/new" />}>
+        <Button nativeButton={false} render={<Link href="/shops/new" />}>
           <Plus className="size-4" />
           Add shop
         </Button>
@@ -113,7 +113,7 @@ export default async function DashboardPage() {
       </section>
 
       <div className="flex justify-center">
-        <Button variant="outline" render={<Link href="/shops" />}>
+        <Button nativeButton={false} variant="outline" render={<Link href="/shops" />}>
           <Store className="size-4" />
           View all shops
         </Button>

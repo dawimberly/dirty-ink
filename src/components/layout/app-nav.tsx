@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Store, MessageSquareText, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, Store, MessageSquareText, CalendarDays, LogOut, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { signOut } from "@/lib/actions";
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/shops", label: "Shops", icon: Store },
+  { href: "/bookings", label: "Bookings", icon: CalendarDays },
   { href: "/templates", label: "Templates", icon: MessageSquareText },
 ];
 

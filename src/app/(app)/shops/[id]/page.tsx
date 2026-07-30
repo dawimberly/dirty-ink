@@ -48,11 +48,11 @@ export default async function ShopDetailPage({ params }: { params: Params }) {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" render={<Link href={`/shops/${shop.id}/edit`} />}>
+          <Button nativeButton={false} variant="outline" render={<Link href={`/shops/${shop.id}/edit`} />}>
             <Pencil className="size-4" />
             Edit
           </Button>
-          <Button variant="ghost" size="sm" render={<Link href="/shops" />}>
+          <Button nativeButton={false} variant="ghost" size="sm" render={<Link href="/shops" />}>
             Back
           </Button>
         </div>

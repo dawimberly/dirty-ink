@@ -66,6 +66,57 @@ export type Database = {
         };
         Relationships: [];
       };
+      appointment_requests: {
+        Row: {
+          id: string;
+          client_name: string;
+          email: string | null;
+          phone: string | null;
+          instagram: string | null;
+          preferred_dates: string | null;
+          placement: string | null;
+          size_estimate: string | null;
+          style_notes: string | null;
+          description: string;
+          budget: string | null;
+          status: string;
+          artist_notes: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          client_name: string;
+          email?: string | null;
+          phone?: string | null;
+          instagram?: string | null;
+          preferred_dates?: string | null;
+          placement?: string | null;
+          size_estimate?: string | null;
+          style_notes?: string | null;
+          description: string;
+          budget?: string | null;
+          status?: string;
+          artist_notes?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          client_name?: string;
+          email?: string | null;
+          phone?: string | null;
+          instagram?: string | null;
+          preferred_dates?: string | null;
+          placement?: string | null;
+          size_estimate?: string | null;
+          style_notes?: string | null;
+          description?: string;
+          budget?: string | null;
+          status?: string;
+          artist_notes?: string | null;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;

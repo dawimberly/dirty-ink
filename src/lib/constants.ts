@@ -24,6 +24,24 @@ export type MessageTemplate = {
 
 export const MESSAGE_TEMPLATES: MessageTemplate[] = [
   {
+    id: "ig-lost-boys",
+    title: "Instagram — Lost Boys DTLA",
+    category: "Instagram",
+    body: `Hey Lost Boys! I'm a tattoo artist looking for a guest spot. Saw you host guests at $100/day — that works for me.
+
+Happy to send my portfolio / Instagram. Any availability coming up?
+
+Thanks!`,
+  },
+  {
+    id: "ig-mad-rabbit",
+    title: "Instagram — Mad Rabbit Studios",
+    category: "Instagram",
+    body: `Hey! Love the work coming out of Mad Rabbit. I'm a LA-based tattoo artist looking for a guest spot / open chair.
+
+Would you be open to hosting? I can send portfolio + availability right away. Thanks!`,
+  },
+  {
     id: "ig-guest-intro",
     title: "Instagram — Guest Spot Intro",
     category: "Instagram",

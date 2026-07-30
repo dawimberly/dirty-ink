@@ -84,3 +84,62 @@ export async function deleteShop(id: string) {
   revalidatePath("/dashboard");
   redirect("/shops");
 }
+
+function emptyToNull(value: string) {
+  const trimmed = value.trim();
+  return trimmed.length ? trimmed : null;
+}
+
+export async function submitBookingRequest(formData: FormData) {
+  const supabase = await createClient();
+
+  const client_name = String(formData.get("client_name") ?? "").trim();
+  const description = String(formData.get("description") ?? "").trim();
+  const email = emptyToNull(String(formData.get("email") ?? ""));
+  const phone = emptyToNull(String(formData.get("phone") ?? ""));
+  const instagram = emptyToNull(String(formData.get("instagram") ?? ""));
+
+  if (!client_name || !description) {
+    return { error: "Name and tattoo description are required." };
+  }
+
+  if (!email && !phone && !instagram) {
+    return { error: "Add at least one contact: email, phone, or Instagram." };
+  }
+
+  const { error } = await supabase.from("appointment_requests").insert({
+    client_name,
+    description,
+    email,
+    phone,
+    instagram,
+    preferred_dates: emptyToNull(String(formData.get("preferred_dates") ?? "")),
+    placement: emptyToNull(String(formData.get("placement") ?? "")),
+    size_estimate: emptyToNull(String(formData.get("size_estimate") ?? "")),
+    style_notes: emptyToNull(String(formData.get("style_notes") ?? "")),
+    budget: emptyToNull(String(formData.get("budget") ?? "")),
+    status: "New",
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/bookings");
+  return { success: true };
+}
+
+export async function updateBookingStatus(id: string, status: string) {
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from("appointment_requests")
+    .update({ status })
+    .eq("id", id);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/bookings");
+  return { success: true };
+}

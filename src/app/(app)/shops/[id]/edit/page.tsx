@@ -18,7 +18,7 @@ export default async function EditShopPage({ params }: { params: Params }) {
           <h1 className="text-2xl font-semibold tracking-tight">Edit shop</h1>
           <p className="text-sm text-muted-foreground">{shop.name}</p>
         </div>
-        <Button variant="ghost" size="sm" render={<Link href={`/shops/${shop.id}`} />}>
+        <Button nativeButton={false} variant="ghost" size="sm" render={<Link href={`/shops/${shop.id}`} />}>
           Back
         </Button>
       </div>

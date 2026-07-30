@@ -37,7 +37,7 @@ export default async function ShopsPage({
             {shops.length} result{shops.length === 1 ? "" : "s"}
           </p>
         </div>
-        <Button render={<Link href="/shops/new" />}>
+        <Button nativeButton={false} render={<Link href="/shops/new" />}>
           <Plus className="size-4" />
           Add shop
         </Button>

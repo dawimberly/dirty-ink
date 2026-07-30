@@ -12,7 +12,7 @@ export default function NewShopPage() {
             Log a new LA shop for guest spots or chair rentals.
           </p>
         </div>
-        <Button variant="ghost" size="sm" render={<Link href="/shops" />}>
+        <Button nativeButton={false} variant="ghost" size="sm" render={<Link href="/shops" />}>
           Back
         </Button>
       </div>
