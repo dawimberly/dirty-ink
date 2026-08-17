@@ -27,8 +27,8 @@ NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-3. In the Supabase SQL Editor, run the files in `supabase/migrations/` in order (`001`, `002`, `003`). `003` adds shop coordinates and marks **Open Chair / Both / Chair Rental** shops for the public **Find closest** list on `/book`.
-4. Run `supabase/seed/002_open_chair_booking_shops.sql` to load Greg's open-chair booking locations (7 shops on `/book`; High Voltage is excluded). Edit `supabase/seed/open_chair_booking_shops.csv` and re-run the SQL after Greg verifies rates.
+3. In the Supabase SQL Editor, run migrations in order: `001`, `002`, `003`, `004`. Migration `004` loads the open-chair shop list for **Find closest** on `/book`.
+4. Copy `supabase/drive-export/` to Google Drive (see `UPLOAD_TO_DRIVE.txt`) for Greg's backup.
 5. Auth → Users → Add user (email/password) for your single login
 
 ### 3. Run locally

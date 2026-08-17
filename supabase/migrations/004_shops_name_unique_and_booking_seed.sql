@@ -1,6 +1,46 @@
--- Open-chair booking locations for /book "Find closest"
--- Prefer running supabase/migrations/004_shops_name_unique_and_booking_seed.sql (includes this data).
--- Or run this after 003 if 004 was already applied without the insert block.
+-- Unique shop names (required for ON CONFLICT) + open-chair booking locations
+-- Safe to re-run in the Supabase SQL editor
+
+-- Merge old guest-spot seed row into the booking shop name
+update public.shops
+set
+  name = 'Yer Cheat''n Heart Tattoo',
+  address = coalesce(address, '15606 S Inglewood Ave'),
+  area = coalesce(area, 'Lawndale'),
+  lat = coalesce(lat, 33.8864),
+  lng = coalesce(lng, -118.3627),
+  type = 'Both',
+  accepts_open_chair_bookings = true,
+  notes = coalesce(notes, 'Template - South Bay focus')
+where name = 'Yer Cheat''n Heart';
+
+create unique index if not exists shops_name_key on public.shops (name);
+
+-- Only shops with coordinates appear on /book
+create or replace function public.list_shop_locations()
+returns table (
+  id uuid,
+  name text,
+  area text,
+  address text,
+  lat double precision,
+  lng double precision
+)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select s.id, s.name, s.area, s.address, s.lat, s.lng
+  from public.shops s
+  where s.accepts_open_chair_bookings = true
+    and s.lat is not null
+    and s.lng is not null
+  order by s.name;
+$$;
+
+revoke all on function public.list_shop_locations() from public;
+grant execute on function public.list_shop_locations() to anon, authenticated;
 
 insert into public.shops (name, address, area, lat, lng, type, accepts_open_chair_bookings, notes)
 values

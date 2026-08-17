@@ -14,12 +14,6 @@ alter table public.appointment_requests
   add column if not exists preferred_shop_name text,
   add column if not exists reference_image_urls text[];
 
--- The public Find closest list is the shops marked for open-chair bookings
-update public.shops
-  set accepts_open_chair_bookings = true
-  where type in ('Open Chair', 'Both')
-    and accepts_open_chair_bookings = false;
-
 create or replace function public.list_shop_locations()
 returns table (
   id uuid,
@@ -37,6 +31,8 @@ as $$
   select s.id, s.name, s.area, s.address, s.lat, s.lng
   from public.shops s
   where s.accepts_open_chair_bookings = true
+    and s.lat is not null
+    and s.lng is not null
   order by s.name;
 $$;
 

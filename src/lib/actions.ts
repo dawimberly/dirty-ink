@@ -9,6 +9,7 @@ import {
   geocodeQuery,
   haversineMiles,
 } from "@/lib/geo";
+import { BOOKING_SHOP_LOCATIONS } from "@/lib/booking-shops";
 import type { NearbyShop } from "@/lib/types/booking";
 
 export async function signIn(formData: FormData) {
@@ -105,33 +106,49 @@ type ShopLocationRow = {
   lng: number | null;
 };
 
-const OPEN_CHAIR_TYPES = ["Open Chair", "Both"];
+const OPEN_CHAIR_TYPES = ["Open Chair", "Both", "Chair Rental"];
+
+function fallbackShopRows(): ShopLocationRow[] {
+  return BOOKING_SHOP_LOCATIONS.map((shop) => ({
+    id: shop.id,
+    name: shop.name,
+    area: shop.area,
+    address: shop.address,
+    lat: shop.lat,
+    lng: shop.lng,
+  }));
+}
 
 async function loadShopLocations(): Promise<ShopLocationRow[]> {
   const supabase = await createClient();
 
   const rpc = await supabase.rpc("list_shop_locations");
-  if (!rpc.error && rpc.data) {
+  if (!rpc.error && rpc.data && rpc.data.length > 0) {
     return rpc.data as ShopLocationRow[];
   }
 
   const flagged = await supabase
     .from("shops")
     .select("id, name, area, address, lat, lng")
-    .eq("accepts_open_chair_bookings", true);
-  if (!flagged.error && flagged.data) {
+    .eq("accepts_open_chair_bookings", true)
+    .not("lat", "is", null)
+    .not("lng", "is", null);
+  if (!flagged.error && flagged.data && flagged.data.length > 0) {
     return flagged.data as ShopLocationRow[];
   }
 
   const byType = await supabase
     .from("shops")
     .select("id, name, area, address, lat, lng")
-    .in("type", OPEN_CHAIR_TYPES);
-  if (!byType.error && byType.data) {
+    .in("type", OPEN_CHAIR_TYPES)
+    .eq("accepts_open_chair_bookings", true)
+    .not("lat", "is", null)
+    .not("lng", "is", null);
+  if (!byType.error && byType.data && byType.data.length > 0) {
     return byType.data as ShopLocationRow[];
   }
 
-  return [];
+  return fallbackShopRows();
 }
 
 export async function findNearbyShops(query: string) {

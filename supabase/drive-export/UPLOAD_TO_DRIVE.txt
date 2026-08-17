@@ -1,0 +1,10 @@
+Upload these files to Google Drive:
+  PaqinFaMILY → TATTOO → FOR GREG → (new folder) Booking Setup
+
+Files in this folder:
+  - open_chair_booking_shops.csv
+  - 002_open_chair_booking_shops.sql
+  - supabase-setup-booking-shops.sql  (run this in Supabase SQL Editor)
+  - BOOKING_SETUP.md
+
+Drive folder (shared): https://drive.google.com/drive/folders/1zdU0Ub12XYuCDfrdo1xd6JfoKMtgQIr6
