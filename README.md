@@ -17,21 +17,30 @@ Full-stack tracker for a tattoo artist hunting LA shops — guest spots, open ch
 npm install
 ```
 
-### 2. Supabase
+### 2. Environment
 
-1. Create a project at [supabase.com](https://supabase.com)
-2. Copy `.env.local.example` → `.env.local` and fill in:
+```bash
+cp .env.example .env.local
+```
+
+Edit `.env.local`:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-3. In the Supabase SQL Editor, run migrations in order: `001`, `002`, `003`, `004`. Migration `004` loads the open-chair shop list for **Find closest** on `/book`.
-4. Copy `supabase/drive-export/` to Google Drive (see `UPLOAD_TO_DRIVE.txt`) for Greg's backup.
-5. Auth → Users → Add user (email/password) for your single login
+Get both from [Supabase](https://supabase.com) → your project → **Settings → API** (Project URL + anon/public key).
 
-### 3. Run locally
+### 3. Supabase
+
+1. Create a project at [supabase.com](https://supabase.com) if needed
+2. In the SQL Editor, run migrations in order: `001`, `002`, `003`, `004`. Migration `004` loads the open-chair shop list for **Find closest** on `/book`.
+3. Auth → Users → Add user (email/password) for your single login
+
+Optional: copy `supabase/drive-export/` to Google Drive (see `UPLOAD_TO_DRIVE.txt`).
+
+### 4. Run locally
 
 ```bash
 npm run dev
