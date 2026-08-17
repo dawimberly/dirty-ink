@@ -120,32 +120,40 @@ function fallbackShopRows(): ShopLocationRow[] {
 }
 
 async function loadShopLocations(): Promise<ShopLocationRow[]> {
-  const supabase = await createClient();
-
-  const rpc = await supabase.rpc("list_shop_locations");
-  if (!rpc.error && rpc.data && rpc.data.length > 0) {
-    return rpc.data as ShopLocationRow[];
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    return fallbackShopRows();
   }
 
-  const flagged = await supabase
-    .from("shops")
-    .select("id, name, area, address, lat, lng")
-    .eq("accepts_open_chair_bookings", true)
-    .not("lat", "is", null)
-    .not("lng", "is", null);
-  if (!flagged.error && flagged.data && flagged.data.length > 0) {
-    return flagged.data as ShopLocationRow[];
-  }
+  try {
+    const supabase = await createClient();
 
-  const byType = await supabase
-    .from("shops")
-    .select("id, name, area, address, lat, lng")
-    .in("type", OPEN_CHAIR_TYPES)
-    .eq("accepts_open_chair_bookings", true)
-    .not("lat", "is", null)
-    .not("lng", "is", null);
-  if (!byType.error && byType.data && byType.data.length > 0) {
-    return byType.data as ShopLocationRow[];
+    const rpc = await supabase.rpc("list_shop_locations");
+    if (!rpc.error && rpc.data && rpc.data.length > 0) {
+      return rpc.data as ShopLocationRow[];
+    }
+
+    const flagged = await supabase
+      .from("shops")
+      .select("id, name, area, address, lat, lng")
+      .eq("accepts_open_chair_bookings", true)
+      .not("lat", "is", null)
+      .not("lng", "is", null);
+    if (!flagged.error && flagged.data && flagged.data.length > 0) {
+      return flagged.data as ShopLocationRow[];
+    }
+
+    const byType = await supabase
+      .from("shops")
+      .select("id, name, area, address, lat, lng")
+      .in("type", OPEN_CHAIR_TYPES)
+      .eq("accepts_open_chair_bookings", true)
+      .not("lat", "is", null)
+      .not("lng", "is", null);
+    if (!byType.error && byType.data && byType.data.length > 0) {
+      return byType.data as ShopLocationRow[];
+    }
+  } catch (error) {
+    console.error("loadShopLocations", error);
   }
 
   return fallbackShopRows();
