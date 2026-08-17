@@ -41,6 +41,11 @@ export function ShopsList({ shops }: { shops: Shop[] }) {
                 </Link>
                 <StatusBadge status={shop.status} />
                 <PriorityBadge priority={shop.priority} />
+                {shop.accepts_open_chair_bookings ? (
+                  <span className="rounded-full border border-border px-2 py-0.5 text-[11px] text-muted-foreground">
+                    Open chair bookings
+                  </span>
+                ) : null}
               </div>
               <p className="text-sm text-muted-foreground">
                 {[shop.area, shop.type, shop.instagram].filter(Boolean).join(" · ") ||

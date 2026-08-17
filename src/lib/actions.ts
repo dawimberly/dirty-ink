@@ -6,7 +6,6 @@ import { createClient } from "@/lib/supabase/server";
 import type { ShopInsert, ShopUpdate } from "@/lib/types/shop";
 import {
   coordsForShop,
-  FALLBACK_SHOP_LOCATIONS,
   geocodeQuery,
   haversineMiles,
 } from "@/lib/geo";
@@ -106,22 +105,33 @@ type ShopLocationRow = {
   lng: number | null;
 };
 
+const OPEN_CHAIR_TYPES = ["Open Chair", "Both"];
+
 async function loadShopLocations(): Promise<ShopLocationRow[]> {
   const supabase = await createClient();
 
   const rpc = await supabase.rpc("list_shop_locations");
-  if (!rpc.error && rpc.data && rpc.data.length > 0) {
+  if (!rpc.error && rpc.data) {
     return rpc.data as ShopLocationRow[];
   }
 
-  const select = await supabase
+  const flagged = await supabase
     .from("shops")
-    .select("id, name, area, address, lat, lng");
-  if (!select.error && select.data && select.data.length > 0) {
-    return select.data as ShopLocationRow[];
+    .select("id, name, area, address, lat, lng")
+    .eq("accepts_open_chair_bookings", true);
+  if (!flagged.error && flagged.data) {
+    return flagged.data as ShopLocationRow[];
   }
 
-  return FALLBACK_SHOP_LOCATIONS;
+  const byType = await supabase
+    .from("shops")
+    .select("id, name, area, address, lat, lng")
+    .in("type", OPEN_CHAIR_TYPES);
+  if (!byType.error && byType.data) {
+    return byType.data as ShopLocationRow[];
+  }
+
+  return [];
 }
 
 export async function findNearbyShops(query: string) {

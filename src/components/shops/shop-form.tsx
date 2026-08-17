@@ -54,6 +54,8 @@ export function ShopForm({ shop }: { shop?: Shop }) {
       status: String(formData.get("status") ?? "Not Contacted"),
       follow_up_date: emptyToNull(String(formData.get("follow_up_date") ?? "")),
       portfolio_sent: formData.get("portfolio_sent") === "on",
+      accepts_open_chair_bookings:
+        formData.get("accepts_open_chair_bookings") === "on",
       rate_terms: emptyToNull(String(formData.get("rate_terms") ?? "")),
       notes: emptyToNull(String(formData.get("notes") ?? "")),
       priority: String(formData.get("priority") ?? "Medium"),
@@ -121,6 +123,9 @@ export function ShopForm({ shop }: { shop?: Shop }) {
               </option>
             ))}
           </select>
+          <p className="text-xs text-muted-foreground">
+            Use Open Chair / Both for shops that will take a chair booking.
+          </p>
         </div>
 
         <div className="space-y-1.5 sm:col-span-2">
@@ -249,6 +254,24 @@ export function ShopForm({ shop }: { shop?: Shop }) {
       </section>
 
       <section className="grid gap-4">
+        <label className="flex items-start gap-2 text-sm">
+          <input
+            type="checkbox"
+            name="accepts_open_chair_bookings"
+            defaultChecked={
+              shop?.accepts_open_chair_bookings ??
+              (shop?.type === "Open Chair" || shop?.type === "Both")
+            }
+            className="mt-0.5 size-4 rounded border-input"
+          />
+          <span>
+            Allows open chair bookings
+            <span className="mt-0.5 block text-xs text-muted-foreground">
+              Show this shop on the public Find closest list.
+            </span>
+          </span>
+        </label>
+
         <label className="flex items-center gap-2 text-sm">
           <input
             type="checkbox"

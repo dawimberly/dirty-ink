@@ -29,6 +29,7 @@ export type Database = {
           rate_terms: string | null;
           notes: string | null;
           priority: string;
+          accepts_open_chair_bookings: boolean;
           created_at: string;
         };
         Insert: {
@@ -50,6 +51,7 @@ export type Database = {
           rate_terms?: string | null;
           notes?: string | null;
           priority?: string;
+          accepts_open_chair_bookings?: boolean;
           created_at?: string;
         };
         Update: {
@@ -71,6 +73,7 @@ export type Database = {
           rate_terms?: string | null;
           notes?: string | null;
           priority?: string;
+          accepts_open_chair_bookings?: boolean;
           created_at?: string;
         };
         Relationships: [];

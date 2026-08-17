@@ -108,6 +108,11 @@ export default async function ShopDetailPage({ params }: { params: Params }) {
                 ) : null
               }
             />
+            <Detail label="Address" value={shop.address} />
+            <Detail
+              label="Open chair bookings"
+              value={shop.accepts_open_chair_bookings ? "Listed on /book" : "No"}
+            />
             <Detail label="Date contacted" value={shop.date_contacted} />
             <Detail label="Follow-up date" value={shop.follow_up_date} />
             <Detail

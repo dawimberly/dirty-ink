@@ -4,7 +4,8 @@
 alter table public.shops
   add column if not exists address text,
   add column if not exists lat double precision,
-  add column if not exists lng double precision;
+  add column if not exists lng double precision,
+  add column if not exists accepts_open_chair_bookings boolean not null default false;
 
 alter table public.appointment_requests
   add column if not exists client_address text,
@@ -13,35 +14,11 @@ alter table public.appointment_requests
   add column if not exists preferred_shop_name text,
   add column if not exists reference_image_urls text[];
 
--- Approximate area centroids so existing shops can be ranked before exact pins are set
-update public.shops set lat = 33.864, lng = -118.396
-  where area = 'South Bay' and lat is null;
-update public.shops set lat = 34.040, lng = -118.247
-  where area = 'DTLA' and lat is null;
-update public.shops set lat = 34.102, lng = -118.327
-  where area = 'Hollywood' and lat is null;
-update public.shops set lat = 34.087, lng = -118.270
-  where area = 'Silver Lake' and lat is null;
-update public.shops set lat = 34.078, lng = -118.260
-  where area = 'Echo Park' and lat is null;
-update public.shops set lat = 34.108, lng = -118.285
-  where area = 'Los Feliz' and lat is null;
-update public.shops set lat = 34.090, lng = -118.362
-  where area = 'West Hollywood' and lat is null;
-update public.shops set lat = 34.019, lng = -118.491
-  where area = 'Santa Monica' and lat is null;
-update public.shops set lat = 33.985, lng = -118.469
-  where area = 'Venice' and lat is null;
-update public.shops set lat = 34.021, lng = -118.396
-  where area = 'Culver City' and lat is null;
-update public.shops set lat = 34.053, lng = -118.343
-  where area = 'Mid-City' and lat is null;
-update public.shops set lat = 34.058, lng = -118.301
-  where area = 'Koreatown' and lat is null;
-update public.shops set lat = 34.148, lng = -118.145
-  where area = 'Pasadena' and lat is null;
-update public.shops set lat = 33.770, lng = -118.194
-  where area = 'Long Beach' and lat is null;
+-- The public Find closest list is the shops marked for open-chair bookings
+update public.shops
+  set accepts_open_chair_bookings = true
+  where type in ('Open Chair', 'Both')
+    and accepts_open_chair_bookings = false;
 
 create or replace function public.list_shop_locations()
 returns table (
@@ -59,7 +36,7 @@ set search_path = public
 as $$
   select s.id, s.name, s.area, s.address, s.lat, s.lng
   from public.shops s
-  where s.lat is not null and s.lng is not null
+  where s.accepts_open_chair_bookings = true
   order by s.name;
 $$;
 

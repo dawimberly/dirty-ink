@@ -98,7 +98,7 @@ export function BookingForm() {
       setShops(found);
       setSelectedShop(found[0] ?? null);
       if (found.length === 0) {
-        setSearchError("No shop locations are mapped yet.");
+        setSearchError("No open-chair shops are on the list yet.");
       }
     } catch {
       setSearchError("Could not search shops right now. Try again.");

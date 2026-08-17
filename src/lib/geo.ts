@@ -29,57 +29,6 @@ export const AREA_CENTROIDS: Record<string, GeoPoint> = {
   "Long Beach": { lat: 33.77, lng: -118.194 },
 };
 
-/** Used when the shops table is not publicly readable or has no coordinates yet. */
-export const FALLBACK_SHOP_LOCATIONS: Array<{
-  id: string;
-  name: string;
-  area: string;
-  address: string;
-  lat: number;
-  lng: number;
-}> = [
-  {
-    id: "00000000-0000-4000-8000-000000000001",
-    name: "Hermosa Ink Collective",
-    area: "South Bay",
-    address: "Hermosa Beach, CA",
-    lat: 33.8622,
-    lng: -118.3995,
-  },
-  {
-    id: "00000000-0000-4000-8000-000000000002",
-    name: "Yer Cheat'n Heart",
-    area: "South Bay",
-    address: "Hermosa Beach, CA",
-    lat: 33.8628,
-    lng: -118.4008,
-  },
-  {
-    id: "00000000-0000-4000-8000-000000000003",
-    name: "Third Street Tattoo",
-    area: "South Bay",
-    address: "Hermosa Beach, CA",
-    lat: 33.8615,
-    lng: -118.3982,
-  },
-  {
-    id: "00000000-0000-4000-8000-000000000004",
-    name: "Patch Tattoo Therapy",
-    area: "South Bay",
-    address: "South Bay, CA",
-    lat: 33.87,
-    lng: -118.39,
-  },
-  {
-    id: "00000000-0000-4000-8000-000000000005",
-    name: "Lost Boys DTLA",
-    area: "DTLA",
-    address: "Downtown Los Angeles, CA",
-    lat: 34.0407,
-    lng: -118.2468,
-  },
-];
-
 const US_ZIP = /^(\d{5})(?:-\d{4})?$/;
 
 function logFetchFailure(provider: string, error: unknown) {

@@ -59,6 +59,7 @@ export type Shop = {
   rate_terms: string | null;
   notes: string | null;
   priority: ShopPriority | string;
+  accepts_open_chair_bookings: boolean;
   created_at: string;
 };
 

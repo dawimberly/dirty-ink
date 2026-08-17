@@ -27,7 +27,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-3. In the Supabase SQL Editor, run the files in `supabase/migrations/` in order (`001`, `002`, `003`). `003` adds shop coordinates and the public `list_shop_locations()` helper used by **Find closest** on `/book`.
+3. In the Supabase SQL Editor, run the files in `supabase/migrations/` in order (`001`, `002`, `003`). `003` adds shop coordinates and marks **Open Chair / Both** shops for the public **Find closest** list on `/book`. Tick “Allows open chair bookings” on a shop to add or remove it from that list.
 4. Auth → Users → Add user (email/password) for your single login
 
 ### 3. Run locally
