@@ -20,17 +20,22 @@ npm install
 ### 2. Environment
 
 ```bash
-cp .env.example .env.local
+cp .env.local.example .env.local
 ```
 
-Edit `.env.local`:
+Edit `.env.local` (get Supabase values from **Project Settings → API**):
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Yes | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Yes | anon / publishable key |
+| `RESEND_API_KEY` | Optional | Email Greg when a booking comes in |
+| `BOOKING_NOTIFY_EMAIL` | Optional | Where notifications go |
+| `NEXT_PUBLIC_APP_URL` | Optional | Public site URL (Vercel) |
 
-Get both from [Supabase](https://supabase.com) → your project → **Settings → API** (Project URL + anon/public key).
+For local dev, set `NEXT_PUBLIC_APP_URL=http://localhost:3000`.
+
+Add the same variables in **Vercel → Settings → Environment Variables** for production.
 
 ### 3. Supabase
 
@@ -61,5 +66,5 @@ Open [http://localhost:3000](http://localhost:3000)
 
 1. Push to GitHub
 2. Import in Vercel
-3. Add the same `NEXT_PUBLIC_SUPABASE_*` env vars
+3. Add env vars from `.env.local.example` (at minimum the two `NEXT_PUBLIC_SUPABASE_*` keys)
 4. Deploy
