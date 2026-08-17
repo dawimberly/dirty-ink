@@ -14,6 +14,9 @@ export type Database = {
           id: string;
           name: string;
           area: string | null;
+          address: string | null;
+          lat: number | null;
+          lng: number | null;
           contact_person: string | null;
           instagram: string | null;
           website: string | null;
@@ -32,6 +35,9 @@ export type Database = {
           id?: string;
           name: string;
           area?: string | null;
+          address?: string | null;
+          lat?: number | null;
+          lng?: number | null;
           contact_person?: string | null;
           instagram?: string | null;
           website?: string | null;
@@ -50,6 +56,9 @@ export type Database = {
           id?: string;
           name?: string;
           area?: string | null;
+          address?: string | null;
+          lat?: number | null;
+          lng?: number | null;
           contact_person?: string | null;
           instagram?: string | null;
           website?: string | null;
@@ -82,6 +91,11 @@ export type Database = {
           status: string;
           artist_notes: string | null;
           created_at: string;
+          client_address: string | null;
+          appointment_type: string | null;
+          preferred_shop_id: string | null;
+          preferred_shop_name: string | null;
+          reference_image_urls: string[] | null;
         };
         Insert: {
           id?: string;
@@ -98,6 +112,11 @@ export type Database = {
           status?: string;
           artist_notes?: string | null;
           created_at?: string;
+          client_address?: string | null;
+          appointment_type?: string | null;
+          preferred_shop_id?: string | null;
+          preferred_shop_name?: string | null;
+          reference_image_urls?: string[] | null;
         };
         Update: {
           id?: string;
@@ -114,12 +133,29 @@ export type Database = {
           status?: string;
           artist_notes?: string | null;
           created_at?: string;
+          client_address?: string | null;
+          appointment_type?: string | null;
+          preferred_shop_id?: string | null;
+          preferred_shop_name?: string | null;
+          reference_image_urls?: string[] | null;
         };
         Relationships: [];
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      list_shop_locations: {
+        Args: Record<string, never>;
+        Returns: {
+          id: string;
+          name: string;
+          area: string | null;
+          address: string | null;
+          lat: number | null;
+          lng: number | null;
+        }[];
+      };
+    };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
   };

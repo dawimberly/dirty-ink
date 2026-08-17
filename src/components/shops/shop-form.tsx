@@ -24,6 +24,13 @@ function emptyToNull(value: string) {
   return trimmed.length ? trimmed : null;
 }
 
+function emptyToNumber(value: string) {
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const parsed = Number(trimmed);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
 export function ShopForm({ shop }: { shop?: Shop }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -35,6 +42,9 @@ export function ShopForm({ shop }: { shop?: Shop }) {
     const payload = {
       name: String(formData.get("name") ?? "").trim(),
       area: emptyToNull(String(formData.get("area") ?? "")),
+      address: emptyToNull(String(formData.get("address") ?? "")),
+      lat: emptyToNumber(String(formData.get("lat") ?? "")),
+      lng: emptyToNumber(String(formData.get("lng") ?? "")),
       contact_person: emptyToNull(String(formData.get("contact_person") ?? "")),
       instagram: emptyToNull(String(formData.get("instagram") ?? "")),
       website: emptyToNull(String(formData.get("website") ?? "")),
@@ -111,6 +121,38 @@ export function ShopForm({ shop }: { shop?: Shop }) {
               </option>
             ))}
           </select>
+        </div>
+
+        <div className="space-y-1.5 sm:col-span-2">
+          <Label htmlFor="address">Address</Label>
+          <Input
+            id="address"
+            name="address"
+            placeholder="Street, city"
+            defaultValue={shop?.address ?? ""}
+          />
+        </div>
+
+        <div className="space-y-1.5">
+          <Label htmlFor="lat">Latitude</Label>
+          <Input
+            id="lat"
+            name="lat"
+            inputMode="decimal"
+            placeholder="33.862"
+            defaultValue={shop?.lat ?? ""}
+          />
+        </div>
+
+        <div className="space-y-1.5">
+          <Label htmlFor="lng">Longitude</Label>
+          <Input
+            id="lng"
+            name="lng"
+            inputMode="decimal"
+            placeholder="-118.399"
+            defaultValue={shop?.lng ?? ""}
+          />
         </div>
 
         <div className="space-y-1.5">

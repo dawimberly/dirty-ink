@@ -54,6 +54,9 @@ export default async function BookingsPage() {
               <p className="mt-3 whitespace-pre-wrap text-sm">{b.description}</p>
               <p className="mt-2 text-xs text-muted-foreground">
                 {[
+                  b.appointment_type && `Type: ${b.appointment_type}`,
+                  b.client_address && `From: ${b.client_address}`,
+                  b.preferred_shop_name && `Shop: ${b.preferred_shop_name}`,
                   b.placement && `Placement: ${b.placement}`,
                   b.size_estimate && `Size: ${b.size_estimate}`,
                   b.preferred_dates && `Dates: ${b.preferred_dates}`,
@@ -63,6 +66,22 @@ export default async function BookingsPage() {
                   .filter(Boolean)
                   .join(" · ")}
               </p>
+              {b.reference_image_urls && b.reference_image_urls.length > 0 ? (
+                <div className="mt-3 grid grid-cols-4 gap-2">
+                  {b.reference_image_urls.map((url) => (
+                    <a
+                      key={url}
+                      href={url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="block overflow-hidden rounded-lg border border-border/60"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={url} alt="" className="aspect-square w-full object-cover" />
+                    </a>
+                  ))}
+                </div>
+              ) : null}
               <div className="mt-3 border-t border-border/50 pt-3">
                 <BookingStatusButtons id={b.id} currentStatus={b.status} />
               </div>

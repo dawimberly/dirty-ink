@@ -27,7 +27,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-3. In the Supabase SQL Editor, run `supabase/migrations/001_create_shops.sql`
+3. In the Supabase SQL Editor, run the files in `supabase/migrations/` in order (`001`, `002`, `003`). `003` adds shop coordinates and the public `list_shop_locations()` helper used by **Find closest** on `/book`.
 4. Auth → Users → Add user (email/password) for your single login
 
 ### 3. Run locally

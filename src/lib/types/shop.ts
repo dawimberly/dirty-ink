@@ -44,6 +44,9 @@ export type Shop = {
   id: string;
   name: string;
   area: string | null;
+  address: string | null;
+  lat: number | null;
+  lng: number | null;
   contact_person: string | null;
   instagram: string | null;
   website: string | null;

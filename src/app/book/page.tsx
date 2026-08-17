@@ -14,8 +14,8 @@ const body = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Book — Dirty INK",
-  description: "Request a tattoo appointment with Dirty INK.",
+  title: "Book — Paq'in House Tattoo",
+  description: "Request a tattoo appointment with Paq'in House Tattoo.",
 };
 
 export default function BookPage() {
@@ -39,8 +39,8 @@ export default function BookPage() {
 
         <main className="relative mx-auto flex min-h-screen max-w-xl flex-col justify-center px-4 py-12 sm:px-6">
           <header className="mb-8 text-center sm:mb-10">
-            <p className="font-[family-name:var(--font-ink-display)] text-4xl font-bold tracking-[0.18em] text-[#f2ebe0] sm:text-5xl">
-              DIRTY INK
+            <p className="font-[family-name:var(--font-ink-display)] text-3xl font-bold tracking-[0.1em] text-[#f2ebe0] sm:text-4xl">
+              Paq&apos;in House Tattoo
             </p>
             <h1 className="mt-4 text-lg font-medium tracking-wide text-[#f2ebe0]/90 sm:text-xl">
               Book an appointment
@@ -49,6 +49,43 @@ export default function BookPage() {
               Tell Greg what you want. He&apos;ll follow up to lock in time, placement,
               and deposit.
             </p>
+            <a
+              href="https://instagram.com/geepaqwin"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide text-[#f2ebe0]/80 underline-offset-4 transition hover:text-[#f2ebe0] hover:underline"
+            >
+              <svg aria-hidden="true" className="size-5" viewBox="0 0 24 24">
+                <defs>
+                  <radialGradient id="instagram-gradient" cx="30%" cy="100%" r="125%">
+                    <stop offset="0%" stopColor="#ffd600" />
+                    <stop offset="45%" stopColor="#ff0169" />
+                    <stop offset="75%" stopColor="#d300c5" />
+                    <stop offset="100%" stopColor="#7638fa" />
+                  </radialGradient>
+                </defs>
+                <rect
+                  x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="5"
+                  fill="none"
+                  stroke="url(#instagram-gradient)"
+                  strokeWidth="1.8"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4.2"
+                  fill="none"
+                  stroke="url(#instagram-gradient)"
+                  strokeWidth="1.8"
+                />
+                <circle cx="17.2" cy="6.8" r="1.1" fill="url(#instagram-gradient)" />
+              </svg>
+              @geepaqwin
+            </a>
           </header>
 
           <BookingForm />
