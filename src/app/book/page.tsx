@@ -51,52 +51,52 @@ export default function BookPage() {
               Tell Greg what you want. He&apos;ll follow up to lock in time, placement,
               and deposit.
             </p>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide text-[#f2ebe0]/80 underline-offset-4 transition hover:text-[#f2ebe0] hover:underline"
-            >
-              <svg aria-hidden="true" className="size-5" viewBox="0 0 24 24">
-                <defs>
-                  <radialGradient id="instagram-gradient" cx="30%" cy="100%" r="125%">
-                    <stop offset="0%" stopColor="#ffd600" />
-                    <stop offset="45%" stopColor="#ff0169" />
-                    <stop offset="75%" stopColor="#d300c5" />
-                    <stop offset="100%" stopColor="#7638fa" />
-                  </radialGradient>
-                </defs>
-                <rect
-                  x="3"
-                  y="3"
-                  width="18"
-                  height="18"
-                  rx="5"
-                  fill="none"
-                  stroke="url(#instagram-gradient)"
-                  strokeWidth="1.8"
-                />
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="4.2"
-                  fill="none"
-                  stroke="url(#instagram-gradient)"
-                  strokeWidth="1.8"
-                />
-                <circle cx="17.2" cy="6.8" r="1.1" fill="url(#instagram-gradient)" />
-              </svg>
-              {INSTAGRAM_HANDLE}
-            </a>
-            <a
-              href={SHOP_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-medium tracking-wide text-[#f2ebe0]/80 underline-offset-4 transition hover:text-[#f2ebe0] hover:underline"
-            >
-              Shop merch
-            </a>
+                href={SHOP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-10 items-center justify-center rounded-lg bg-[#c45c26] px-5 text-sm font-semibold tracking-wide text-[#f2ebe0] transition hover:bg-[#d46a32]"
+              >
+                Shop merch
+              </a>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex h-10 items-center justify-center gap-2 rounded-lg border border-[#f2ebe0]/20 px-4 text-sm font-medium tracking-wide text-[#f2ebe0]/80 transition hover:bg-[#f2ebe0]/10 hover:text-[#f2ebe0]"
+              >
+                <svg aria-hidden="true" className="size-5" viewBox="0 0 24 24">
+                  <defs>
+                    <radialGradient id="instagram-gradient" cx="30%" cy="100%" r="125%">
+                      <stop offset="0%" stopColor="#ffd600" />
+                      <stop offset="45%" stopColor="#ff0169" />
+                      <stop offset="75%" stopColor="#d300c5" />
+                      <stop offset="100%" stopColor="#7638fa" />
+                    </radialGradient>
+                  </defs>
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                    fill="none"
+                    stroke="url(#instagram-gradient)"
+                    strokeWidth="1.8"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4.2"
+                    fill="none"
+                    stroke="url(#instagram-gradient)"
+                    strokeWidth="1.8"
+                  />
+                  <circle cx="17.2" cy="6.8" r="1.1" fill="url(#instagram-gradient)" />
+                </svg>
+                {INSTAGRAM_HANDLE}
+              </a>
             </div>
           </header>
 

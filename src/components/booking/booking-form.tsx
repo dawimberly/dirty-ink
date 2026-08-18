@@ -172,7 +172,7 @@ export function BookingForm() {
           href={SHOP_URL}
           target="_blank"
           rel="noreferrer"
-          className="text-sm text-[#f2ebe0]/70 underline-offset-4 hover:text-[#f2ebe0] hover:underline"
+          className="inline-flex h-10 items-center justify-center rounded-lg bg-[#c45c26] px-5 text-sm font-semibold text-[#f2ebe0] hover:bg-[#d46a32]"
         >
           Shop merch
         </a>
