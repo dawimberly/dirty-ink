@@ -95,6 +95,14 @@ function emptyToNull(value: string) {
   return trimmed.length ? trimmed : null;
 }
 
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function uuidOrNull(value: string) {
+  const trimmed = value.trim();
+  return UUID_RE.test(trimmed) ? trimmed : null;
+}
+
 type ShopLocationRow = {
   id: string;
   name: string;
@@ -289,7 +297,7 @@ export async function submitBookingRequest(formData: FormData) {
     phone,
     instagram,
     appointment_type,
-    preferred_shop_id: emptyToNull(String(formData.get("preferred_shop_id") ?? "")),
+    preferred_shop_id: uuidOrNull(String(formData.get("preferred_shop_id") ?? "")),
     preferred_shop_name: emptyToNull(
       String(formData.get("preferred_shop_name") ?? "")
     ),
@@ -311,7 +319,10 @@ export async function submitBookingRequest(formData: FormData) {
       const { error } = await supabase.from("appointment_requests").insert(row);
 
       if (error) {
-        if (/column .* does not exist/i.test(error.message)) {
+        if (
+          /column .* does not exist/i.test(error.message) ||
+          /invalid input syntax for type uuid/i.test(error.message)
+        ) {
           const { error: retryError } = await supabase
             .from("appointment_requests")
             .insert({
