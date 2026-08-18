@@ -88,7 +88,25 @@ export function BookingForm() {
     setSearchError(null);
     setSearching(true);
     try {
-      const result = await rankNearbyShops(address);
+      let result: { shops?: NearbyShop[]; error?: string } | undefined;
+
+      // Prefer same-origin API (server geocode); fall back to in-browser search.
+      try {
+        const res = await fetch(
+          `/api/nearby?q=${encodeURIComponent(address.trim())}`,
+          { cache: "no-store" }
+        );
+        if (res.ok) {
+          result = await res.json();
+        }
+      } catch {
+        // ignore — try client-side ranking below
+      }
+
+      if (!result?.shops?.length) {
+        result = await rankNearbyShops(address);
+      }
+
       if (result.error && !result.shops?.length) {
         setShops([]);
         setSelectedShop(null);

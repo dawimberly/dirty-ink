@@ -1,5 +1,21 @@
--- Unique shop names (required for ON CONFLICT) + open-chair booking locations
--- Safe to re-run in the Supabase SQL editor
+-- Full /book database setup — paste once in Supabase SQL Editor
+-- Safe to re-run
+
+-- Step 1: columns + booking fields (migration 003)
+alter table public.shops
+  add column if not exists address text,
+  add column if not exists lat double precision,
+  add column if not exists lng double precision,
+  add column if not exists accepts_open_chair_bookings boolean not null default false;
+
+alter table public.appointment_requests
+  add column if not exists client_address text,
+  add column if not exists appointment_type text,
+  add column if not exists preferred_shop_id text,
+  add column if not exists preferred_shop_name text,
+  add column if not exists reference_image_urls text[];
+
+-- Step 2: shop list + list_shop_locations() (migration 004)
 
 -- Merge old guest-spot seed row into the booking shop name
 update public.shops
