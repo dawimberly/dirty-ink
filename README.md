@@ -64,7 +64,9 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Deploy (Vercel)
 
-1. Push to GitHub
-2. Import in Vercel
+Production project: **dirty-ink** → https://dirty-ink.vercel.app/book
+
+1. Push to GitHub (`master`)
+2. Import in Vercel (project name **dirty-ink**, repo `dawimberly/dirty-ink`)
 3. Add env vars from `.env.local.example` (at minimum the two `NEXT_PUBLIC_SUPABASE_*` keys)
-4. Deploy
+4. Deploy — GitHub → Vercel auto-deploy should be connected
