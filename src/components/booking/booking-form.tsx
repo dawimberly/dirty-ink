@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useTransition } from "react";
 import { submitBookingRequest } from "@/lib/actions";
+import { uploadBookingReferenceImages, isBookingImageFile } from "@/lib/booking-images";
 import { rankNearbyShops } from "@/lib/nearby";
 import { APPOINTMENT_TYPES } from "@/lib/types/booking";
 import type { NearbyShop } from "@/lib/types/booking";
@@ -14,21 +15,6 @@ const fieldClass = "border-white/15 bg-black/40 text-[#f2ebe0]";
 const labelClass = "text-[#f2ebe0]/80";
 const ghostBtnClass =
   "border-[#f2ebe0]/20 bg-transparent text-[#f2ebe0] hover:bg-[#f2ebe0]/10";
-
-const IMAGE_TYPES = new Set([
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/heic",
-  "image/heif",
-]);
-const IMAGE_EXTS = new Set(["jpg", "jpeg", "png", "webp", "heic", "heif"]);
-
-function isImageFile(file: File) {
-  if (file.type && IMAGE_TYPES.has(file.type)) return true;
-  const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
-  return IMAGE_EXTS.has(ext) && (!file.type || file.type === "application/octet-stream");
-}
 
 function formatMiles(miles: number) {
   return miles < 10 ? miles.toFixed(1) : String(Math.round(miles));
@@ -70,7 +56,7 @@ export function BookingForm() {
 
     const accepted: File[] = [];
     for (const file of incoming.slice(0, remaining)) {
-      if (!isImageFile(file)) {
+      if (!isBookingImageFile(file)) {
         setImageError("Images must be JPEG, PNG, WebP, or HEIC.");
         return;
       }
@@ -132,18 +118,22 @@ export function BookingForm() {
     setWarning(null);
     const formData = new FormData(event.currentTarget);
     formData.delete("reference_images");
-    for (const file of images) {
-      formData.append("reference_images", file);
-    }
+    const files = [...images];
 
     startTransition(async () => {
       try {
+        const uploaded = await uploadBookingReferenceImages(files);
+        for (const url of uploaded.urls) {
+          formData.append("reference_image_urls", url);
+        }
+
         const result = await submitBookingRequest(formData);
         if (result?.error) {
           setError(result.error);
           return;
         }
-        if (result?.warning) setWarning(result.warning);
+        const warnings = [uploaded.warning, result?.warning].filter(Boolean);
+        if (warnings.length) setWarning(warnings.join(" "));
         setImages([]);
         setDone(true);
       } catch {
@@ -493,7 +483,11 @@ export function BookingForm() {
         disabled={pending}
         className="h-11 w-full bg-[#c45c26] text-[#140e0a] hover:bg-[#d46930]"
       >
-        {pending ? "Sending…" : "Request appointment"}
+        {pending
+          ? images.length
+            ? "Uploading photos…"
+            : "Sending…"
+          : "Request appointment"}
       </Button>
 
       <p className="text-center text-xs text-[#f2ebe0]/45">

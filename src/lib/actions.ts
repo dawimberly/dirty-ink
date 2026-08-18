@@ -7,6 +7,7 @@ import type { ShopInsert, ShopUpdate } from "@/lib/types/shop";
 import { coordsForShop, geocodeQuery, haversineMiles } from "@/lib/geo";
 import { BOOKING_SHOP_LOCATIONS } from "@/lib/booking-shops";
 import { sendBookingNotificationEmail } from "@/lib/booking-notify";
+import { uploadBookingReferenceImages } from "@/lib/booking-images";
 import { rankNearbyShops } from "@/lib/nearby";
 import type { NearbyShop } from "@/lib/types/booking";
 
@@ -202,68 +203,6 @@ export async function findNearbyShops(query: string) {
   return rankNearbyShops(q);
 }
 
-const IMAGE_TYPES = new Set([
-  "image/jpeg",
-  "image/png",
-  "image/webp",
-  "image/heic",
-  "image/heif",
-]);
-const IMAGE_EXTS = new Set(["jpg", "jpeg", "png", "webp", "heic", "heif"]);
-const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
-
-function isImageFile(file: File) {
-  if (file.type && IMAGE_TYPES.has(file.type)) return true;
-  const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
-  return IMAGE_EXTS.has(ext) && (!file.type || file.type === "application/octet-stream");
-}
-
-async function uploadReferenceImages(
-  files: File[]
-): Promise<{ urls: string[]; warning?: string }> {
-  if (files.length === 0) return { urls: [] };
-  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
-    return {
-      urls: [],
-      warning: "Photos were not uploaded — database storage is not configured yet.",
-    };
-  }
-
-  const supabase = await createClient();
-  const urls: string[] = [];
-
-  for (const file of files.slice(0, 4)) {
-    if (!isImageFile(file)) {
-      return { urls, warning: "Images must be JPEG, PNG, WebP, or HEIC." };
-    }
-    if (file.size > MAX_IMAGE_BYTES) {
-      return { urls, warning: "Each image must be under 5MB." };
-    }
-
-    const safeName = file.name.replace(/[^\w.\-]+/g, "_").slice(0, 80);
-    const path = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}-${safeName}`;
-    const { error } = await supabase.storage
-      .from("booking-references")
-      .upload(path, file, {
-        contentType: file.type || "application/octet-stream",
-        upsert: false,
-      });
-
-    if (error) {
-      console.error("reference image upload", error.message);
-      return {
-        urls,
-        warning: "Request saved, but photos could not be uploaded.",
-      };
-    }
-
-    const { data } = supabase.storage.from("booking-references").getPublicUrl(path);
-    urls.push(data.publicUrl);
-  }
-
-  return { urls };
-}
-
 export async function submitBookingRequest(formData: FormData) {
   const client_name = String(formData.get("client_name") ?? "").trim();
   const client_address = String(formData.get("client_address") ?? "").trim();
@@ -287,7 +226,20 @@ export async function submitBookingRequest(formData: FormData) {
     .getAll("reference_images")
     .filter((value): value is File => value instanceof File && value.size > 0);
 
-  const uploaded = await uploadReferenceImages(files);
+  const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+  const presetUrls = formData
+    .getAll("reference_image_urls")
+    .map((value) => String(value).trim())
+    .filter(
+      (value) =>
+        value.startsWith("https://") &&
+        (!supabaseHost || value.startsWith(`${supabaseHost.replace(/\/$/, "")}/storage/`))
+    );
+
+  const uploaded =
+    presetUrls.length > 0
+      ? { urls: presetUrls }
+      : await uploadBookingReferenceImages(files);
 
   const row = {
     client_name,
@@ -372,6 +324,7 @@ export async function submitBookingRequest(formData: FormData) {
     size_estimate: row.size_estimate,
     style_notes: row.style_notes,
     budget: row.budget,
+    image_urls: uploaded.urls,
   });
 
   if (savedToDb) {

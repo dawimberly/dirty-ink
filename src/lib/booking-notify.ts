@@ -12,7 +12,16 @@ type BookingEmailPayload = {
   size_estimate: string | null;
   style_notes: string | null;
   budget: string | null;
+  image_urls?: string[];
 };
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
 
 function line(label: string, value: string | null | undefined) {
   if (!value?.trim()) return null;
@@ -47,9 +56,23 @@ export async function sendBookingNotificationEmail(
     "Description:",
     payload.description,
     payload.style_notes ? `\nStyle notes:\n${payload.style_notes}` : null,
+    payload.image_urls?.length
+      ? `\nPhotos:\n${payload.image_urls.join("\n")}`
+      : null,
   ]
     .filter(Boolean)
     .join("\n");
+
+  const photosHtml = (payload.image_urls ?? [])
+    .map((url) => {
+      const safe = escapeHtml(url);
+      return `<p><a href="${safe}">${safe}</a></p><p><img src="${safe}" alt="Tattoo idea" style="max-width:480px;height:auto;border-radius:8px" /></p>`;
+    })
+    .join("");
+
+  const html = `<pre style="font-family:ui-sans-serif,system-ui,sans-serif;white-space:pre-wrap">${escapeHtml(
+    body
+  )}</pre>${photosHtml}`;
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -63,6 +86,7 @@ export async function sendBookingNotificationEmail(
         to: [to],
         subject: `New booking request — ${payload.client_name}`,
         text: body,
+        html,
       }),
       signal: AbortSignal.timeout(10000),
     });

@@ -76,3 +76,21 @@ on conflict (name) do update set
   type = excluded.type,
   accepts_open_chair_bookings = excluded.accepts_open_chair_bookings,
   notes = excluded.notes;
+
+-- Photo uploads from /book (public bucket + anon upload)
+insert into storage.buckets (id, name, public)
+values ('booking-references', 'booking-references', true)
+on conflict (id) do update set public = true;
+
+drop policy if exists "Anyone can upload booking references" on storage.objects;
+drop policy if exists "Public can read booking references" on storage.objects;
+
+create policy "Anyone can upload booking references"
+  on storage.objects for insert
+  to anon, authenticated
+  with check (bucket_id = 'booking-references');
+
+create policy "Public can read booking references"
+  on storage.objects for select
+  to anon, authenticated
+  using (bucket_id = 'booking-references');
