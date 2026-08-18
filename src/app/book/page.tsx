@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, DM_Sans } from "next/font/google";
 import { BookingForm } from "@/components/booking/booking-form";
-import { INSTAGRAM_HANDLE, INSTAGRAM_URL, SHOP_URL } from "@/lib/site";
+import { BOOKING_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, SHOP_URL } from "@/lib/site";
 
 const display = Cinzel({
   subsets: ["latin"],
@@ -17,6 +17,7 @@ const body = DM_Sans({
 export const metadata: Metadata = {
   title: "Book — Paq'in House Tattoo",
   description: "Request a tattoo appointment with Paq'in House Tattoo.",
+  alternates: { canonical: BOOKING_URL },
 };
 
 export default function BookPage() {
