@@ -6,6 +6,7 @@ import { uploadBookingReferenceImages, isBookingImageFile } from "@/lib/booking-
 import { rankNearbyShops } from "@/lib/nearby";
 import { APPOINTMENT_TYPES } from "@/lib/types/booking";
 import type { NearbyShop } from "@/lib/types/booking";
+import { SHOP_URL } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -155,10 +156,11 @@ export function BookingForm() {
         {warning && (
           <p className="mt-3 text-xs text-amber-200/80">{warning}</p>
         )}
+        <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
         <Button
           type="button"
           variant="outline"
-          className={`mt-6 ${ghostBtnClass}`}
+          className={ghostBtnClass}
           onClick={() => {
             setDone(false);
             setWarning(null);
@@ -166,6 +168,15 @@ export function BookingForm() {
         >
           Send another request
         </Button>
+        <a
+          href={SHOP_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="text-sm text-[#f2ebe0]/70 underline-offset-4 hover:text-[#f2ebe0] hover:underline"
+        >
+          Shop merch
+        </a>
+        </div>
       </div>
     );
   }

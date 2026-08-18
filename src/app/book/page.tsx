@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, DM_Sans } from "next/font/google";
 import { BookingForm } from "@/components/booking/booking-form";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL, SHOP_URL } from "@/lib/site";
 
 const display = Cinzel({
   subsets: ["latin"],
@@ -49,11 +50,12 @@ export default function BookPage() {
               Tell Greg what you want. He&apos;ll follow up to lock in time, placement,
               and deposit.
             </p>
-            <a
-              href="https://instagram.com/geepaqwin"
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+              <a
+              href={INSTAGRAM_URL}
               target="_blank"
               rel="noreferrer"
-              className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide text-[#f2ebe0]/80 underline-offset-4 transition hover:text-[#f2ebe0] hover:underline"
+              className="inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide text-[#f2ebe0]/80 underline-offset-4 transition hover:text-[#f2ebe0] hover:underline"
             >
               <svg aria-hidden="true" className="size-5" viewBox="0 0 24 24">
                 <defs>
@@ -84,8 +86,17 @@ export default function BookPage() {
                 />
                 <circle cx="17.2" cy="6.8" r="1.1" fill="url(#instagram-gradient)" />
               </svg>
-              @geepaqwin
+              {INSTAGRAM_HANDLE}
             </a>
+            <a
+              href={SHOP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-medium tracking-wide text-[#f2ebe0]/80 underline-offset-4 transition hover:text-[#f2ebe0] hover:underline"
+            >
+              Shop merch
+            </a>
+            </div>
           </header>
 
           <BookingForm />
