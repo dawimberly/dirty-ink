@@ -10,7 +10,7 @@ try {
 export type GeoPoint = { lat: number; lng: number };
 
 const FETCH_MS = 4000;
-const USER_AGENT = "PaqinHouseTattoo/1.0 (https://paqin-family-tattoo.vercel.app/book)";
+const USER_AGENT = "DirtyInk/1.0 (https://dirty-ink.vercel.app/book)";
 
 export const AREA_CENTROIDS: Record<string, GeoPoint> = {
   "South Bay": { lat: 33.864, lng: -118.396 },
