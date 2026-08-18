@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { ShopInsert, ShopUpdate } from "@/lib/types/shop";
 import { coordsForShop, geocodeQuery, haversineMiles } from "@/lib/geo";
 import { BOOKING_SHOP_LOCATIONS } from "@/lib/booking-shops";
+import { sendBookingNotificationEmail } from "@/lib/booking-notify";
 import { rankNearbyShops } from "@/lib/nearby";
 import type { NearbyShop } from "@/lib/types/booking";
 
@@ -213,6 +214,12 @@ async function uploadReferenceImages(
   files: File[]
 ): Promise<{ urls: string[]; warning?: string }> {
   if (files.length === 0) return { urls: [] };
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    return {
+      urls: [],
+      warning: "Photos were not uploaded — database storage is not configured yet.",
+    };
+  }
 
   const supabase = await createClient();
   const urls: string[] = [];
@@ -250,8 +257,6 @@ async function uploadReferenceImages(
 }
 
 export async function submitBookingRequest(formData: FormData) {
-  const supabase = await createClient();
-
   const client_name = String(formData.get("client_name") ?? "").trim();
   const client_address = String(formData.get("client_address") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim();
@@ -297,39 +302,93 @@ export async function submitBookingRequest(formData: FormData) {
     status: "New",
   };
 
-  const { error } = await supabase.from("appointment_requests").insert(row);
+  let savedToDb = false;
+  let dbError: string | null = null;
 
-  if (error) {
-    if (/column .* does not exist/i.test(error.message)) {
-      const { error: retryError } = await supabase
-        .from("appointment_requests")
-        .insert({
-          client_name,
-          description,
-          email,
-          phone,
-          instagram,
-          preferred_dates: row.preferred_dates,
-          placement: row.placement,
-          size_estimate: row.size_estimate,
-          style_notes: row.style_notes,
-          budget: row.budget,
-          status: "New",
-        });
-      if (retryError) return { error: retryError.message };
-      revalidatePath("/bookings");
-      return {
-        success: true,
-        warning:
-          uploaded.warning ??
-          "Request saved. Run the latest Supabase migration to store address, shop, and photos.",
-      };
+  if (process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    try {
+      const supabase = await createClient();
+      const { error } = await supabase.from("appointment_requests").insert(row);
+
+      if (error) {
+        if (/column .* does not exist/i.test(error.message)) {
+          const { error: retryError } = await supabase
+            .from("appointment_requests")
+            .insert({
+              client_name,
+              description,
+              email,
+              phone,
+              instagram,
+              preferred_dates: row.preferred_dates,
+              placement: row.placement,
+              size_estimate: row.size_estimate,
+              style_notes: row.style_notes,
+              budget: row.budget,
+              status: "New",
+            });
+          if (!retryError) {
+            savedToDb = true;
+          } else {
+            dbError = retryError.message;
+          }
+        } else {
+          dbError = error.message;
+        }
+      } else {
+        savedToDb = true;
+      }
+    } catch (error) {
+      console.error("submitBookingRequest db", error);
+      dbError =
+        error instanceof Error
+          ? error.message
+          : "Database save failed.";
     }
-    return { error: error.message };
   }
 
-  revalidatePath("/bookings");
-  return { success: true, warning: uploaded.warning };
+  const emailed = await sendBookingNotificationEmail({
+    client_name: row.client_name,
+    client_address: row.client_address,
+    description: row.description,
+    email: row.email,
+    phone: row.phone,
+    instagram: row.instagram,
+    appointment_type: row.appointment_type,
+    preferred_shop_name: row.preferred_shop_name,
+    preferred_dates: row.preferred_dates,
+    placement: row.placement,
+    size_estimate: row.size_estimate,
+    style_notes: row.style_notes,
+    budget: row.budget,
+  });
+
+  if (savedToDb) {
+    revalidatePath("/bookings");
+    const warnings = [uploaded.warning, emailed.ok ? null : emailed.error].filter(
+      Boolean
+    );
+    return {
+      success: true,
+      warning: warnings.length ? warnings.join(" ") : undefined,
+    };
+  }
+
+  if (emailed.ok) {
+    return {
+      success: true,
+      warning:
+        uploaded.warning ??
+        "Request emailed to Greg. Add Supabase env vars on Vercel to save bookings in the dashboard too.",
+    };
+  }
+
+  return {
+    error:
+      dbError ??
+      emailed.error ??
+      "Could not save your request. Add Supabase or Resend env vars in Vercel → Settings → Environment Variables.",
+  };
 }
 
 export async function updateBookingStatus(id: string, status: string) {
