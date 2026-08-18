@@ -1,16 +1,3 @@
 {
-  "framework": "nextjs",
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "paqin-family-tattoo.vercel.app"
-        }
-      ],
-      "destination": "https://dirty-ink.vercel.app/:path*",
-      "permanent": false
-    }
-  ]
+  "framework": "nextjs"
 }
