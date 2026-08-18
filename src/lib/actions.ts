@@ -4,12 +4,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import type { ShopInsert, ShopUpdate } from "@/lib/types/shop";
-import {
-  coordsForShop,
-  geocodeQuery,
-  haversineMiles,
-} from "@/lib/geo";
+import { coordsForShop, geocodeQuery, haversineMiles } from "@/lib/geo";
 import { BOOKING_SHOP_LOCATIONS } from "@/lib/booking-shops";
+import { rankNearbyShops } from "@/lib/nearby";
 import type { NearbyShop } from "@/lib/types/booking";
 
 export async function signIn(formData: FormData) {
@@ -167,36 +164,33 @@ export async function findNearbyShops(query: string) {
 
   try {
     const origin = await geocodeQuery(q);
-    if (!origin) {
-      return {
-        error: "Couldn't find that location. Try a 5-digit ZIP or a city name.",
-      };
+    if (origin) {
+      const locations = await loadShopLocations();
+      const shops: NearbyShop[] = locations
+        .map((shop) => {
+          const point = coordsForShop(shop);
+          if (!point) return null;
+          return {
+            id: shop.id,
+            name: shop.name,
+            address: shop.address,
+            area: shop.area,
+            distance_miles: haversineMiles(origin, point),
+          };
+        })
+        .filter((shop): shop is NearbyShop => shop !== null)
+        .sort((a, b) => a.distance_miles - b.distance_miles)
+        .slice(0, 8);
+
+      if (shops.length > 0) {
+        return { shops };
+      }
     }
-
-    const locations = await loadShopLocations();
-    const shops: NearbyShop[] = locations
-      .map((shop) => {
-        const point = coordsForShop(shop);
-        if (!point) return null;
-        return {
-          id: shop.id,
-          name: shop.name,
-          address: shop.address,
-          area: shop.area,
-          distance_miles: haversineMiles(origin, point),
-        };
-      })
-      .filter((shop): shop is NearbyShop => shop !== null)
-      .sort((a, b) => a.distance_miles - b.distance_miles)
-      .slice(0, 8);
-
-    return { shops };
   } catch (error) {
     console.error("findNearbyShops", error);
-    return {
-      error: "Could not search shops right now. Try a ZIP code, or try again.",
-    };
   }
+
+  return rankNearbyShops(q);
 }
 
 const IMAGE_TYPES = new Set([

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useTransition } from "react";
 import { findNearbyShops, submitBookingRequest } from "@/lib/actions";
+import { rankNearbyShops } from "@/lib/nearby";
 import { APPOINTMENT_TYPES } from "@/lib/types/booking";
 import type { NearbyShop } from "@/lib/types/booking";
 import { Button } from "@/components/ui/button";
@@ -87,14 +88,28 @@ export function BookingForm() {
     setSearchError(null);
     setSearching(true);
     try {
-      const result = await findNearbyShops(address);
-      if (result.error) {
-        setShops([]);
-        setSelectedShop(null);
-        setSearchError(result.error);
-        return;
+      let found: NearbyShop[] = [];
+
+      try {
+        const result = await findNearbyShops(address);
+        if (result.shops?.length) {
+          found = result.shops;
+        }
+      } catch {
+        // Server geocode often fails on Vercel; fall through to the browser.
       }
-      const found = result.shops ?? [];
+
+      if (found.length === 0) {
+        const local = await rankNearbyShops(address);
+        if (local.error && !local.shops?.length) {
+          setShops([]);
+          setSelectedShop(null);
+          setSearchError(local.error);
+          return;
+        }
+        found = local.shops ?? [];
+      }
+
       setShops(found);
       setSelectedShop(found[0] ?? null);
       if (found.length === 0) {
