@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Store, MessageSquareText, CalendarDays, LogOut, Menu, X } from "lucide-react";
+import { LayoutDashboard, Store, MessageSquareText, CalendarDays, LogOut, Menu, X, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { signOut } from "@/lib/actions";
+import { SHOP_URL } from "@/lib/site";
 
 const NAV = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -45,6 +46,16 @@ function NavLinks({
           </Link>
         );
       })}
+      <a
+        href={SHOP_URL}
+        target="_blank"
+        rel="noreferrer"
+        onClick={onNavigate}
+        className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+      >
+        <ShoppingBag className="size-4" />
+        Merch
+      </a>
     </nav>
   );
 }

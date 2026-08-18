@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { AppointmentRequest } from "@/lib/types/booking";
 import { BookingStatusButtons } from "@/components/booking/booking-status-buttons";
 import { Badge } from "@/components/ui/badge";
+import { SHOP_URL } from "@/lib/site";
 
 export default async function BookingsPage() {
   const supabase = await createClient();
@@ -14,14 +15,24 @@ export default async function BookingsPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
-          Bookings
-        </h1>
-        <p className="text-sm text-muted-foreground">
-          Requests from your public booking link ({bookings.length})
-          {error ? ` — ${error.message}` : ""}
-        </p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
+            Bookings
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            Requests from your public booking link ({bookings.length})
+            {error ? ` — ${error.message}` : ""}
+          </p>
+        </div>
+        <a
+          href={SHOP_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="text-sm font-medium text-primary underline-offset-4 hover:underline"
+        >
+          Open merch store
+        </a>
       </div>
 
       {bookings.length === 0 ? (
