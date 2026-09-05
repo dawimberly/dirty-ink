@@ -1,6 +1,13 @@
+export const SITE_NAME = "Paq'in House Tattoo";
+export const ARTIST_NAME = "Greg Paquín";
+export const SITE_TAGLINE = "Los Angeles · Open Chair · Custom Work";
+
+const APP_ORIGIN = (
+  process.env.NEXT_PUBLIC_APP_URL ?? "https://paqin-family-tattoo.vercel.app"
+).replace(/\/$/, "");
+
 /** Public booking page. */
-export const BOOKING_URL =
-  `${(process.env.NEXT_PUBLIC_APP_URL ?? "https://paqin-family-tattoo.vercel.app").replace(/\/$/, "")}/book`;
+export const BOOKING_URL = `${APP_ORIGIN}/book`;
 
 /** Shopify merch store (keep original .myshopify.com for now). */
 export const SHOP_URL =

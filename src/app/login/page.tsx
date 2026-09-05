@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useTransition } from "react";
 import { signIn } from "@/lib/actions";
+import { SITE_NAME } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -39,6 +41,11 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          <p className="pb-2 text-center text-sm">
+            <Link href="/" className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">
+              ← Back to {SITE_NAME}
+            </Link>
+          </p>
           <form action={onSubmit} className="space-y-4">
             {error && (
               <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive">

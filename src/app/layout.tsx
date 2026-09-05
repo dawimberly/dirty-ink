@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import { SITE_NAME } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ChairHunt",
-  description: "Track LA tattoo shops for guest spots, open chairs, and rentals.",
+  title: SITE_NAME,
+  description:
+    "Custom tattoos and open-chair bookings in Los Angeles with Greg Paquín at Paq'in House Tattoo.",
 };
 
 export default function RootLayout({
