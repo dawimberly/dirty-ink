@@ -13,6 +13,10 @@ export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const isPublicShop =
     pathname === "/" ||
+    pathname === "/shop" ||
+    pathname.startsWith("/shop/") ||
+    pathname === "/about" ||
+    pathname === "/checkout" ||
     pathname === "/book" ||
     pathname.startsWith("/book/") ||
     pathname.startsWith("/api/nearby");
