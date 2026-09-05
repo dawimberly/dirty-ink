@@ -1,5 +1,6 @@
 export const SITE_NAME = "Paq'in House Tattoo";
-export const ARTIST_NAME = "Greg";
+export const ARTIST_NAME = "Greg Paquín";
+export const SITE_TAGLINE = "Los Angeles · Open Chair · Custom Work";
 
 const APP_ORIGIN = (
   process.env.NEXT_PUBLIC_APP_URL ?? "https://paqin-family-tattoo.vercel.app"

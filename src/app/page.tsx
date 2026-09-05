@@ -3,16 +3,18 @@ import Link from "next/link";
 import { PublicShell } from "@/components/site/public-shell";
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import {
+  ARTIST_NAME,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   SHOP_URL,
   SITE_NAME,
+  SITE_TAGLINE,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: SITE_NAME,
   description:
-    "Custom tattoos in Los Angeles. Book an appointment with Greg at Paq'in House Tattoo.",
+    "Custom tattoos and open-chair bookings in Los Angeles with Greg Paquín at Paq'in House Tattoo.",
 };
 
 export default function HomePage() {
@@ -20,14 +22,14 @@ export default function HomePage() {
     <PublicShell wide>
       <section className="mx-auto max-w-2xl py-10 text-center sm:py-16">
         <p className="text-xs font-medium uppercase tracking-[0.28em] text-[#c45c26]">
-          Los Angeles
+          {SITE_TAGLINE}
         </p>
         <h1 className="mt-4 font-[family-name:var(--font-ink-display)] text-4xl font-bold tracking-[0.08em] sm:text-6xl">
           {SITE_NAME}
         </h1>
-        <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-[#f2ebe0]/65 sm:text-lg">
-          Custom tattoos with Greg. Tell him the idea, pick a nearby chair, and
-          he&apos;ll follow up to lock time, placement, and deposit.
+        <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-[#f2ebe0]/65 sm:text-lg">
+          {ARTIST_NAME} takes walk-ins and open-chair bookings at partner shops
+          across Los Angeles. Tell him the idea — he&apos;ll make it happen.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
@@ -51,31 +53,30 @@ export default function HomePage() {
         <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
           <p className="text-xs uppercase tracking-[0.2em] text-[#c45c26]">01</p>
           <h2 className="mt-2 font-[family-name:var(--font-ink-display)] text-lg tracking-wide">
-            Request
+            Custom pieces
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-[#f2ebe0]/55">
-            Share the idea, placement, size, and photos. Use Find closest to
-            pick a shop that works for you.
+            Original designs built around your vision — idea, placement, size,
+            and photos.
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
           <p className="text-xs uppercase tracking-[0.2em] text-[#c45c26]">02</p>
           <h2 className="mt-2 font-[family-name:var(--font-ink-display)] text-lg tracking-wide">
-            Confirm
+            Open chair
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-[#f2ebe0]/55">
-            Greg reviews the request and reaches out on the contact you leave —
-            usually within a few days.
+            Use Find closest on the booking form to pick an open-chair shop near
+            you. {ARTIST_NAME} follows up to lock time and deposit.
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
           <p className="text-xs uppercase tracking-[0.2em] text-[#c45c26]">03</p>
           <h2 className="mt-2 font-[family-name:var(--font-ink-display)] text-lg tracking-wide">
-            Sit
+            Los Angeles
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-[#f2ebe0]/55">
-            Time, placement, and deposit get locked in separately before the
-            appointment.
+            Serving Long Beach, South Bay, Silver Lake, and beyond.
           </p>
         </div>
       </section>
@@ -91,7 +92,8 @@ export default function HomePage() {
             Merch
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-[#f2ebe0]/55">
-            Hats, tees, and shop goods on the Paq&apos;in store.
+            Skull n&apos; Guns short sleeve tee — $29.99. Sizes S–XL. Currently
+            sold out; more drops when the shop goes live.
           </p>
           <p className="mt-4 text-sm font-semibold text-[#c45c26] group-hover:text-[#d46a32]">
             Open shop →

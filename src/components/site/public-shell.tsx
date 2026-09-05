@@ -89,7 +89,7 @@ export function PublicShell({
 
           <footer className="mx-auto w-full max-w-5xl px-4 py-8 text-center text-xs text-[#f2ebe0]/40 sm:px-6">
             <p>
-              {SITE_NAME} · Los Angeles ·{" "}
+              {SITE_NAME} · Long Beach, South Bay, Silver Lake ·{" "}
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"

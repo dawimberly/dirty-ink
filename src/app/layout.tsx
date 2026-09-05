@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: SITE_NAME,
   description:
-    "Custom tattoos in Los Angeles. Book an appointment with Greg at Paq'in House Tattoo.",
+    "Custom tattoos and open-chair bookings in Los Angeles with Greg Paquín at Paq'in House Tattoo.",
 };
 
 export default function RootLayout({

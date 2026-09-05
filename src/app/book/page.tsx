@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { BookingForm } from "@/components/booking/booking-form";
 import { PublicShell } from "@/components/site/public-shell";
-import { BOOKING_URL, SITE_NAME } from "@/lib/site";
+import { ARTIST_NAME, BOOKING_URL, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `Book — ${SITE_NAME}`,
@@ -17,7 +17,7 @@ export default function BookPage() {
           Book an appointment
         </h1>
         <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-[#f2ebe0]/55">
-          Tell Greg what you want. He&apos;ll follow up to lock in time, placement,
+          Tell {ARTIST_NAME} what you want. He&apos;ll follow up to lock in time, placement,
           and deposit.
         </p>
       </header>
