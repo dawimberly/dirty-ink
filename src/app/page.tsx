@@ -41,13 +41,14 @@ export default function HomePage() {
               priority
             />
           </span>
-          <p className="mt-6 text-xs font-medium uppercase tracking-[0.28em] text-[#1fa8ef]">
+          <p className="mt-6 font-[family-name:var(--font-ink-tag)] text-lg text-[#1fa8ef] drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
             {SITE_TAGLINE}
           </p>
-          <h1 className="mt-4 font-[family-name:var(--font-ink-display)] text-4xl font-bold tracking-[0.16em] drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] sm:text-6xl">
+          <h1 className="pfh-stroke mt-3 font-[family-name:var(--font-ink-display)] text-5xl leading-[0.95] tracking-[0.04em] text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] sm:text-8xl">
             {SITE_WORDMARK}
           </h1>
-          <p className="mx-auto mt-5 max-w-lg text-base leading-relaxed text-[#f2ebe0]/80 sm:text-lg">
+          <div aria-hidden className="mx-auto mt-4 h-1.5 w-40 -rotate-1 rounded-full bg-[#e653a4] blur-[0.5px]" />
+          <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-[#f2ebe0]/85 sm:text-lg">
             Original streetwear and art out of Los Angeles. Every piece is printed
             to order — no dead stock, no filler, just the drops.
           </p>

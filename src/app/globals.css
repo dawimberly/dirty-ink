@@ -17,6 +17,35 @@
   --pfh-magenta: #e653a4;
 }
 
+@keyframes pfh-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.pfh-marquee-track {
+  display: inline-flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+  animation: pfh-marquee 24s linear infinite;
+}
+
+/* Spray-outline heading */
+.pfh-stroke {
+  -webkit-text-stroke: 2px rgba(11, 11, 14, 0.9);
+  paint-order: stroke fill;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfh-marquee-track {
+    animation: none;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
