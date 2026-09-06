@@ -1,7 +1,7 @@
 export const SITE_NAME = "Paq'in Family House";
 export const SITE_WORDMARK = "PAQINHAUS";
 export const ARTIST_NAME = "Greg Paquín";
-export const SITE_TAGLINE = "Los Angeles · Streetwear · Print on Demand";
+export const SITE_TAGLINE = "Los Angeles · Original Art · Streetwear";
 
 const APP_ORIGIN = (
   process.env.NEXT_PUBLIC_APP_URL ?? "https://paqin-family-tattoo.vercel.app"

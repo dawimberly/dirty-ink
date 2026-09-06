@@ -127,7 +127,7 @@ export function ProductDetail({ product }: { product: Product }) {
 
         {product.madeToOrder && (
           <p className="mt-3 text-center text-xs text-[#f2ebe0]/45">
-            Made to order · printed and shipped in 3–10 business days.
+            Original art by Greg Paquín · ships in 3–10 business days.
           </p>
         )}
       </div>

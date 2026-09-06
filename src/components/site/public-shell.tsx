@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bungee, DM_Sans, Permanent_Marker } from "next/font/google";
 import {
+  ARTIST_NAME,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   SITE_NAME,
@@ -33,9 +34,9 @@ const navLinkClass =
 
 const MARQUEE_ITEMS = [
   "PAQ'IN FAMILY HOUSE",
-  "MADE TO ORDER",
+  "ORIGINAL ART",
+  "ART BY GREG PAQUÍN",
   "LOS ANGELES",
-  "PRINT ON DEMAND",
   "KNOW PAIN",
   "310",
 ];
@@ -158,7 +159,7 @@ export function PublicShell({
                 Stay up.
               </p>
               <p className="mt-2 text-xs text-[#f2ebe0]/45">
-                {SITE_NAME} · Los Angeles · Made to order ·{" "}
+                {SITE_NAME} · Los Angeles · Original art by {ARTIST_NAME} ·{" "}
                 <a
                   href={INSTAGRAM_URL}
                   target="_blank"

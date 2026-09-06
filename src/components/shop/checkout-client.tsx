@@ -89,9 +89,9 @@ export function CheckoutClient() {
             Pay — coming soon
           </Button>
           <p className="mt-3 text-xs leading-relaxed text-[#f2ebe0]/45">
-            Checkout is being connected to our print-on-demand provider. Once the
-            store account is linked, this button takes payment and the order is
-            sent straight to production. Nothing is charged yet.
+            Checkout is being connected to our fulfillment partner. Once the store
+            account is linked, this button takes payment and the order is sent
+            straight to production. Nothing is charged yet.
           </p>
         </div>
       </aside>

@@ -14,7 +14,7 @@ export type Product = {
   description: string;
   images: ProductImage[];
   sizes: string[];
-  /** Print-on-demand: nothing is stocked; each order is produced to order. */
+  /** Nothing is stocked; each order is produced to order. */
   madeToOrder: boolean;
   soldOut?: boolean;
 };
@@ -31,7 +31,7 @@ export const PRODUCTS: Product[] = [
     priceCents: 4500,
     blurb: "Blackletter Paqinhaus mark with hand-drawn “Know Pain” lettering and red splatter.",
     description:
-      "Heavyweight cut & sew tee printed to order. Front carries the Paqinhaus blackletter wordmark over the hand-drawn KNOWPAIN script with a red splatter wash; the story continues on the back. Oversized streetwear fit.",
+      "Heavyweight cut & sew tee with original artwork by Greg Paquín. Front carries the Paqinhaus blackletter wordmark over the hand-drawn KNOWPAIN script with a red splatter wash; the story continues on the back. Oversized streetwear fit.",
     images: [
       { src: "/products/knowpain-front.jpg", alt: "KNOWPAIN tee — front" },
       { src: "/products/knowpain-back.jpg", alt: "KNOWPAIN tee — back" },
@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
     priceCents: 4500,
     blurb: "“Mouth Bay · CA 310” street-sign graphic — shut it or I’ll stuff it.",
     description:
-      "A love letter to the 310. Green street-sign graphic reading MOUTH BAY / CA 310 with the Paqinhaus lips mark and the “Shut it or I’ll stuff it” tag. Printed to order on a premium tee.",
+      "A love letter to the 310. Green street-sign graphic reading MOUTH BAY / CA 310 with the Paqinhaus lips mark and the “Shut it or I’ll stuff it” tag — an original Greg Paquín graphic on a premium tee.",
     images: [
       { src: "/products/mouth-bay-front.jpg", alt: "Mouth Bay tee — front" },
     ],
@@ -62,7 +62,7 @@ export const PRODUCTS: Product[] = [
     priceCents: 3000,
     blurb: "Original graphite lighthouse-in-the-storm artwork, printed on museum stock.",
     description:
-      "A hand-drawn graphite study of a lighthouse taking a wave broadside. Reproduced as a giclée-style print on heavy museum stock, made to order and shipped flat.",
+      "An original hand-drawn graphite study by Greg Paquín — a lighthouse taking a wave broadside. Reproduced as a giclée-style print on heavy museum stock and shipped flat.",
     images: [
       { src: "/products/lighthouse.jpg", alt: "Lighthouse graphite artwork" },
     ],

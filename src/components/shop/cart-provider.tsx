@@ -224,7 +224,7 @@ function CartDrawer() {
               <span className="font-medium">{formatPrice(subtotalCents)}</span>
             </div>
             <p className="text-xs text-[#f2ebe0]/40">
-              Shipping &amp; taxes calculated at checkout. Every piece is made to order.
+              Shipping &amp; taxes calculated at checkout. Original art, made just for you.
             </p>
             <Button
               className="h-11 w-full bg-[#1fa8ef] text-[#140e0a] hover:bg-[#4fbcf5]"

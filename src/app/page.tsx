@@ -4,12 +4,12 @@ import Image from "next/image";
 import { PublicShell } from "@/components/site/public-shell";
 import { ProductCard } from "@/components/shop/product-card";
 import { PRODUCTS } from "@/lib/products";
-import { SITE_NAME, SITE_TAGLINE, SITE_WORDMARK } from "@/lib/site";
+import { ARTIST_NAME, SITE_NAME, SITE_TAGLINE, SITE_WORDMARK } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — Streetwear, made to order`,
+  title: `${SITE_NAME} — Original streetwear & art`,
   description:
-    "Paq'in Family House (PAQINHAUS) — Los Angeles streetwear and original art, printed on demand. Shop the KNOWPAIN and Mouth Bay tees and the Lighthouse graphite print.",
+    "Paq'in Family House (PAQINHAUS) — Los Angeles streetwear and original art, hand-drawn by Greg Paquín. Shop the KNOWPAIN and Mouth Bay tees and the Lighthouse graphite print.",
 };
 
 export default function HomePage() {
@@ -49,8 +49,8 @@ export default function HomePage() {
           </h1>
           <div aria-hidden className="mx-auto mt-4 h-1.5 w-40 -rotate-1 rounded-full bg-[#e653a4] blur-[0.5px]" />
           <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-[#f2ebe0]/85 sm:text-lg">
-            Original streetwear and art out of Los Angeles. Every piece is printed
-            to order — no dead stock, no filler, just the drops.
+            Wearable art out of Los Angeles. Every graphic is drawn by hand by
+            {" "}{ARTIST_NAME} — original work, limited drops, no filler.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
@@ -92,11 +92,11 @@ export default function HomePage() {
         <div className="rounded-2xl border border-white/10 border-t-2 border-t-[#1fa8ef] bg-black/40 p-5">
           <p className="text-xs uppercase tracking-[0.2em] text-[#1fa8ef]">01</p>
           <h3 className="mt-2 font-[family-name:var(--font-ink-display)] text-lg tracking-wide">
-            Made to order
+            The artist
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-[#f2ebe0]/55">
-            Print on demand means each piece is produced when you order it. Less
-            waste, limited runs.
+            Every piece starts as an original drawing by {ARTIST_NAME} — tattoo
+            roots, LA street sensibility.
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 border-t-2 border-t-[#7ec13a] bg-black/40 p-5">
@@ -105,8 +105,8 @@ export default function HomePage() {
             Original art
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-[#f2ebe0]/55">
-            Graphics and drawings are drawn in-house — nothing pulled off a
-            template.
+            No templates, no clip art. Every graphic is hand-drawn and one of
+            ours.
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 border-t-2 border-t-[#e653a4] bg-black/40 p-5">

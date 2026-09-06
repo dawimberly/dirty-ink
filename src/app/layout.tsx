@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: SITE_NAME,
   description:
-    "Paq'in Family House (PAQINHAUS) — Los Angeles streetwear and original art, printed on demand.",
+    "Paq'in Family House (PAQINHAUS) — Los Angeles streetwear and original art, hand-drawn by Greg Paquín.",
 };
 
 export default function RootLayout({

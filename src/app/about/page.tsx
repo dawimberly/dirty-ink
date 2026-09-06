@@ -6,7 +6,7 @@ import { ARTIST_NAME, INSTAGRAM_HANDLE, INSTAGRAM_URL, SITE_NAME } from "@/lib/s
 export const metadata: Metadata = {
   title: `About — ${SITE_NAME}`,
   description:
-    "Paq'in Family House is a Los Angeles streetwear and art label — original graphics, printed on demand.",
+    "Paq'in Family House is a Los Angeles streetwear and art label — original graphics hand-drawn by Greg Paquín.",
 };
 
 export default function AboutPage() {
@@ -17,9 +17,9 @@ export default function AboutPage() {
           The house
         </h1>
         <p className="mt-5 text-[#f2ebe0]/70">
-          {SITE_NAME} is a Los Angeles streetwear and art label. Every graphic is
-          drawn in-house by {ARTIST_NAME} and printed on demand — so we can run
-          limited ideas without warehouses full of dead stock.
+          {SITE_NAME} is a Los Angeles streetwear and art label built around one
+          artist: {ARTIST_NAME}. He draws every graphic by hand — tattoo artist
+          first — so what you put on is original art, not a template.
         </p>
         <p className="mt-4 text-[#f2ebe0]/70">
           From the &ldquo;Know Pain&rdquo; blackletter tees to the Mouth Bay 310
