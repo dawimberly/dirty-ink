@@ -70,7 +70,7 @@ export function ProductDetail({ product }: { product: Product }) {
 
       <div className="flex flex-col">
         <p className="text-xs uppercase tracking-[0.2em] text-[#1fa8ef]">
-          {product.category} · {product.code}
+          {product.category} · by {product.artist}
         </p>
         <h1 className="mt-2 font-[family-name:var(--font-ink-display)] text-3xl tracking-wide sm:text-4xl">
           {product.name}

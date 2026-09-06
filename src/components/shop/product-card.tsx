@@ -39,6 +39,9 @@ export function ProductCard({ product }: { product: Product }) {
             {formatPrice(product.priceCents)}
           </span>
         </div>
+        <p className="mt-0.5 text-xs uppercase tracking-[0.14em] text-[#f2ebe0]/45">
+          by {product.artist}
+        </p>
         <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-[#f2ebe0]/55">
           {product.blurb}
         </p>
