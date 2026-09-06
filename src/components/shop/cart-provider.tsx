@@ -140,7 +140,7 @@ function CartDrawer() {
     <Sheet open={isOpen} onOpenChange={(open) => (open ? null : closeCart())}>
       <SheetContent
         side="right"
-        className="border-white/10 bg-[#0c0a09] text-[#f2ebe0] sm:max-w-md"
+        className="border-white/10 bg-[#0b0b0e] text-[#f2ebe0] sm:max-w-md"
       >
         <SheetHeader className="border-b border-white/10">
           <SheetTitle className="flex items-center gap-2 text-[#f2ebe0]">
@@ -227,7 +227,7 @@ function CartDrawer() {
               Shipping &amp; taxes calculated at checkout. Every piece is made to order.
             </p>
             <Button
-              className="h-11 w-full bg-[#c45c26] text-[#140e0a] hover:bg-[#d46930]"
+              className="h-11 w-full bg-[#1fa8ef] text-[#140e0a] hover:bg-[#4fbcf5]"
               onClick={closeCart}
               render={<Link href="/checkout" />}
             >

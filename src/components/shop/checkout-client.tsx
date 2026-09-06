@@ -14,7 +14,7 @@ export function CheckoutClient() {
       <div className="rounded-2xl border border-white/10 bg-black/40 p-10 text-center">
         <p className="text-[#f2ebe0]/70">Your bag is empty.</p>
         <Button
-          className="mt-5 bg-[#c45c26] text-[#140e0a] hover:bg-[#d46930]"
+          className="mt-5 bg-[#1fa8ef] text-[#140e0a] hover:bg-[#4fbcf5]"
           render={<Link href="/shop" />}
         >
           Browse the shop
@@ -83,7 +83,7 @@ export function CheckoutClient() {
         </div>
         <div className="border-t border-white/10 pt-4">
           <Button
-            className="h-11 w-full bg-[#c45c26] text-sm font-semibold text-[#140e0a] hover:bg-[#d46930]"
+            className="h-11 w-full bg-[#1fa8ef] text-sm font-semibold text-[#140e0a] hover:bg-[#4fbcf5]"
             disabled
           >
             Pay — coming soon

@@ -36,10 +36,10 @@ export function PublicShell({
     <div
       className={`${display.variable} ${body.variable} min-h-screen font-[family-name:var(--font-ink-body)] text-[#f2ebe0]`}
     >
-      <div className="relative isolate min-h-screen overflow-hidden bg-[#0c0a09]">
+      <div className="relative isolate min-h-screen overflow-hidden bg-[#0b0b0e]">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,#3a2218_0%,transparent_50%),radial-gradient(ellipse_at_90%_20%,#1a1512_0%,transparent_45%),linear-gradient(180deg,#0c0a09_0%,#140f0c_55%,#0a0908_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_12%_-5%,rgba(31,168,239,0.20)_0%,transparent_45%),radial-gradient(ellipse_at_88%_8%,rgba(122,60,208,0.22)_0%,transparent_45%),radial-gradient(ellipse_at_50%_108%,rgba(126,193,58,0.16)_0%,transparent_50%),radial-gradient(ellipse_at_95%_92%,rgba(230,83,164,0.14)_0%,transparent_45%),linear-gradient(180deg,#0b0b0e_0%,#0c0c11_55%,#090909_100%)]"
         />
         <div
           aria-hidden

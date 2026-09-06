@@ -51,7 +51,7 @@ export function ProductDetail({ product }: { product: Product }) {
                 aria-label={`View ${image.alt}`}
                 className={`relative size-20 overflow-hidden rounded-lg border bg-[#111] transition ${
                   activeImage === index
-                    ? "border-[#c45c26]"
+                    ? "border-[#1fa8ef]"
                     : "border-white/10 hover:border-white/30"
                 }`}
               >
@@ -69,7 +69,7 @@ export function ProductDetail({ product }: { product: Product }) {
       </div>
 
       <div className="flex flex-col">
-        <p className="text-xs uppercase tracking-[0.2em] text-[#c45c26]">
+        <p className="text-xs uppercase tracking-[0.2em] text-[#1fa8ef]">
           {product.category} · {product.code}
         </p>
         <h1 className="mt-2 font-[family-name:var(--font-ink-display)] text-3xl tracking-wide sm:text-4xl">
@@ -88,7 +88,7 @@ export function ProductDetail({ product }: { product: Product }) {
               {product.category === "Print" ? "Size" : "Size"}
             </span>
             {!size && (
-              <span className="text-xs text-[#c45c26]">Select a size</span>
+              <span className="text-xs text-[#1fa8ef]">Select a size</span>
             )}
           </div>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -99,7 +99,7 @@ export function ProductDetail({ product }: { product: Product }) {
                 onClick={() => setSize(option)}
                 className={`min-w-11 rounded-lg border px-3 py-2 text-sm transition ${
                   size === option
-                    ? "border-[#c45c26] bg-[#c45c26]/15 text-[#f2ebe0]"
+                    ? "border-[#1fa8ef] bg-[#1fa8ef]/15 text-[#f2ebe0]"
                     : "border-white/15 bg-black/30 text-[#f2ebe0]/70 hover:border-white/30"
                 }`}
               >
@@ -112,7 +112,7 @@ export function ProductDetail({ product }: { product: Product }) {
         <Button
           onClick={onAdd}
           disabled={!size}
-          className="mt-7 h-12 w-full bg-[#c45c26] text-sm font-semibold text-[#140e0a] hover:bg-[#d46930] disabled:opacity-40"
+          className="mt-7 h-12 w-full bg-[#1fa8ef] text-sm font-semibold text-[#140e0a] hover:bg-[#4fbcf5] disabled:opacity-40"
         >
           {added ? (
             <>

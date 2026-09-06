@@ -2,11 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { formatPrice, type Product } from "@/lib/products";
 
+const CATEGORY_COLOR: Record<Product["category"], string> = {
+  Tee: "#1fa8ef",
+  "Long Sleeve": "#7ec13a",
+  Print: "#e653a4",
+};
+
 export function ProductCard({ product }: { product: Product }) {
+  const accent = CATEGORY_COLOR[product.category];
   return (
     <Link
       href={`/shop/${product.slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/40 transition hover:border-[#c45c26]/50"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/40 transition hover:border-white/30"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-[#111]">
         <Image
@@ -16,7 +23,10 @@ export function ProductCard({ product }: { product: Product }) {
           sizes="(min-width: 640px) 33vw, 100vw"
           className="object-cover transition duration-500 group-hover:scale-[1.03]"
         />
-        <span className="absolute left-3 top-3 rounded-full border border-white/15 bg-black/50 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-[#f2ebe0]/80 backdrop-blur-sm">
+        <span
+          className="absolute left-3 top-3 rounded-full border bg-black/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] backdrop-blur-sm"
+          style={{ color: accent, borderColor: accent }}
+        >
           {product.category}
         </span>
       </div>
@@ -32,7 +42,10 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-[#f2ebe0]/55">
           {product.blurb}
         </p>
-        <span className="mt-3 text-sm font-semibold text-[#c45c26] group-hover:text-[#d46a32]">
+        <span
+          className="mt-3 text-sm font-semibold"
+          style={{ color: accent }}
+        >
           View →
         </span>
       </div>

@@ -32,7 +32,7 @@ export default function AboutPage() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noreferrer"
-            className="text-[#c45c26] hover:text-[#d46a32]"
+            className="text-[#1fa8ef] hover:text-[#4fbcf5]"
           >
             {INSTAGRAM_HANDLE}
           </a>
@@ -41,7 +41,7 @@ export default function AboutPage() {
         <div className="mt-8">
           <Link
             href="/shop"
-            className="inline-flex h-11 items-center justify-center rounded-lg bg-[#c45c26] px-6 text-sm font-semibold text-[#140e0a] transition hover:bg-[#d46a32]"
+            className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold text-[#140e0a] transition hover:bg-[#4fbcf5]"
           >
             Shop the drop
           </Link>
