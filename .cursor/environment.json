@@ -1,0 +1,11 @@
+{
+  "name": "ChairHunt",
+  "install": "npm install && { [ -f .env.local ] || printf 'NEXT_PUBLIC_APP_URL=http://localhost:3000\\n' > .env.local; }",
+  "terminals": [
+    {
+      "name": "dev",
+      "command": "npm run dev"
+    }
+  ],
+  "ports": [3000]
+}
