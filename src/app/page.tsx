@@ -44,7 +44,7 @@ export default function HomePage() {
           <p className="mt-6 font-[family-name:var(--font-ink-tag)] text-lg text-[#1fa8ef] drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
             {SITE_TAGLINE}
           </p>
-          <h1 className="pfh-stroke mt-3 font-[family-name:var(--font-ink-display)] text-5xl leading-[0.95] tracking-[0.04em] text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] sm:text-8xl">
+          <h1 className="pfh-stroke mt-3 font-[family-name:var(--font-ink-brand)] text-6xl leading-[0.95] text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] sm:text-9xl">
             {SITE_WORDMARK}
           </h1>
           <div aria-hidden className="mx-auto mt-4 h-1.5 w-40 -rotate-1 rounded-full bg-[#e653a4] blur-[0.5px]" />

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Bungee, DM_Sans, Permanent_Marker } from "next/font/google";
+import { Bungee, DM_Sans, Permanent_Marker, Pirata_One } from "next/font/google";
 import {
   ARTIST_NAME,
   INSTAGRAM_HANDLE,
@@ -15,6 +15,12 @@ import { CartButton } from "@/components/shop/cart-button";
 const display = Bungee({
   subsets: ["latin"],
   variable: "--font-ink-display",
+  weight: ["400"],
+});
+
+const brand = Pirata_One({
+  subsets: ["latin"],
+  variable: "--font-ink-brand",
   weight: ["400"],
 });
 
@@ -50,7 +56,7 @@ export function PublicShell({
 }) {
   return (
     <div
-      className={`${display.variable} ${tag.variable} ${body.variable} min-h-screen font-[family-name:var(--font-ink-body)] text-[#f2ebe0]`}
+      className={`${display.variable} ${brand.variable} ${tag.variable} ${body.variable} min-h-screen font-[family-name:var(--font-ink-body)] text-[#f2ebe0]`}
     >
       <div className="relative isolate min-h-screen overflow-hidden bg-[#0b0b0e]">
         {/* Graffiti wall */}
@@ -97,7 +103,7 @@ export function PublicShell({
                     priority
                   />
                 </span>
-                <span className="font-[family-name:var(--font-ink-display)] text-base tracking-[0.14em] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-lg">
+                <span className="font-[family-name:var(--font-ink-brand)] text-2xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-3xl">
                   {SITE_WORDMARK}
                 </span>
               </Link>
