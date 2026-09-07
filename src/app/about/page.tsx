@@ -24,7 +24,8 @@ export default function AboutPage() {
         <p className="mt-4 text-[#f2ebe0]/70">
           From the &ldquo;Know Pain&rdquo; blackletter tees to the Mouth Bay 310
           graphic and the Lighthouse graphite series, the goal is the same: wear
-          the art.
+          the art. Want it on skin instead? Greg takes open-chair bookings across
+          LA.
         </p>
         <p className="mt-6 text-[#f2ebe0]/70">
           New drops land on Instagram first —{" "}
@@ -38,10 +39,16 @@ export default function AboutPage() {
           </a>
           .
         </p>
-        <div className="mt-8">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/book"
+            className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold text-[#140e0a] transition hover:bg-[#4fbcf5]"
+          >
+            Book ink
+          </Link>
           <Link
             href="/shop"
-            className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold text-[#140e0a] transition hover:bg-[#4fbcf5]"
+            className="inline-flex h-11 items-center justify-center rounded-lg border border-[#f2ebe0]/30 bg-black/30 px-6 text-sm font-medium text-[#f2ebe0] transition hover:bg-[#f2ebe0]/10"
           >
             Shop the drop
           </Link>

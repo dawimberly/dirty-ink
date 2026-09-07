@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
+import Link from "next/link";
 import { submitBookingRequest } from "@/lib/actions";
 import { uploadBookingReferenceImages, isBookingImageFile } from "@/lib/booking-images";
 import { rankNearbyShops } from "@/lib/nearby";
 import { APPOINTMENT_TYPES } from "@/lib/types/booking";
 import type { NearbyShop } from "@/lib/types/booking";
-import { SHOP_URL } from "@/lib/site";
+import { ARTIST_NAME, SHOP_URL } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -150,8 +151,8 @@ export function BookingForm() {
           Request received
         </p>
         <p className="mt-3 text-sm leading-relaxed text-[#f2ebe0]/70">
-          Thanks — Greg will review your idea and reach out on the contact you left.
-          Usually within a few days.
+          Thanks — {ARTIST_NAME} will review your idea and reach out on the contact
+          you left. Usually within a few days.
         </p>
         {warning && (
           <p className="mt-3 text-xs text-amber-200/80">{warning}</p>
@@ -168,14 +169,12 @@ export function BookingForm() {
         >
           Send another request
         </Button>
-        <a
+        <Link
           href={SHOP_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex h-10 items-center justify-center rounded-lg bg-[#1fa8ef] px-5 text-sm font-semibold text-[#f2ebe0] hover:bg-[#4fbcf5]"
+          className="inline-flex h-10 items-center justify-center rounded-lg bg-[#1fa8ef] px-5 text-sm font-semibold text-[#0b0b0e] hover:bg-[#4fbcf5]"
         >
-          Shop merch
-        </a>
+          Shop the drop
+        </Link>
         </div>
       </div>
     );
@@ -502,7 +501,7 @@ export function BookingForm() {
       </Button>
 
       <p className="text-center text-xs text-[#f2ebe0]/45">
-        This is a request — Greg will confirm time & deposit separately.
+        This is a request — {ARTIST_NAME} will confirm time & deposit separately.
       </p>
     </form>
   );

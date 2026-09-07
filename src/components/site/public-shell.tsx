@@ -40,7 +40,8 @@ const navLinkClass =
 
 const MARQUEE_ITEMS = [
   "PAQ'IN FAMILY HOUSE",
-  "ORIGINAL ART",
+  "OPEN CHAIR",
+  "BOOK INK",
   "ART BY GREG PAQUÍN",
   "LOS ANGELES",
   "KNOW PAIN",
@@ -108,6 +109,12 @@ export function PublicShell({
                 </span>
               </Link>
               <nav className="flex items-center gap-1 text-sm font-medium sm:gap-2">
+                <Link
+                  href="/book"
+                  className="rounded-lg bg-[#1fa8ef] px-3 py-2 text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
+                >
+                  Book
+                </Link>
                 <Link href="/shop" className={navLinkClass}>
                   Shop
                 </Link>
@@ -176,6 +183,10 @@ export function PublicShell({
                 </a>
               </p>
               <p className="mt-2 flex items-center justify-center gap-3 text-xs text-[#f2ebe0]/45">
+                <Link href="/book" className="hover:text-[#f2ebe0]/80">
+                  Book
+                </Link>
+                <span aria-hidden>·</span>
                 <Link href="/shop" className="hover:text-[#f2ebe0]/80">
                   Shop
                 </Link>

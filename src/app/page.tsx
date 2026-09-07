@@ -7,9 +7,9 @@ import { PRODUCTS } from "@/lib/products";
 import { ARTIST_NAME, SITE_NAME, SITE_TAGLINE, SITE_WORDMARK } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — Original streetwear & art`,
+  title: `${SITE_NAME} — Open chair & streetwear`,
   description:
-    "Paq'in Family House (PAQINHAUS) — Los Angeles streetwear and original art, hand-drawn by Greg Paquín. Shop the KNOWPAIN and Mouth Bay tees and the Lighthouse graphite print.",
+    "Paq'in Family House (PAQINHAUS) — book custom tattoos with Greg Paquín and shop original LA streetwear.",
 };
 
 export default function HomePage() {
@@ -49,21 +49,21 @@ export default function HomePage() {
           </h1>
           <div aria-hidden className="mx-auto mt-4 h-1.5 w-40 -rotate-1 rounded-full bg-[#e653a4] blur-[0.5px]" />
           <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-[#f2ebe0]/85 sm:text-lg">
-            Wearable art out of Los Angeles. Every graphic is drawn by hand by
-            {" "}{ARTIST_NAME} — original work, limited drops, no filler.
+            Wearable art and custom ink out of Los Angeles — drawn by hand by{" "}
+            {ARTIST_NAME}.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
-              href="/shop"
+              href="/book"
               className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
             >
-              Shop the drop
+              Book ink
             </Link>
             <Link
-              href="/about"
+              href="/shop"
               className="inline-flex h-11 items-center justify-center rounded-lg border border-[#f2ebe0]/30 bg-black/30 px-6 text-sm font-medium tracking-wide text-[#f2ebe0] backdrop-blur-sm transition hover:bg-[#f2ebe0]/10"
             >
-              About the house
+              Shop the drop
             </Link>
           </div>
         </div>
@@ -112,10 +112,14 @@ export default function HomePage() {
         <div className="rounded-2xl border border-white/10 border-t-2 border-t-[#e653a4] bg-black/40 p-5">
           <p className="text-xs uppercase tracking-[0.2em] text-[#e653a4]">03</p>
           <h3 className="mt-2 font-[family-name:var(--font-ink-display)] text-lg tracking-wide">
-            Los Angeles
+            Open chair
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-[#f2ebe0]/55">
-            Born in the 310. Built for everywhere.
+            Custom tattoos across LA —{" "}
+            <Link href="/book" className="text-[#1fa8ef] hover:text-[#4fbcf5]">
+              book a session
+            </Link>{" "}
+            and find the closest chair.
           </p>
         </div>
       </section>
