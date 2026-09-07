@@ -44,10 +44,11 @@ cp .env.local.example .env.local
 | `RESEND_API_KEY` | Optional | Email Greg when a booking comes in |
 | `BOOKING_NOTIFY_EMAIL` | Optional | Where notifications go |
 | `NEXT_PUBLIC_APP_URL` | Optional | Public site URL (Vercel) |
+| `STRIPE_SECRET_KEY` | Yes (shop pay) | Stripe secret key for Checkout |
 
 For local dev, set `NEXT_PUBLIC_APP_URL=http://localhost:3000`.
 
-Public storefront pages (`/`, `/shop`, `/book`, `/about`, `/checkout`) render without Supabase env.
+Public storefront pages (`/`, `/shop`, `/book`, `/about`, `/checkout`) render without Supabase env. Checkout pay requires `STRIPE_SECRET_KEY`.
 
 ### 3. Supabase
 
@@ -83,4 +84,11 @@ This app owns `/shop` now. After merge:
 1. Keep the Shopify store password-protected (or close it) so customers land here
 2. Point any custom domain at the Vercel project
 3. Update Instagram / link-in-bio to `paqin-family-tattoo.vercel.app` (or your domain)
-4. Wire payments on `/checkout` when ready (Stripe + POD partner)
+4. Add `STRIPE_SECRET_KEY` in Vercel (test key first, then live)
+
+### Stripe checkout
+
+1. Create an account at [stripe.com](https://stripe.com)
+2. Developers → API keys → copy **Secret key** (`sk_test_…` or `sk_live_…`)
+3. Set `STRIPE_SECRET_KEY` in `.env.local` and Vercel Production
+4. On `/checkout`, **Pay with Stripe** opens hosted Checkout (card + US shipping)

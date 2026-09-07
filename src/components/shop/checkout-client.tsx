@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/components/shop/cart-provider";
@@ -9,6 +10,36 @@ import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 
 export function CheckoutClient() {
   const { items, subtotalCents, setQty, removeItem } = useCart();
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function onPay() {
+    setError(null);
+    setPending(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: items.map((item) => ({
+            slug: item.slug,
+            size: item.size,
+            qty: item.qty,
+          })),
+        }),
+      });
+      const data = (await res.json()) as { url?: string; error?: string };
+      if (!res.ok || !data.url) {
+        setError(data.error ?? "Could not start checkout.");
+        return;
+      }
+      window.location.href = data.url;
+    } catch {
+      setError("Could not reach checkout. Try again.");
+    } finally {
+      setPending(false);
+    }
+  }
 
   if (items.length === 0) {
     return (
@@ -80,18 +111,24 @@ export function CheckoutClient() {
         </div>
         <div className="flex justify-between text-sm">
           <span className="text-[#f2ebe0]/60">Shipping</span>
-          <span className="text-[#f2ebe0]/60">Calculated next step</span>
+          <span className="text-[#f2ebe0]/60">$8.00 at Stripe</span>
         </div>
         <div className="border-t border-white/10 pt-4">
+          {error && (
+            <p className="mb-3 rounded-lg border border-rose-400/40 bg-rose-500/10 px-3 py-2 text-xs text-rose-200">
+              {error}
+            </p>
+          )}
           <Button
             className="h-11 w-full bg-[#1fa8ef] text-sm font-semibold text-[#140e0a] hover:bg-[#4fbcf5]"
-            disabled
+            disabled={pending}
+            onClick={onPay}
           >
-            Pay — coming soon
+            {pending ? "Redirecting to Stripe…" : "Pay with Stripe"}
           </Button>
           <p className="mt-3 text-xs leading-relaxed text-[#f2ebe0]/45">
-            Online checkout is next — bag is ready, payments land after we connect
-            the processor. Nothing is charged yet. DM{" "}
+            Secure card checkout via Stripe. Shipping address is collected on the
+            next screen. Questions? DM{" "}
             <a
               href={INSTAGRAM_URL}
               target="_blank"
@@ -99,8 +136,8 @@ export function CheckoutClient() {
               className="text-[#1fa8ef] hover:text-[#4fbcf5]"
             >
               {INSTAGRAM_HANDLE}
-            </a>{" "}
-            if you want to grab a piece now.
+            </a>
+            .
           </p>
         </div>
       </aside>
