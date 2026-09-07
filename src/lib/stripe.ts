@@ -20,5 +20,11 @@ export function getStripe() {
 
 export function hasStripeSecret() {
   const key = stripeSecretKey();
-  return key.startsWith("sk_test_") || key.startsWith("sk_live_");
+  // sk_ = standard secret; rk_ = restricted key (AI/agent or scoped)
+  return (
+    key.startsWith("sk_test_") ||
+    key.startsWith("sk_live_") ||
+    key.startsWith("rk_test_") ||
+    key.startsWith("rk_live_")
+  );
 }

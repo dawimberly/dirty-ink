@@ -15,13 +15,14 @@ type CartPayloadItem = {
 export async function POST(request: Request) {
   if (!hasStripeSecret()) {
     const raw = process.env["STRIPE_SECRET_KEY"];
-    const hint = !raw
+    const trimmed = raw?.trim() || "";
+    const hint = !trimmed
       ? "missing"
-      : raw.trim().startsWith("pk_")
+      : trimmed.startsWith("pk_")
         ? "publishable_key_not_secret"
-        : raw.trim().startsWith("sk_")
-          ? "unexpected_sk_format"
-          : "present_but_not_sk_test_or_sk_live";
+        : trimmed.startsWith("sk_") || trimmed.startsWith("rk_")
+          ? "unexpected_key_format"
+          : "present_but_not_sk_or_rk";
     return NextResponse.json(
       {
         error:
