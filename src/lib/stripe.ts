@@ -1,7 +1,10 @@
 import Stripe from "stripe";
 
 function stripeSecretKey() {
-  return process.env.STRIPE_SECRET_KEY?.trim() || "";
+  // Bracket access avoids Next/Turbopack inlining an empty value at build time
+  // when the secret was absent during a previous compile.
+  const key = process.env["STRIPE_SECRET_KEY"];
+  return typeof key === "string" ? key.trim() : "";
 }
 
 export function getStripe() {
