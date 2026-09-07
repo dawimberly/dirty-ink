@@ -1,7 +1,11 @@
 import Stripe from "stripe";
 
+function stripeSecretKey() {
+  return process.env.STRIPE_SECRET_KEY?.trim() || "";
+}
+
 export function getStripe() {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = stripeSecretKey();
   if (!key) {
     throw new Error("Missing STRIPE_SECRET_KEY");
   }
@@ -12,5 +16,6 @@ export function getStripe() {
 }
 
 export function hasStripeSecret() {
-  return Boolean(process.env.STRIPE_SECRET_KEY);
+  const key = stripeSecretKey();
+  return key.startsWith("sk_test_") || key.startsWith("sk_live_");
 }

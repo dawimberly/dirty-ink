@@ -11,10 +11,19 @@ type CartPayloadItem = {
 
 export async function POST(request: Request) {
   if (!hasStripeSecret()) {
+    const raw = process.env.STRIPE_SECRET_KEY;
+    const hint = !raw
+      ? "missing"
+      : raw.trim().startsWith("pk_")
+        ? "publishable_key_not_secret"
+        : raw.trim().startsWith("sk_")
+          ? "unexpected_sk_format"
+          : "present_but_not_sk_test_or_sk_live";
     return NextResponse.json(
       {
         error:
           "Stripe is not configured yet. Add STRIPE_SECRET_KEY in Vercel env vars.",
+        hint,
       },
       { status: 503 }
     );
