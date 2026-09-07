@@ -3,6 +3,9 @@ import { getProduct } from "@/lib/products";
 import { getStripe, hasStripeSecret } from "@/lib/stripe";
 import { SITE_URL } from "@/lib/site";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 type CartPayloadItem = {
   slug: string;
   size: string;
@@ -11,7 +14,7 @@ type CartPayloadItem = {
 
 export async function POST(request: Request) {
   if (!hasStripeSecret()) {
-    const raw = process.env.STRIPE_SECRET_KEY;
+    const raw = process.env["STRIPE_SECRET_KEY"];
     const hint = !raw
       ? "missing"
       : raw.trim().startsWith("pk_")
