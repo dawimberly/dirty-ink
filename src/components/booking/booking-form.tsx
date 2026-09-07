@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
+import Link from "next/link";
 import { submitBookingRequest } from "@/lib/actions";
 import { uploadBookingReferenceImages, isBookingImageFile } from "@/lib/booking-images";
 import { rankNearbyShops } from "@/lib/nearby";
 import { APPOINTMENT_TYPES } from "@/lib/types/booking";
 import type { NearbyShop } from "@/lib/types/booking";
-import { SHOP_URL } from "@/lib/site";
+import { ARTIST_NAME, SHOP_URL } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -150,8 +151,8 @@ export function BookingForm() {
           Request received
         </p>
         <p className="mt-3 text-sm leading-relaxed text-[#f2ebe0]/70">
-          Thanks — Greg will review your idea and reach out on the contact you left.
-          Usually within a few days.
+          Thanks — {ARTIST_NAME} will review your idea and reach out on the contact
+          you left. Usually within a few days.
         </p>
         {warning && (
           <p className="mt-3 text-xs text-amber-200/80">{warning}</p>
@@ -168,14 +169,12 @@ export function BookingForm() {
         >
           Send another request
         </Button>
-        <a
+        <Link
           href={SHOP_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex h-10 items-center justify-center rounded-lg bg-[#c45c26] px-5 text-sm font-semibold text-[#f2ebe0] hover:bg-[#d46a32]"
+          className="inline-flex h-10 items-center justify-center rounded-lg bg-[#1fa8ef] px-5 text-sm font-semibold text-[#0b0b0e] hover:bg-[#4fbcf5]"
         >
-          Shop merch
-        </a>
+          Shop the drop
+        </Link>
         </div>
       </div>
     );
@@ -245,7 +244,7 @@ export function BookingForm() {
                   type="button"
                   className={`flex w-full items-center justify-between gap-3 rounded-lg border px-3 py-2 text-left text-sm ${
                     selected
-                      ? "border-[#c45c26] bg-[#c45c26]/15 text-[#f2ebe0]"
+                      ? "border-[#1fa8ef] bg-[#1fa8ef]/15 text-[#f2ebe0]"
                       : "border-white/10 bg-black/20 text-[#f2ebe0]/70"
                   }`}
                   onClick={() => setSelectedShop(shop)}
@@ -359,7 +358,7 @@ export function BookingForm() {
             if (images.length < 4) addImages(event.dataTransfer.files);
           }}
           className={`relative flex flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border border-dashed px-4 py-5 text-center transition-colors ${
-            dragging ? "border-[#c45c26] bg-[#c45c26]/15" : "border-white/20 bg-black/30"
+            dragging ? "border-[#1fa8ef] bg-[#1fa8ef]/15" : "border-white/20 bg-black/30"
           } ${images.length >= 4 ? "opacity-60" : ""}`}
         >
           <span className="pointer-events-none text-sm text-[#f2ebe0]/70">
@@ -492,7 +491,7 @@ export function BookingForm() {
       <Button
         type="submit"
         disabled={pending}
-        className="h-11 w-full bg-[#c45c26] text-[#140e0a] hover:bg-[#d46930]"
+        className="h-11 w-full bg-[#1fa8ef] text-[#140e0a] hover:bg-[#4fbcf5]"
       >
         {pending
           ? images.length
@@ -502,7 +501,7 @@ export function BookingForm() {
       </Button>
 
       <p className="text-center text-xs text-[#f2ebe0]/45">
-        This is a request — Greg will confirm time & deposit separately.
+        This is a request — {ARTIST_NAME} will confirm time & deposit separately.
       </p>
     </form>
   );

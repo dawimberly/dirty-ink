@@ -1,9 +1,5 @@
 import type { NextConfig } from "next";
 
-const shopUrl =
-  process.env.NEXT_PUBLIC_SHOP_URL?.replace(/\/$/, "") ||
-  "https://7fegea-va.myshopify.com";
-
 const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
@@ -11,10 +7,8 @@ const nextConfig: NextConfig = {
     },
   },
   async redirects() {
-    return [
-      { source: "/shop", destination: shopUrl, permanent: false },
-      { source: "/merch", destination: shopUrl, permanent: false },
-    ];
+    // Old Shopify /merch deep links → in-app shop
+    return [{ source: "/merch", destination: "/shop", permanent: false }];
   },
 };
 

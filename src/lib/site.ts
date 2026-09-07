@@ -1,11 +1,20 @@
-/** Public booking page. */
-export const BOOKING_URL =
-  `${(process.env.NEXT_PUBLIC_APP_URL ?? "https://paqin-family-tattoo.vercel.app").replace(/\/$/, "")}/book`;
+export const SITE_NAME = "Paq'in Family House";
+export const SITE_WORDMARK = "Paqinhaüs";
+export const ARTIST_NAME = "Greg Paquín";
+export const SITE_TAGLINE = "Los Angeles · Open Chair · Streetwear";
 
-/** Shopify merch store (keep original .myshopify.com for now). */
-export const SHOP_URL =
-  process.env.NEXT_PUBLIC_SHOP_URL?.replace(/\/$/, "") ||
-  "https://7fegea-va.myshopify.com";
+const APP_ORIGIN = (
+  process.env.NEXT_PUBLIC_APP_URL ?? "https://paqin-family-tattoo.vercel.app"
+).replace(/\/$/, "");
+
+/** Public storefront home. */
+export const SITE_URL = APP_ORIGIN;
+
+/** In-app shop — replaces the old Shopify storefront. */
+export const SHOP_URL = "/shop";
+
+/** Public tattoo booking page. */
+export const BOOKING_URL = `${APP_ORIGIN}/book`;
 
 export const INSTAGRAM_URL = "https://instagram.com/geepaqwin";
 export const INSTAGRAM_HANDLE = "@geepaqwin";
