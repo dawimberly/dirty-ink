@@ -10,7 +10,7 @@ const APP_ORIGIN = (
 /** Public storefront home. */
 export const SITE_URL = APP_ORIGIN;
 
-/** Internal shop (products live in this app now, not an external Shopify store). */
+/** In-app shop — replaces the old Shopify storefront. */
 export const SHOP_URL = "/shop";
 
 /** Public tattoo booking page. */

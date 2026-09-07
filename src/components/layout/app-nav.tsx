@@ -46,16 +46,14 @@ function NavLinks({
           </Link>
         );
       })}
-      <a
+      <Link
         href={SHOP_URL}
-        target="_blank"
-        rel="noreferrer"
         onClick={onNavigate}
         className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
       >
         <ShoppingBag className="size-4" />
-        Merch
-      </a>
+        Shop
+      </Link>
       <Link
         href="/"
         onClick={onNavigate}

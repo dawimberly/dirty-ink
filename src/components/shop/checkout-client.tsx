@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/components/shop/cart-provider";
 import { Button } from "@/components/ui/button";
 import { formatPrice } from "@/lib/products";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 
 export function CheckoutClient() {
   const { items, subtotalCents, setQty, removeItem } = useCart();
@@ -89,9 +90,17 @@ export function CheckoutClient() {
             Pay — coming soon
           </Button>
           <p className="mt-3 text-xs leading-relaxed text-[#f2ebe0]/45">
-            Checkout is being connected to our fulfillment partner. Once the store
-            account is linked, this button takes payment and the order is sent
-            straight to production. Nothing is charged yet.
+            Online checkout is next — bag is ready, payments land after we connect
+            the processor. Nothing is charged yet. DM{" "}
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#1fa8ef] hover:text-[#4fbcf5]"
+            >
+              {INSTAGRAM_HANDLE}
+            </a>{" "}
+            if you want to grab a piece now.
           </p>
         </div>
       </aside>

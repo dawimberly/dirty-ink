@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import type { AppointmentRequest } from "@/lib/types/booking";
 import { BookingStatusButtons } from "@/components/booking/booking-status-buttons";
@@ -25,14 +26,12 @@ export default async function BookingsPage() {
             {error ? ` — ${error.message}` : ""}
           </p>
         </div>
-        <a
+        <Link
           href={SHOP_URL}
-          target="_blank"
-          rel="noreferrer"
           className="text-sm font-medium text-primary underline-offset-4 hover:underline"
         >
-          Open merch store
-        </a>
+          Open shop
+        </Link>
       </div>
 
       {bookings.length === 0 ? (
