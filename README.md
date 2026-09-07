@@ -92,3 +92,8 @@ This app owns `/shop` now. After merge:
 2. Developers → API keys → copy **Secret key** (`sk_test_…` or `sk_live_…`)
 3. Set `STRIPE_SECRET_KEY` in `.env.local` and Vercel Production
 4. On `/checkout`, **Pay with Stripe** opens hosted Checkout (card + US shipping)
+5. Developers → Webhooks → Add endpoint:
+   - URL: `https://paqin-family-tattoo.vercel.app/api/stripe/webhook`
+   - Event: `checkout.session.completed`
+   - Copy signing secret → `STRIPE_WEBHOOK_SECRET` in Vercel  
+   Paid orders email Greg (same address as booking notify / Resend)

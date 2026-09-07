@@ -21,7 +21,8 @@ export async function middleware(request: NextRequest) {
     pathname === "/book" ||
     pathname.startsWith("/book/") ||
     pathname.startsWith("/api/nearby") ||
-    pathname.startsWith("/api/checkout");
+    pathname.startsWith("/api/checkout") ||
+    pathname.startsWith("/api/stripe/");
   const isLogin = pathname === "/login" || pathname.startsWith("/login/");
 
   // Public shop pages must not depend on Supabase env being present.
