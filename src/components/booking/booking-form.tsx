@@ -580,7 +580,7 @@ export function BookingForm() {
 
       <Button
         type="submit"
-        disabled={pending}
+        disabled={pending || !selectedShop}
         className="h-11 w-full bg-[#1fa8ef] text-[#140e0a] hover:bg-[#4fbcf5]"
       >
         {pending
