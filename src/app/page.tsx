@@ -111,7 +111,7 @@ export default function HomePage() {
               Get inked by {ARTIST_NAME}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-[#f2ebe0]/65 sm:text-base">
-              Emails Greg directly.
+              Email Greg directly.
             </p>
           </div>
           <Link
