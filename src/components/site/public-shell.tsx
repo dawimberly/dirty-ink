@@ -104,7 +104,7 @@ export function PublicShell({
                     priority
                   />
                 </span>
-                <span className="hidden truncate font-[family-name:var(--font-ink-brand)] text-2xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] min-[420px]:inline sm:text-3xl">
+                <span className="hidden truncate font-[family-name:var(--font-ink-brand)] text-xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] min-[420px]:inline sm:text-2xl">
                   {SITE_WORDMARK}
                 </span>
               </Link>

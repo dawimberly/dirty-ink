@@ -9,7 +9,7 @@ import { ARTIST_NAME, SITE_NAME, SITE_TAGLINE, SITE_WORDMARK } from "@/lib/site"
 export const metadata: Metadata = {
   title: `${SITE_NAME} — Open chair & streetwear`,
   description:
-    "Paq'in Family House (PAQINHAUS) — book custom tattoos with Greg Paquín and shop original LA streetwear.",
+    "In The Flesh — book custom tattoos with Greg Paquín and shop original LA streetwear.",
 };
 
 export default function HomePage() {
@@ -41,7 +41,7 @@ export default function HomePage() {
             <p className="pfh-rise font-[family-name:var(--font-ink-tag)] text-lg text-[#1fa8ef] drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)] sm:text-xl">
               {SITE_TAGLINE}
             </p>
-            <h1 className="pfh-rise-delay pfh-stroke mt-4 font-[family-name:var(--font-ink-brand)] text-6xl leading-[0.9] text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.8)] sm:text-8xl md:text-[9.5rem]">
+            <h1 className="pfh-rise-delay pfh-stroke mt-4 font-[family-name:var(--font-ink-brand)] text-5xl leading-[0.95] text-white drop-shadow-[0_6px_24px_rgba(0,0,0,0.8)] sm:text-7xl md:text-8xl">
               {SITE_WORDMARK}
             </h1>
             <div

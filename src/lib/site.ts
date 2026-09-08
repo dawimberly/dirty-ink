@@ -1,5 +1,5 @@
-export const SITE_NAME = "Paq'in Family House";
-export const SITE_WORDMARK = "Paqinhaüs";
+export const SITE_NAME = "In The Flesh";
+export const SITE_WORDMARK = "In The Flesh";
 export const ARTIST_NAME = "Greg Paquín";
 export const SITE_TAGLINE = "Los Angeles · Open Chair · Streetwear";
 
