@@ -108,27 +108,27 @@ export function PublicShell({
                   {SITE_WORDMARK}
                 </span>
               </Link>
-              <nav className="flex items-center gap-1 text-sm font-medium sm:gap-2">
-                <Link
-                  href="/book"
-                  className="rounded-lg bg-[#1fa8ef] px-3 py-2 text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
-                >
-                  Book
+              <nav className="flex items-center gap-0.5 text-sm font-medium sm:gap-1">
+                <Link href="/" className={navLinkClass}>
+                  Home
                 </Link>
                 <Link href="/shop" className={navLinkClass}>
                   Shop
                 </Link>
-                <Link href="/about" className={`hidden sm:inline-flex ${navLinkClass}`}>
+                <Link href="/about" className={navLinkClass}>
                   About
+                </Link>
+                <Link href="/book" className={navLinkClass}>
+                  Book
                 </Link>
                 <a
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noreferrer"
                   className={`inline-flex items-center gap-1.5 ${navLinkClass}`}
+                  aria-label={INSTAGRAM_HANDLE}
                 >
                   <InstagramIcon className="size-4" />
-                  <span className="hidden sm:inline">{INSTAGRAM_HANDLE}</span>
                 </a>
                 <CartButton />
               </nav>
@@ -182,9 +182,9 @@ export function PublicShell({
                   {INSTAGRAM_HANDLE}
                 </a>
               </p>
-              <p className="mt-2 flex items-center justify-center gap-3 text-xs text-[#f2ebe0]/45">
-                <Link href="/book" className="hover:text-[#f2ebe0]/80">
-                  Book
+              <p className="mt-2 flex flex-wrap items-center justify-center gap-3 text-xs text-[#f2ebe0]/45">
+                <Link href="/" className="hover:text-[#f2ebe0]/80">
+                  Home
                 </Link>
                 <span aria-hidden>·</span>
                 <Link href="/shop" className="hover:text-[#f2ebe0]/80">
@@ -193,6 +193,10 @@ export function PublicShell({
                 <span aria-hidden>·</span>
                 <Link href="/about" className="hover:text-[#f2ebe0]/80">
                   About
+                </Link>
+                <span aria-hidden>·</span>
+                <Link href="/book" className="hover:text-[#f2ebe0]/80">
+                  Book
                 </Link>
                 <span aria-hidden>·</span>
                 <Link href="/login" className="hover:text-[#f2ebe0]/80">
