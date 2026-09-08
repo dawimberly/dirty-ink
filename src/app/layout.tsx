@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: SITE_NAME,
   description:
-    "In The Flesh — book custom tattoos with Greg Paquín and shop original Los Angeles streetwear.",
+    "In The Flesh — book tattoos with Greg Paquín at Hermosa Ink and shop original Los Angeles streetwear.",
 };
 
 export default function RootLayout({

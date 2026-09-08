@@ -39,8 +39,8 @@ const navLinkClass =
   "rounded-lg px-2 py-1.5 text-[#f2ebe0]/85 transition hover:bg-[#1fa8ef]/15 hover:text-white sm:px-3 sm:py-2";
 
 const MARQUEE_ITEMS = [
-  "PAQ'IN FAMILY HOUSE",
-  "OPEN CHAIR",
+  "IN THE FLESH",
+  "HERMOSA INK",
   "BOOK INK",
   "ART BY GREG PAQUÍN",
   "LOS ANGELES",

@@ -4,12 +4,19 @@ import Image from "next/image";
 import { PublicShell } from "@/components/site/public-shell";
 import { ProductCard } from "@/components/shop/product-card";
 import { PRODUCTS } from "@/lib/products";
-import { ARTIST_NAME, SITE_NAME, SITE_TAGLINE, SITE_WORDMARK } from "@/lib/site";
+import {
+  ARTIST_NAME,
+  HERMOSA_INK_NAME,
+  HERMOSA_INK_URL,
+  SITE_NAME,
+  SITE_TAGLINE,
+  SITE_WORDMARK,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — Open chair & streetwear`,
+  title: `${SITE_NAME} — Tattoos & streetwear`,
   description:
-    "In The Flesh — book custom tattoos with Greg Paquín and shop original LA streetwear.",
+    "In The Flesh — book tattoos with Greg Paquín at Hermosa Ink and shop original LA streetwear.",
 };
 
 export default function HomePage() {
@@ -53,12 +60,14 @@ export default function HomePage() {
               Angeles.
             </p>
             <div className="pfh-rise-late mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link
-                href="/book"
+              <a
+                href={HERMOSA_INK_URL}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-[#1fa8ef] px-8 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
               >
-                Book ink
-              </Link>
+                Book at {HERMOSA_INK_NAME}
+              </a>
               <Link
                 href="/shop"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-[#f2ebe0]/35 bg-black/35 px-8 text-sm font-medium tracking-wide text-[#f2ebe0] backdrop-blur-sm transition hover:bg-[#f2ebe0]/10"
@@ -98,22 +107,24 @@ export default function HomePage() {
         <div className="mx-auto flex max-w-5xl flex-col items-start gap-5 px-4 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-14">
           <div className="max-w-lg">
             <p className="font-[family-name:var(--font-ink-tag)] text-[#1fa8ef]">
-              Open chair · LA
+              {HERMOSA_INK_NAME} · Hermosa Beach
             </p>
             <h2 className="mt-2 font-[family-name:var(--font-ink-display)] text-2xl tracking-wide sm:text-3xl">
               Get inked by {ARTIST_NAME}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-[#f2ebe0]/65 sm:text-base">
-              Tell him the idea — he&apos;ll lock time and deposit at a chair near
-              you.
+              Greg books mainly at {HERMOSA_INK_NAME}. Request through their site
+              and ask for him.
             </p>
           </div>
-          <Link
-            href="/book"
+          <a
+            href={HERMOSA_INK_URL}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex h-12 shrink-0 items-center justify-center rounded-lg bg-[#1fa8ef] px-7 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
           >
-            Book an appointment
-          </Link>
+            Book at {HERMOSA_INK_NAME}
+          </a>
         </div>
       </section>
     </PublicShell>

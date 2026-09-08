@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PublicShell } from "@/components/site/public-shell";
-import { ARTIST_NAME, INSTAGRAM_HANDLE, INSTAGRAM_URL, SITE_NAME } from "@/lib/site";
+import {
+  ARTIST_NAME,
+  HERMOSA_INK_NAME,
+  HERMOSA_INK_URL,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  SITE_NAME,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `About — ${SITE_NAME}`,
@@ -24,8 +31,16 @@ export default function AboutPage() {
         <p className="mt-4 text-[#f2ebe0]/70">
           From the &ldquo;Know Pain&rdquo; blackletter tees to the Mouth Bay 310
           graphic and the Lighthouse graphite series, the goal is the same: wear
-          the art. Want it on skin instead? Greg takes open-chair bookings across
-          LA.
+          the art. Want it on skin instead? Greg books mainly at{" "}
+          <a
+            href={HERMOSA_INK_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[#1fa8ef] hover:text-[#4fbcf5]"
+          >
+            {HERMOSA_INK_NAME}
+          </a>{" "}
+          in Hermosa Beach.
         </p>
         <p className="mt-6 text-[#f2ebe0]/70">
           New drops land on Instagram first —{" "}
@@ -40,12 +55,14 @@ export default function AboutPage() {
           .
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/book"
+          <a
+            href={HERMOSA_INK_URL}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold text-[#140e0a] transition hover:bg-[#4fbcf5]"
           >
-            Book ink
-          </Link>
+            Book at {HERMOSA_INK_NAME}
+          </a>
           <Link
             href="/shop"
             className="inline-flex h-11 items-center justify-center rounded-lg border border-[#f2ebe0]/30 bg-black/30 px-6 text-sm font-medium text-[#f2ebe0] transition hover:bg-[#f2ebe0]/10"
