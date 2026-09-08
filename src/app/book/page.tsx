@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BookingForm } from "@/components/booking/booking-form";
 import { PublicShell } from "@/components/site/public-shell";
 import {
   ARTIST_NAME,
@@ -13,7 +14,7 @@ import {
 
 export const metadata: Metadata = {
   title: `Book — ${SITE_NAME}`,
-  description: `Book a tattoo with ${ARTIST_NAME} at ${HERMOSA_INK_NAME} in Hermosa Beach.`,
+  description: `Book a tattoo with ${ARTIST_NAME} at ${HERMOSA_INK_NAME}, or send a request that emails him directly.`,
   alternates: { canonical: BOOKING_URL },
 };
 
@@ -32,21 +33,10 @@ export default function BookPage() {
           className="mx-auto mt-4 h-1.5 w-28 -rotate-1 rounded-full bg-[#e653a4] blur-[0.5px]"
         />
         <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-[#f2ebe0]/80 sm:text-base">
-          {ARTIST_NAME} books mainly through {HERMOSA_INK_NAME}. Use their site
-          to request a consult or appointment — then ask for Greg.
+          {ARTIST_NAME} books mainly at {HERMOSA_INK_NAME}. Start there — or send
+          him a request below and it emails him directly.
         </p>
-      </header>
-
-      <div className="pfh-rise-delay mx-auto flex max-w-md flex-col items-center gap-4 text-center">
-        <a
-          href={HERMOSA_INK_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-[#1fa8ef] px-8 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:w-auto sm:min-w-[16rem]"
-        >
-          Book at {HERMOSA_INK_NAME}
-        </a>
-        <p className="text-xs text-[#f2ebe0]/45">
+        <p className="mt-4 text-xs text-[#f2ebe0]/45">
           Prefer DMs?{" "}
           <a
             href={INSTAGRAM_URL}
@@ -61,8 +51,19 @@ export default function BookPage() {
             Shop the drop
           </Link>
         </p>
-        <p className="mt-2 max-w-sm text-xs leading-relaxed text-[#f2ebe0]/40">
-          Studio site:{" "}
+      </header>
+
+      <div className="pfh-rise-delay mx-auto mb-10 flex max-w-md flex-col items-center gap-3 text-center">
+        <a
+          href={HERMOSA_INK_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-[#1fa8ef] px-8 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:w-auto sm:min-w-[16rem]"
+        >
+          Book at {HERMOSA_INK_NAME}
+        </a>
+        <p className="text-xs text-[#f2ebe0]/40">
+          Ask for Greg ·{" "}
           <a
             href={HERMOSA_INK_URL}
             target="_blank"
@@ -72,6 +73,18 @@ export default function BookPage() {
             hermosaink.com
           </a>
         </p>
+      </div>
+
+      <div className="pfh-rise-late mb-6 flex items-center gap-3">
+        <div aria-hidden className="h-px flex-1 bg-[#f2ebe0]/15" />
+        <p className="shrink-0 font-[family-name:var(--font-ink-tag)] text-sm text-[#1fa8ef]">
+          Or email Greg directly
+        </p>
+        <div aria-hidden className="h-px flex-1 bg-[#f2ebe0]/15" />
+      </div>
+
+      <div className="pfh-rise-late">
+        <BookingForm />
       </div>
     </PublicShell>
   );
