@@ -61,16 +61,16 @@ export default function HomePage() {
             </p>
             <div className="pfh-rise-late mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link
-                href="/book"
-                className="inline-flex h-12 items-center justify-center rounded-lg bg-[#1fa8ef] px-8 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
-              >
-                Book ink
-              </Link>
-              <Link
                 href="/shop"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-[#f2ebe0]/35 bg-black/35 px-8 text-sm font-medium tracking-wide text-[#f2ebe0] backdrop-blur-sm transition hover:bg-[#f2ebe0]/10"
               >
                 Shop the drop
+              </Link>
+              <Link
+                href="/book"
+                className="inline-flex h-12 items-center justify-center rounded-lg bg-[#1fa8ef] px-8 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
+              >
+                Book ink
               </Link>
             </div>
           </div>
