@@ -5,8 +5,9 @@ import { PublicShell } from "@/components/site/public-shell";
 import {
   ARTIST_NAME,
   BOOKING_URL,
+  HERMOSA_INK_ADDRESS,
+  HERMOSA_INK_AREA,
   HERMOSA_INK_NAME,
-  HERMOSA_INK_URL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   SITE_NAME,
@@ -14,7 +15,7 @@ import {
 
 export const metadata: Metadata = {
   title: `Book — ${SITE_NAME}`,
-  description: `Book a tattoo with ${ARTIST_NAME} at ${HERMOSA_INK_NAME}, or send a request that emails him directly.`,
+  description: `Request a custom tattoo with ${ARTIST_NAME} at ${HERMOSA_INK_NAME} — the form emails him directly.`,
   alternates: { canonical: BOOKING_URL },
 };
 
@@ -23,7 +24,7 @@ export default function BookPage() {
     <PublicShell>
       <header className="pfh-rise mb-8 text-center sm:mb-10">
         <p className="font-[family-name:var(--font-ink-tag)] text-lg text-[#1fa8ef] drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]">
-          {HERMOSA_INK_NAME} · Hermosa Beach
+          {HERMOSA_INK_NAME} · {HERMOSA_INK_AREA}
         </p>
         <h1 className="pfh-stroke mt-3 font-[family-name:var(--font-ink-brand)] text-5xl leading-[0.95] text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] sm:text-7xl">
           Book ink
@@ -33,8 +34,11 @@ export default function BookPage() {
           className="mx-auto mt-4 h-1.5 w-28 -rotate-1 rounded-full bg-[#e653a4] blur-[0.5px]"
         />
         <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-[#f2ebe0]/80 sm:text-base">
-          {ARTIST_NAME} books mainly at {HERMOSA_INK_NAME}. Start there — or send
-          him a request below and it emails him directly.
+          Tell {ARTIST_NAME} the idea — placement, size, vibes. Submit below and
+          it emails him directly so the booking stays with Greg.
+        </p>
+        <p className="mx-auto mt-3 max-w-md text-xs text-[#f2ebe0]/50">
+          Studio: {HERMOSA_INK_NAME} · {HERMOSA_INK_ADDRESS}
         </p>
         <p className="mt-4 text-xs text-[#f2ebe0]/45">
           Prefer DMs?{" "}
@@ -53,37 +57,7 @@ export default function BookPage() {
         </p>
       </header>
 
-      <div className="pfh-rise-delay mx-auto mb-10 flex max-w-md flex-col items-center gap-3 text-center">
-        <a
-          href={HERMOSA_INK_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex h-12 w-full items-center justify-center rounded-lg bg-[#1fa8ef] px-8 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:w-auto sm:min-w-[16rem]"
-        >
-          Book at {HERMOSA_INK_NAME}
-        </a>
-        <p className="text-xs text-[#f2ebe0]/40">
-          Ask for Greg ·{" "}
-          <a
-            href={HERMOSA_INK_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="underline decoration-[#f2ebe0]/25 underline-offset-4 hover:text-[#f2ebe0]/70"
-          >
-            hermosaink.com
-          </a>
-        </p>
-      </div>
-
-      <div className="pfh-rise-late mb-6 flex items-center gap-3">
-        <div aria-hidden className="h-px flex-1 bg-[#f2ebe0]/15" />
-        <p className="shrink-0 font-[family-name:var(--font-ink-tag)] text-sm text-[#1fa8ef]">
-          Or email Greg directly
-        </p>
-        <div aria-hidden className="h-px flex-1 bg-[#f2ebe0]/15" />
-      </div>
-
-      <div className="pfh-rise-late">
+      <div className="pfh-rise-delay">
         <BookingForm />
       </div>
     </PublicShell>

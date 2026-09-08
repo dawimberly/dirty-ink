@@ -3,8 +3,8 @@ import Link from "next/link";
 import { PublicShell } from "@/components/site/public-shell";
 import {
   ARTIST_NAME,
+  HERMOSA_INK_AREA,
   HERMOSA_INK_NAME,
-  HERMOSA_INK_URL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   SITE_NAME,
@@ -31,16 +31,9 @@ export default function AboutPage() {
         <p className="mt-4 text-[#f2ebe0]/70">
           From the &ldquo;Know Pain&rdquo; blackletter tees to the Mouth Bay 310
           graphic and the Lighthouse graphite series, the goal is the same: wear
-          the art. Want it on skin instead? Greg books mainly at{" "}
-          <a
-            href={HERMOSA_INK_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="text-[#1fa8ef] hover:text-[#4fbcf5]"
-          >
-            {HERMOSA_INK_NAME}
-          </a>{" "}
-          in Hermosa Beach.
+          the art. Want it on skin instead? Greg works at {HERMOSA_INK_NAME} in{" "}
+          {HERMOSA_INK_AREA} — book through this site so the request emails him
+          directly.
         </p>
         <p className="mt-6 text-[#f2ebe0]/70">
           New drops land on Instagram first —{" "}
@@ -55,14 +48,12 @@ export default function AboutPage() {
           .
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            href={HERMOSA_INK_URL}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/book"
             className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold text-[#140e0a] transition hover:bg-[#4fbcf5]"
           >
-            Book at {HERMOSA_INK_NAME}
-          </a>
+            Book ink
+          </Link>
           <Link
             href="/shop"
             className="inline-flex h-11 items-center justify-center rounded-lg border border-[#f2ebe0]/30 bg-black/30 px-6 text-sm font-medium text-[#f2ebe0] transition hover:bg-[#f2ebe0]/10"

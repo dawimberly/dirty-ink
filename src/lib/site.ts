@@ -13,11 +13,12 @@ export const SITE_URL = APP_ORIGIN;
 /** In-app shop — replaces the old Shopify storefront. */
 export const SHOP_URL = "/shop";
 
-/** Greg’s main booking home — Hermosa Ink Collective. */
-export const HERMOSA_INK_URL = "https://www.hermosaink.com/";
+/** Studio where Greg works — listed on booking; clients book via our form. */
 export const HERMOSA_INK_NAME = "Hermosa Ink";
+export const HERMOSA_INK_AREA = "Hermosa Beach";
+export const HERMOSA_INK_ADDRESS = "802 Hermosa Ave, Hermosa Beach, CA 90254";
 
-/** On-site booking landing (points people to Hermosa Ink). */
+/** Public booking page — form emails Greg directly. */
 export const BOOKING_URL = `${APP_ORIGIN}/book`;
 
 export const INSTAGRAM_URL = "https://instagram.com/geepaqwin";
