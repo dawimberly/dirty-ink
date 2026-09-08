@@ -88,27 +88,27 @@ export function PublicShell({
 
         <CartProvider>
           <div className="relative flex min-h-screen flex-col">
-            <header className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
+            <header className="mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-3 py-4 sm:gap-4 sm:px-6 sm:py-5">
               <Link
                 href="/"
-                className="flex items-center gap-2.5"
+                className="flex min-w-0 shrink items-center gap-2 sm:gap-2.5"
                 aria-label={SITE_NAME}
               >
-                <span className="grid size-10 place-items-center overflow-hidden rounded-full bg-white ring-2 ring-[#1fa8ef]/70">
+                <span className="grid size-9 shrink-0 place-items-center overflow-hidden rounded-full bg-white ring-2 ring-[#1fa8ef]/70 sm:size-10">
                   <Image
                     src="/brand/logo.png"
                     alt=""
                     width={40}
                     height={40}
-                    className="size-10 object-contain"
+                    className="size-9 object-contain sm:size-10"
                     priority
                   />
                 </span>
-                <span className="font-[family-name:var(--font-ink-brand)] text-2xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-3xl">
+                <span className="hidden truncate font-[family-name:var(--font-ink-brand)] text-2xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] min-[420px]:inline sm:text-3xl">
                   {SITE_WORDMARK}
                 </span>
               </Link>
-              <nav className="flex items-center gap-0.5 text-sm font-medium sm:gap-1">
+              <nav className="flex shrink-0 items-center gap-0 text-xs font-medium sm:gap-1 sm:text-sm">
                 <Link href="/" className={navLinkClass}>
                   Home
                 </Link>
