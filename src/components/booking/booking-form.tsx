@@ -7,7 +7,13 @@ import { uploadBookingReferenceImages, isBookingImageFile } from "@/lib/booking-
 import { rankNearbyShops } from "@/lib/nearby";
 import { APPOINTMENT_TYPES } from "@/lib/types/booking";
 import type { NearbyShop } from "@/lib/types/booking";
-import { ARTIST_NAME, SHOP_URL } from "@/lib/site";
+import { DEFAULT_BOOKING_SHOP } from "@/lib/booking-shops";
+import {
+  ARTIST_NAME,
+  HERMOSA_INK_ADDRESS,
+  HERMOSA_INK_NAME,
+  SHOP_URL,
+} from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,6 +24,14 @@ const labelClass = "text-[#f2ebe0]/80";
 const ghostBtnClass =
   "border-[#f2ebe0]/20 bg-transparent text-[#f2ebe0] hover:bg-[#f2ebe0]/10";
 
+const HERMOSA_SHOP: NearbyShop = {
+  id: DEFAULT_BOOKING_SHOP.id,
+  name: DEFAULT_BOOKING_SHOP.name,
+  address: DEFAULT_BOOKING_SHOP.address,
+  area: DEFAULT_BOOKING_SHOP.area,
+  distance_miles: 0,
+};
+
 function formatMiles(miles: number) {
   return miles < 10 ? miles.toFixed(1) : String(Math.round(miles));
 }
@@ -27,9 +41,10 @@ export function BookingForm() {
   const [error, setError] = useState<string | null>(null);
   const [warning, setWarning] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+  const [cantMakeHermosa, setCantMakeHermosa] = useState(false);
   const [address, setAddress] = useState("");
   const [shops, setShops] = useState<NearbyShop[]>([]);
-  const [selectedShop, setSelectedShop] = useState<NearbyShop | null>(null);
+  const [selectedShop, setSelectedShop] = useState<NearbyShop | null>(HERMOSA_SHOP);
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [images, setImages] = useState<File[]>([]);
@@ -118,6 +133,14 @@ export function BookingForm() {
     event.preventDefault();
     setError(null);
     setWarning(null);
+    if (!selectedShop) {
+      setError(
+        cantMakeHermosa
+          ? "Search your area and choose a shop, or go back to Hermosa Ink."
+          : "Choose a studio before submitting."
+      );
+      return;
+    }
     const formData = new FormData(event.currentTarget);
     formData.delete("reference_images");
     const files = [...images];
@@ -187,6 +210,9 @@ export function BookingForm() {
     >
       <input type="hidden" name="preferred_shop_id" value={selectedShop?.id ?? ""} />
       <input type="hidden" name="preferred_shop_name" value={selectedShop?.name ?? ""} />
+      {!cantMakeHermosa && (
+        <input type="hidden" name="client_address" value={HERMOSA_INK_ADDRESS} />
+      )}
 
       {error && (
         <p className="rounded-lg border border-rose-400/40 bg-rose-500/10 px-3 py-2 text-sm text-rose-200">
@@ -201,66 +227,130 @@ export function BookingForm() {
         <Input id="client_name" name="client_name" required className={fieldClass} />
       </div>
 
-      <div className="space-y-2 rounded-xl border border-white/10 bg-white/[0.03] p-4">
-        <Label htmlFor="client_address" className={labelClass}>
-          Your address, city, or ZIP *
-        </Label>
-        <div className="flex flex-col gap-2 sm:flex-row">
-          <Input
-            id="client_address"
-            name="client_address"
-            required
-            value={address}
-            placeholder="90266 or Hermosa Beach, CA"
-            className={fieldClass}
-            onChange={(event) => {
-              setAddress(event.target.value);
-              setShops([]);
-              setSelectedShop(null);
-              setSearchError(null);
-            }}
-          />
+      <div className="space-y-3 rounded-xl border border-[#1fa8ef]/35 bg-[#1fa8ef]/10 p-4">
+        <p className="text-xs font-medium uppercase tracking-[0.14em] text-[#1fa8ef]">
+          Studio
+        </p>
+        <div
+          className={`rounded-xl border px-4 py-4 ${
+            !cantMakeHermosa || selectedShop?.id === HERMOSA_SHOP.id
+              ? "border-[#1fa8ef] bg-black/35"
+              : "border-white/10 bg-black/20 opacity-70"
+          }`}
+        >
+          <p className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide text-white sm:text-3xl">
+            {HERMOSA_INK_NAME}
+          </p>
+          <p className="mt-1 text-sm text-[#f2ebe0]/70">{HERMOSA_INK_ADDRESS}</p>
+          {!cantMakeHermosa && (
+            <p className="mt-2 text-xs font-medium text-[#1fa8ef]">Selected · emails Greg</p>
+          )}
+        </div>
+
+        {!cantMakeHermosa ? (
           <Button
             type="button"
             variant="outline"
-            disabled={searching || !address.trim()}
-            className={ghostBtnClass}
-            onClick={onFindClosest}
+            className={`${ghostBtnClass} w-full sm:w-auto`}
+            onClick={() => {
+              setCantMakeHermosa(true);
+              setSelectedShop(null);
+              setShops([]);
+              setSearchError(null);
+            }}
           >
-            {searching ? "Searching…" : "Find closest"}
+            Can&apos;t make it to {HERMOSA_INK_NAME}?
           </Button>
-        </div>
-        {searchError && (
-          <p className="text-xs text-amber-200/80">{searchError}</p>
-        )}
-        {shops.length > 0 && (
-          <div className="space-y-2 pt-2">
-            <p className="text-xs text-[#f2ebe0]/55">Closest locations — choose one:</p>
-            {shops.map((shop) => {
-              const selected = selectedShop?.id === shop.id;
-              return (
-                <button
-                  key={shop.id}
-                  type="button"
-                  className={`flex w-full items-center justify-between gap-3 rounded-lg border px-3 py-2 text-left text-sm ${
-                    selected
-                      ? "border-[#1fa8ef] bg-[#1fa8ef]/15 text-[#f2ebe0]"
-                      : "border-white/10 bg-black/20 text-[#f2ebe0]/70"
-                  }`}
-                  onClick={() => setSelectedShop(shop)}
-                >
-                  <span>
-                    <span className="block font-medium">{shop.name}</span>
-                    <span className="block text-xs opacity-60">
-                      {shop.address ?? shop.area ?? "LA area"}
-                    </span>
-                  </span>
-                  <span className="shrink-0 text-xs font-medium">
-                    {formatMiles(shop.distance_miles)} mi
-                  </span>
-                </button>
-              );
-            })}
+        ) : (
+          <div className="space-y-3 border-t border-white/10 pt-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="text-sm text-[#f2ebe0]/75">
+                Enter your area — we&apos;ll list the closest chairs.
+              </p>
+              <button
+                type="button"
+                className="text-xs text-[#1fa8ef] underline decoration-[#1fa8ef]/40 underline-offset-4 hover:text-[#4fbcf5]"
+                onClick={() => {
+                  setCantMakeHermosa(false);
+                  setAddress("");
+                  setShops([]);
+                  setSelectedShop(HERMOSA_SHOP);
+                  setSearchError(null);
+                }}
+              >
+                Back to {HERMOSA_INK_NAME}
+              </button>
+            </div>
+            <Label htmlFor="client_address" className={labelClass}>
+              Your address, city, or ZIP *
+            </Label>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <Input
+                id="client_address"
+                name="client_address"
+                required={cantMakeHermosa}
+                value={address}
+                placeholder="90266 or Long Beach, CA"
+                className={fieldClass}
+                onChange={(event) => {
+                  setAddress(event.target.value);
+                  setShops([]);
+                  setSelectedShop(null);
+                  setSearchError(null);
+                }}
+              />
+              <Button
+                type="button"
+                variant="outline"
+                disabled={searching || !address.trim()}
+                className={ghostBtnClass}
+                onClick={onFindClosest}
+              >
+                {searching ? "Searching…" : "Find closest"}
+              </Button>
+            </div>
+            {searchError && (
+              <p className="text-xs text-amber-200/80">{searchError}</p>
+            )}
+            {shops.length > 0 && (
+              <div className="space-y-2">
+                <p className="text-xs text-[#f2ebe0]/55">Closest locations — choose one:</p>
+                {shops.map((shop) => {
+                  const selected = selectedShop?.id === shop.id;
+                  const isHermosa = shop.id === HERMOSA_SHOP.id;
+                  return (
+                    <button
+                      key={shop.id}
+                      type="button"
+                      className={`flex w-full items-center justify-between gap-3 rounded-lg border px-3 py-2.5 text-left text-sm ${
+                        selected
+                          ? "border-[#1fa8ef] bg-[#1fa8ef]/15 text-[#f2ebe0]"
+                          : "border-white/10 bg-black/20 text-[#f2ebe0]/70"
+                      }`}
+                      onClick={() => setSelectedShop(shop)}
+                    >
+                      <span>
+                        <span
+                          className={`block ${
+                            isHermosa
+                              ? "font-[family-name:var(--font-ink-display)] text-base tracking-wide"
+                              : "font-medium"
+                          }`}
+                        >
+                          {shop.name}
+                        </span>
+                        <span className="block text-xs opacity-60">
+                          {shop.address ?? shop.area ?? "LA area"}
+                        </span>
+                      </span>
+                      <span className="shrink-0 text-xs font-medium">
+                        {formatMiles(shop.distance_miles)} mi
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
       </div>
