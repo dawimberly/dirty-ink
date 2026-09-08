@@ -111,8 +111,7 @@ export default function HomePage() {
               Get inked by {ARTIST_NAME}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-[#f2ebe0]/65 sm:text-base">
-              Request through the form — it emails Greg directly so the booking
-              stays with him.
+              Emails Greg directly.
             </p>
           </div>
           <Link
