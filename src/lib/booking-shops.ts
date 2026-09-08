@@ -1,9 +1,23 @@
 import type { NearbyShop } from "@/lib/types/booking";
 
-/** Greg's open-chair booking locations — used if Supabase is not seeded yet. */
+/** Default studio — shown prominently; clients book Greg via the form. */
+export const DEFAULT_BOOKING_SHOP = {
+  id: "booking-hermosa-ink",
+  name: "Hermosa Ink",
+  address: "802 Hermosa Ave",
+  area: "Hermosa Beach",
+  lat: 33.8625,
+  lng: -118.3995,
+} as const;
+
+/**
+ * Shops used for “can’t make it to Hermosa” nearest-shop search.
+ * Hermosa Ink stays first / default; others are fallback chairs.
+ */
 export const BOOKING_SHOP_LOCATIONS: Array<
   Omit<NearbyShop, "distance_miles"> & { lat: number; lng: number }
 > = [
+  { ...DEFAULT_BOOKING_SHOP },
   {
     id: "booking-port-city",
     name: "Port City Tattoo",

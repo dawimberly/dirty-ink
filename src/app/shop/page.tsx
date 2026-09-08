@@ -7,7 +7,7 @@ import { SITE_NAME } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Shop — ${SITE_NAME}`,
   description:
-    "Shop Paq'in Family House streetwear and prints — original art by Greg Paquín in Los Angeles.",
+    "Shop In The Flesh streetwear and prints — original art by Greg Paquín in Los Angeles.",
 };
 
 export default function ShopPage() {

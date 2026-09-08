@@ -1,4 +1,4 @@
-# Paq'in Family House (Paqinhaüs)
+# In The Flesh
 
 Public site for Greg Paquín — custom tattoo booking and original streetwear,
 hosted on Vercel. Replaces the old Shopify storefront.
@@ -19,7 +19,7 @@ hosted on Vercel. Replaces the old Shopify storefront.
 | `/shop` | Apparel & print catalog |
 | `/shop/[slug]` | Product detail + add to bag |
 | `/checkout` | Cart checkout (payments coming soon) |
-| `/about` | The house |
+| `/about` | The label |
 
 Artist admin (ChairHunt) stays behind `/login` — shops tracker, bookings inbox, templates.
 
