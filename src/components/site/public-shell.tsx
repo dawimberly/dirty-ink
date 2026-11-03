@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Bungee, DM_Sans, Permanent_Marker, Pirata_One } from "next/font/google";
 import {
   ARTIST_NAME,
+  CONTACT_EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   SITE_NAME,
@@ -39,13 +40,13 @@ const navLinkClass =
   "rounded-lg px-3 py-2 text-[#f2ebe0]/85 transition hover:bg-[#1fa8ef]/15 hover:text-white";
 
 const MARQUEE_ITEMS = [
-  "PAQ'IN FAMILY HOUSE",
-  "OPEN CHAIR",
-  "BOOK INK",
-  "ART BY GREG PAQUÍN",
+  "ORIGINAL GRAPHICS",
+  "CLOTHING BRANDS",
+  "DRAWN BY HAND",
+  "NO AI",
+  "NO TEMPLATES",
+  "BLACKLETTER",
   "LOS ANGELES",
-  "KNOW PAIN",
-  "310",
 ];
 
 export function PublicShell({
@@ -109,16 +110,22 @@ export function PublicShell({
                 </span>
               </Link>
               <nav className="flex items-center gap-1 text-sm font-medium sm:gap-2">
-                <Link
-                  href="/book"
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="rounded-lg bg-[#1fa8ef] px-3 py-2 text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
                 >
-                  Book
+                  Email
+                </a>
+                <Link href="/letterheads" className={navLinkClass}>
+                  Letterheads
                 </Link>
-                <Link href="/shop" className={navLinkClass}>
+                <Link href="/shop" className={`hidden md:inline-flex ${navLinkClass}`}>
                   Shop
                 </Link>
-                <Link href="/about" className={`hidden sm:inline-flex ${navLinkClass}`}>
+                <Link href="/book" className={`hidden lg:inline-flex ${navLinkClass}`}>
+                  Book
+                </Link>
+                <Link href="/about" className={`hidden lg:inline-flex ${navLinkClass}`}>
                   About
                 </Link>
                 <a
@@ -126,6 +133,7 @@ export function PublicShell({
                   target="_blank"
                   rel="noreferrer"
                   className={`inline-flex items-center gap-1.5 ${navLinkClass}`}
+                  aria-label={INSTAGRAM_HANDLE}
                 >
                   <InstagramIcon className="size-4" />
                   <span className="hidden sm:inline">{INSTAGRAM_HANDLE}</span>
@@ -172,28 +180,39 @@ export function PublicShell({
                 Stay up.
               </p>
               <p className="mt-2 text-xs text-[#f2ebe0]/45">
-                {SITE_NAME} · Los Angeles · Original art by {ARTIST_NAME} ·{" "}
+                {SITE_NAME} · Los Angeles · Graphics by {ARTIST_NAME} ·{" "}
                 <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="underline decoration-[#1fa8ef]/40 underline-offset-4 hover:text-[#f2ebe0]/80"
                 >
-                  {INSTAGRAM_HANDLE}
+                  {CONTACT_EMAIL}
                 </a>
               </p>
-              <p className="mt-2 flex items-center justify-center gap-3 text-xs text-[#f2ebe0]/45">
-                <Link href="/book" className="hover:text-[#f2ebe0]/80">
-                  Book
+              <p className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-[#f2ebe0]/45">
+                <Link href="/letterheads" className="hover:text-[#f2ebe0]/80">
+                  Letterheads
                 </Link>
                 <span aria-hidden>·</span>
                 <Link href="/shop" className="hover:text-[#f2ebe0]/80">
                   Shop
                 </Link>
                 <span aria-hidden>·</span>
+                <Link href="/book" className="hover:text-[#f2ebe0]/80">
+                  Book
+                </Link>
+                <span aria-hidden>·</span>
                 <Link href="/about" className="hover:text-[#f2ebe0]/80">
                   About
                 </Link>
+                <span aria-hidden>·</span>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-[#f2ebe0]/80"
+                >
+                  {INSTAGRAM_HANDLE}
+                </a>
                 <span aria-hidden>·</span>
                 <Link href="/login" className="hover:text-[#f2ebe0]/80">
                   Admin

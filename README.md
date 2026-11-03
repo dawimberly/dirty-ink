@@ -14,7 +14,8 @@ hosted on Vercel. Replaces the old Shopify storefront.
 
 | Path | Purpose |
 |------|---------|
-| `/` | Brand home |
+| `/` | Hire Greg — clothing graphics |
+| `/letterheads` | Public lettering portfolio (no login) |
 | `/book` | Tattoo appointment requests |
 | `/shop` | Apparel & print catalog |
 | `/shop/[slug]` | Product detail + add to bag |
@@ -48,7 +49,7 @@ cp .env.local.example .env.local
 
 For local dev, set `NEXT_PUBLIC_APP_URL=http://localhost:3000`.
 
-Public storefront pages (`/`, `/shop`, `/book`, `/about`, `/checkout`) render without Supabase env. Checkout pay requires `STRIPE_SECRET_KEY`.
+Public pages (`/`, `/letterheads`, `/shop`, `/book`, `/about`, `/checkout`) render without Supabase env. Checkout pay requires `STRIPE_SECRET_KEY`.
 
 ### 3. Supabase
 

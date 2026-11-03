@@ -1,7 +1,10 @@
 export const SITE_NAME = "Paq'in Family House";
 export const SITE_WORDMARK = "Paqinhaüs";
 export const ARTIST_NAME = "Greg Paquín";
-export const SITE_TAGLINE = "Los Angeles · Open Chair · Streetwear";
+export const SITE_TAGLINE = "Los Angeles · Clothing graphics";
+
+/** Brands write here to commission original shirt art. */
+export const CONTACT_EMAIL = "paqinghouse@gmail.com";
 
 const APP_ORIGIN = (
   process.env.NEXT_PUBLIC_APP_URL ?? "https://paqin-family-tattoo.vercel.app"
