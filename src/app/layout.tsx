@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: SITE_NAME,
   description:
-    "Paq'in Family House (PAQINHAUS) — book custom tattoos with Greg Paquín and shop original Los Angeles streetwear.",
+    "Paq'in Family House — Greg Paquín draws original hand-drawn graphics for clothing brands in Los Angeles. Blackletter, script, street lettering, traditional drawing, splatter, and graphite.",
 };
 
 export default function RootLayout({

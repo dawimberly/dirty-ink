@@ -16,6 +16,7 @@ export async function middleware(request: NextRequest) {
     pathname === "/shop" ||
     pathname.startsWith("/shop/") ||
     pathname === "/about" ||
+    pathname === "/letterheads" ||
     pathname === "/checkout" ||
     pathname.startsWith("/checkout/") ||
     pathname === "/book" ||
