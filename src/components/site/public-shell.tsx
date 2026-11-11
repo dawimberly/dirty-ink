@@ -113,7 +113,7 @@ export function PublicShell({
               <nav className="flex items-center gap-0 text-[10px] font-medium sm:gap-2 sm:text-sm">
                 <a
                   href={SHIRT_INQUIRY_MAILTO}
-                  className="whitespace-nowrap rounded-lg bg-[#1fa8ef] px-2 py-2 text-center text-[9px] leading-tight text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:px-3 sm:text-xs md:text-sm"
+                  className="whitespace-nowrap rounded-lg bg-[#1fa8ef] px-2 py-2 text-center text-[10px] leading-tight text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:px-3 sm:text-xs md:text-sm"
                 >
                   {SHIRT_CTA_LABEL}
                 </a>
