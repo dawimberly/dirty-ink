@@ -7,8 +7,11 @@ const nextConfig: NextConfig = {
     },
   },
   async redirects() {
-    // Old Shopify /merch deep links → in-app shop
-    return [{ source: "/merch", destination: "/shop", permanent: false }];
+    return [
+      // Old Shopify /merch deep links → in-app shop
+      { source: "/merch", destination: "/shop", permanent: false },
+      { source: "/letterheads", destination: "/shirt-work", permanent: true },
+    ];
   },
 };
 
