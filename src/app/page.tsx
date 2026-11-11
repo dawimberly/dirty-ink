@@ -9,6 +9,7 @@ import {
   HowItWorks,
   LetteringGrid,
   OtherWorkGrid,
+  ShirtGraphicCTA,
 } from "@/components/site/hire-sections";
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import {
@@ -26,10 +27,10 @@ import {
 const description = `${ARTIST_NAME} draws original hand-drawn graphics for clothing brands. Blackletter, script, street lettering, traditional drawing, splatter, and graphite. Los Angeles.`;
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} — Clothing graphics`,
+  title: `Original Shirt Graphics by ${ARTIST_NAME} | ${SITE_NAME}`,
   description,
   openGraph: {
-    title: `${SITE_NAME} — Hire ${ARTIST_NAME} for shirt graphics`,
+    title: `Hire ${ARTIST_NAME} for Original Shirt Graphics | ${SITE_NAME}`,
     description,
     url: SITE_URL,
     siteName: SITE_NAME,
@@ -60,7 +61,7 @@ export default function HomePage() {
             {SITE_TAGLINE}
           </p>
           <h1 className="mt-3 max-w-xl font-[family-name:var(--font-ink-display)] text-4xl leading-[1.05] tracking-wide text-white sm:text-5xl">
-            Original graphics for clothing brands. Drawn by hand.
+            Hire Greg to draw original shirt graphics.
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-[#f2ebe0]/80 sm:text-lg">
             Hire {ARTIST_NAME} to draw blackletter, script, street lettering,
@@ -118,6 +119,7 @@ export default function HomePage() {
         <ApparelGrid />
         <LetteringGrid />
         <OtherWorkGrid />
+        <ShirtGraphicCTA />
         <AboutGreg />
         <HowItWorks />
         <HireContact />
