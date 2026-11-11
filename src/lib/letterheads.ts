@@ -11,8 +11,7 @@
  *   28–29 — generated-looking figures; the same shirt graphics are already
  *           shown on the apparel mockups below
  *
- * `group: "apparel"` is past work on a shirt. Never present those pieces,
- * or any Paq'in house mark, as something another brand can buy or print.
+ * Apparel images show past work on shirts. Every brand gets original art.
  */
 
 export const LETTERING_STYLES = [
@@ -27,7 +26,7 @@ export const LETTERING_STYLES = [
 
 export type LetteringStyle = (typeof LETTERING_STYLES)[number];
 
-export type PortfolioGroup = "drawing" | "apparel";
+export type PortfolioGroup = "drawing" | "apparel" | "other";
 
 export type PortfolioPiece = {
   /** Stable id. Numbered Drive files keep their prefix. */
@@ -44,7 +43,99 @@ export type PortfolioPiece = {
   wide?: boolean;
 };
 
-export const PORTFOLIO: PortfolioPiece[] = [
+export const PORTFOLIO: PortfolioPiece[
+  {
+    id: "07",
+    src: "/portfolio/07_knowpain_tee_front.jpg",
+    alt: "Black tee mockup with a small script graphic on the chest",
+    title: "Script on a tee",
+    caption: "Script on a black tee.",
+    styles: ["Script"],
+    group: "apparel",
+    fit: "contain",
+  },
+  {
+    id: "08",
+    src: "/portfolio/08_dickies_longsleeve.jpg",
+    alt: "White long-sleeve mockup with a large back graphic and script on the sleeves",
+    title: "Long sleeve",
+    caption: "Long sleeve with blackletter, a figure, and sleeve script.",
+    styles: ["Blackletter", "Script"],
+    group: "apparel",
+    fit: "contain",
+  },
+  {
+    id: "09",
+    src: "/portfolio/09_manpants.jpg",
+    alt: "Three tee mockups showing lettering and street-sign graphics, front and back",
+    title: "Shirt graphics, front and back",
+    caption: "Lettering and street signs, shown on shirts.",
+    styles: ["Street lettering", "Blackletter"],
+    group: "apparel",
+    fit: "contain",
+    wide: true,
+  },
+  {
+    id: "10",
+    src: "/portfolio/10_knowpain_cad_front.jpg",
+    alt: "Black tee mockup with wildstyle lettering above two street signs",
+    title: "Street signs",
+    caption: "Wildstyle lettering and street signs on a tee.",
+    styles: ["Street lettering"],
+    group: "apparel",
+    fit: "contain",
+  },
+  {
+    id: "15",
+    src: "/portfolio/15_adam_1.jpg",
+    alt: "Front and back tee mockup. Small chest lettering on the front, a large figure on the back",
+    title: "Front and back",
+    caption: "Front and back of a tee.",
+    styles: ["Blackletter", "Traditional"],
+    group: "apparel",
+    fit: "contain",
+    wide: true,
+  },
+  {
+    id: "17",
+    src: "/portfolio/17_tg001a_back.jpg",
+    alt: "White tee mockup with a large back graphic and pale splatter",
+    title: "Back graphic",
+    caption: "Back graphic on a tee, with splatter.",
+    styles: ["Blackletter", "Splatter"],
+    group: "apparel",
+    fit: "contain",
+  },
+  {
+    id: "18",
+    src: "/portfolio/18_mouthbae_front.jpg",
+    alt: "White tee mockup with green street signs and script underneath",
+    title: "Street signs and script",
+    caption: "Street-sign lettering and script on a tee.",
+    styles: ["Street lettering", "Script"],
+    group: "apparel",
+    fit: "contain",
+  },
+  {
+    id: "19",
+    src: "/portfolio/19_tg001b_longsleeve.jpg",
+    alt: "White long-sleeve mockup with a large graphic and lettering down one sleeve",
+    title: "Sleeve lettering",
+    caption: "Long sleeve with sleeve lettering.",
+    styles: ["Blackletter", "Script"],
+    group: "apparel",
+    fit: "contain",
+  },
+  {
+    id: "20",
+    src: "/portfolio/20_tg001a_front2.jpg",
+    alt: "White tee mockup with a small blackletter chest mark and splatter",
+    title: "Chest mark",
+    caption: "Small blackletter and splatter on a tee.",
+    styles: ["Blackletter", "Splatter"],
+    group: "apparel",
+    fit: "contain",
+  },
   {
     id: "21",
     src: "/portfolio/21_graphite_lighthouse_v2.jpg",
@@ -52,7 +143,7 @@ export const PORTFOLIO: PortfolioPiece[] = [
     title: "Lighthouse",
     caption: "Graphite lighthouse in a storm.",
     styles: ["Graphite", "Traditional"],
-    group: "drawing",
+    group: "other",
     fit: "contain",
   },
   {
@@ -62,7 +153,7 @@ export const PORTFOLIO: PortfolioPiece[] = [
     title: "Bear and blackletter",
     caption: "Blackletter over a bear, on skin.",
     styles: ["Blackletter", "Traditional"],
-    group: "drawing",
+    group: "other",
     fit: "cover",
   },
   {
@@ -72,7 +163,7 @@ export const PORTFOLIO: PortfolioPiece[] = [
     title: "Hand lettering",
     caption: "Blackletter across the back of a hand.",
     styles: ["Blackletter"],
-    group: "drawing",
+    group: "other",
     fit: "cover",
   },
   {
@@ -102,7 +193,7 @@ export const PORTFOLIO: PortfolioPiece[] = [
     title: "Bear panel",
     caption: "Black-and-gray bear and landscape, with blackletter beside it.",
     styles: ["Traditional", "Blackletter"],
-    group: "drawing",
+    group: "other",
     fit: "cover",
   },
   {
@@ -112,7 +203,7 @@ export const PORTFOLIO: PortfolioPiece[] = [
     title: "Owl",
     caption: "Black-and-gray owl.",
     styles: ["Traditional"],
-    group: "drawing",
+    group: "other",
     fit: "cover",
   },
   {
@@ -122,15 +213,15 @@ export const PORTFOLIO: PortfolioPiece[] = [
     title: "Forearm lettering",
     caption: "Script and blackletter on a forearm.",
     styles: ["Script", "Blackletter"],
-    group: "drawing",
+    group: "other",
     fit: "cover",
   },
   {
     id: "03",
     src: "/portfolio/03_mock14563.jpg",
     alt: "Black ink letter mark sheet with a character and a small box mark",
-    title: "Mark sheet",
-    caption: "Letter mark sheet with a character and a small box mark.",
+    title: "Lettering and character",
+    caption: "Lettering with a character and a small mark.",
     styles: ["Street lettering", "Traditional"],
     group: "drawing",
     fit: "contain",
@@ -206,99 +297,9 @@ export const PORTFOLIO: PortfolioPiece[] = [
     fit: "contain",
     wide: true,
   },
-  {
-    id: "07",
-    src: "/portfolio/07_knowpain_tee_front.jpg",
-    alt: "Black tee mockup with a small script graphic on the chest",
-    title: "Script on a tee",
-    caption: "Script on a black tee.",
-    styles: ["Script"],
-    group: "apparel",
-    fit: "contain",
-  },
-  {
-    id: "08",
-    src: "/portfolio/08_dickies_longsleeve.jpg",
-    alt: "White long-sleeve mockup with a large back graphic and script on the sleeves",
-    title: "Long sleeve",
-    caption: "Long sleeve with blackletter, a figure, and sleeve script.",
-    styles: ["Blackletter", "Script"],
-    group: "apparel",
-    fit: "contain",
-  },
-  {
-    id: "09",
-    src: "/portfolio/09_manpants.jpg",
-    alt: "Three tee mockups showing lettering and street-sign graphics, front and back",
-    title: "Tee views",
-    caption: "Lettering and street signs on tees.",
-    styles: ["Street lettering", "Blackletter"],
-    group: "apparel",
-    fit: "contain",
-    wide: true,
-  },
-  {
-    id: "10",
-    src: "/portfolio/10_knowpain_cad_front.jpg",
-    alt: "Black tee mockup with wildstyle lettering above two street signs",
-    title: "Street signs",
-    caption: "Wildstyle lettering and street signs on a tee.",
-    styles: ["Street lettering"],
-    group: "apparel",
-    fit: "contain",
-  },
-  {
-    id: "15",
-    src: "/portfolio/15_adam_1.jpg",
-    alt: "Front and back tee mockup. Small chest lettering on the front, a large figure on the back",
-    title: "Front and back",
-    caption: "Front and back of a tee.",
-    styles: ["Blackletter", "Traditional"],
-    group: "apparel",
-    fit: "contain",
-    wide: true,
-  },
-  {
-    id: "17",
-    src: "/portfolio/17_tg001a_back.jpg",
-    alt: "White tee mockup with a large back graphic and pale splatter",
-    title: "Back graphic",
-    caption: "Back graphic on a tee, with splatter.",
-    styles: ["Blackletter", "Splatter"],
-    group: "apparel",
-    fit: "contain",
-  },
-  {
-    id: "18",
-    src: "/portfolio/18_mouthbae_front.jpg",
-    alt: "White tee mockup with green street signs and script underneath",
-    title: "Street signs and script",
-    caption: "Street-sign lettering and script on a tee.",
-    styles: ["Street lettering", "Script"],
-    group: "apparel",
-    fit: "contain",
-  },
-  {
-    id: "19",
-    src: "/portfolio/19_tg001b_longsleeve.jpg",
-    alt: "White long-sleeve mockup with a large graphic and lettering down one sleeve",
-    title: "Sleeve lettering",
-    caption: "Long sleeve with sleeve lettering.",
-    styles: ["Blackletter", "Script"],
-    group: "apparel",
-    fit: "contain",
-  },
-  {
-    id: "20",
-    src: "/portfolio/20_tg001a_front2.jpg",
-    alt: "White tee mockup with a small blackletter chest mark and splatter",
-    title: "Chest mark",
-    caption: "Small blackletter and splatter on a tee.",
-    styles: ["Blackletter", "Splatter"],
-    group: "apparel",
-    fit: "contain",
-  },
 ];
 
-export const DRAWING_PIECES = PORTFOLIO.filter((piece) => piece.group === "drawing");
+export const LETTERING_PIECES = PORTFOLIO.filter((piece) => piece.group === "drawing");
+export const DRAWING_PIECES = LETTERING_PIECES;
+export const OTHER_PIECES = PORTFOLIO.filter((piece) => piece.group === "other");
 export const APPAREL_PIECES = PORTFOLIO.filter((piece) => piece.group === "apparel");
