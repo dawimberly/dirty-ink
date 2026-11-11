@@ -1,62 +1,49 @@
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import { PortfolioGrid } from "@/components/site/portfolio-grid";
-import { APPAREL_PIECES, DRAWING_PIECES } from "@/lib/letterheads";
+import {
+  APPAREL_PIECES,
+  LETTERING_PIECES,
+  OTHER_PIECES,
+} from "@/lib/letterheads";
 import {
   ARTIST_NAME,
   CONTACT_EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
+  SHIRT_GRAPHIC_INQUIRY_URL,
 } from "@/lib/site";
 
 const STEPS = [
   {
     n: "01",
-    title: "Brief",
+    title: "Sketch",
     color: "#1fa8ef",
-    body: "Send the shirt, the line, and the words. What the graphic has to do.",
+    body: "Share the idea and any references. Greg draws an original direction by hand.",
   },
   {
     n: "02",
-    title: "Sketch",
+    title: "Sketch revisions",
     color: "#7ec13a",
-    body: `${ARTIST_NAME} draws it by hand. You see the direction before it is finished.`,
+    body: "Review the sketch and request revisions while the art is still at the sketch stage.",
   },
   {
     n: "03",
-    title: "Final art",
+    title: "Print-ready files",
     color: "#e653a4",
-    body: "Print-ready art for the shirt. No templates along the way.",
+    body: "Receive final print-ready files for the front and back of the shirt.",
   },
 ];
 
-export function DrawingGrid() {
-  return (
-    <section>
-      <div className="mb-5">
-        <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide">
-          The hand
-        </h2>
-        <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#f2ebe0]/60">
-          Lettering and drawing. Every piece is drawn by hand. No AI. No
-          templates. Paq&apos;in logos and house graphics in this grid are not
-          available for another brand to print.
-        </p>
-      </div>
-      <PortfolioGrid pieces={DRAWING_PIECES} />
-    </section>
-  );
-}
+const sectionHeading =
+  "font-[family-name:var(--font-ink-display)] text-2xl tracking-wide";
 
 export function ApparelGrid() {
   return (
     <section>
       <div className="mb-5">
-        <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide">
-          On a shirt
-        </h2>
+        <h2 className={sectionHeading}>On a shirt</h2>
         <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#f2ebe0]/60">
-          Past work, shown on apparel. These are not for sale, and they are not
-          designs another brand can print.
+          Past work shown for reference. Every brand gets original art.
         </p>
       </div>
       <PortfolioGrid pieces={APPAREL_PIECES} />
@@ -64,12 +51,52 @@ export function ApparelGrid() {
   );
 }
 
+export function LetteringGrid() {
+  return (
+    <section>
+      <div className="mb-5">
+        <h2 className={sectionHeading}>Lettering</h2>
+        <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#f2ebe0]/60">
+          Blackletter, script, street lettering, and hand-drawn lettering studies.
+        </p>
+      </div>
+      <PortfolioGrid pieces={LETTERING_PIECES} />
+    </section>
+  );
+}
+
+export function OtherWorkGrid() {
+  return (
+    <section>
+      <div className="mb-5">
+        <h2 className={sectionHeading}>Other work</h2>
+        <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#f2ebe0]/60">
+          Tattoo work and graphite drawing from Greg&apos;s broader practice.
+        </p>
+      </div>
+      <PortfolioGrid pieces={OTHER_PIECES} />
+    </section>
+  );
+}
+
+export function AboutGreg() {
+  return (
+    <section className="max-w-3xl">
+      <h2 className={sectionHeading}>About Greg</h2>
+      <p className="mt-3 text-sm leading-relaxed text-[#f2ebe0]/70 sm:text-base">
+        {ARTIST_NAME} is a Los Angeles lettering artist and illustrator with a
+        tattoo background. His work includes blackletter, script, street
+        lettering, traditional drawing, splatter, and graphite. Every piece is
+        hand-drawn, with no AI and no templates.
+      </p>
+    </section>
+  );
+}
+
 export function HowItWorks() {
   return (
     <section>
-      <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide">
-        How working together works
-      </h2>
+      <h2 className={sectionHeading}>How it works</h2>
       <ol className="mt-5 grid gap-4 sm:grid-cols-3">
         {STEPS.map((step) => (
           <li
@@ -96,23 +123,40 @@ export function HowItWorks() {
   );
 }
 
+export function ShirtGraphicCTA() {
+  return (
+    <div className="text-center">
+      <a
+        href={SHIRT_GRAPHIC_INQUIRY_URL}
+        className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 py-3 text-center text-sm font-semibold text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
+      >
+        Get a shirt graphic drawn
+      </a>
+    </div>
+  );
+}
+
 export function HireContact() {
   return (
     <section
       id="contact"
       className="rounded-3xl border border-white/10 bg-black/50 px-5 py-10 text-center sm:px-10"
     >
-      <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide sm:text-3xl">
-        Start with a note
-      </h2>
+      <h2 className={sectionHeading}>Start a shirt graphic</h2>
       <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[#f2ebe0]/65">
-        Tell {ARTIST_NAME} what you need drawn. Original art for your shirts.
-        Hand-drawn. No AI. No templates.
+        Tell {ARTIST_NAME} what you have in mind. Every brand gets original,
+        hand-drawn art.
       </p>
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <a
+          href={SHIRT_GRAPHIC_INQUIRY_URL}
+          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 py-3 text-sm font-semibold text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
+        >
+          Get a shirt graphic drawn
+        </a>
+        <a
           href={`mailto:${CONTACT_EMAIL}`}
-          className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
+          className="inline-flex h-11 items-center justify-center rounded-lg border border-[#f2ebe0]/30 bg-black/30 px-6 text-sm font-medium text-[#f2ebe0] transition hover:bg-[#f2ebe0]/10"
         >
           {CONTACT_EMAIL}
         </a>
