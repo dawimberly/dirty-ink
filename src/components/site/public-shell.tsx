@@ -8,10 +8,9 @@ import {
   INSTAGRAM_URL,
   SITE_NAME,
   SITE_WORDMARK,
+  SHIRT_GRAPHIC_INQUIRY_URL,
 } from "@/lib/site";
 import { InstagramIcon } from "@/components/site/instagram-icon";
-import { CartProvider } from "@/components/shop/cart-provider";
-import { CartButton } from "@/components/shop/cart-button";
 
 const display = Bungee({
   subsets: ["latin"],
@@ -87,8 +86,7 @@ export function PublicShell({
           }}
         />
 
-        <CartProvider>
-          <div className="relative flex min-h-screen flex-col">
+        <div className="relative flex min-h-screen flex-col">
             <header className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
               <Link
                 href="/"
@@ -111,19 +109,13 @@ export function PublicShell({
               </Link>
               <nav className="flex items-center gap-1 text-sm font-medium sm:gap-2">
                 <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="rounded-lg bg-[#1fa8ef] px-3 py-2 text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
+                  href={SHIRT_GRAPHIC_INQUIRY_URL}
+                  className="rounded-lg bg-[#1fa8ef] px-3 py-2 text-center text-xs font-semibold text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:text-sm"
                 >
-                  Email
+                  Get a shirt graphic drawn
                 </a>
-                <Link href="/letterheads" className={navLinkClass}>
-                  Letterheads
-                </Link>
-                <Link href="/shop" className={`hidden md:inline-flex ${navLinkClass}`}>
-                  Shop
-                </Link>
-                <Link href="/book" className={`hidden lg:inline-flex ${navLinkClass}`}>
-                  Book
+                <Link href="/shirt-work" className={navLinkClass}>
+                  Shirt work
                 </Link>
                 <Link href="/about" className={`hidden lg:inline-flex ${navLinkClass}`}>
                   About
@@ -138,15 +130,14 @@ export function PublicShell({
                   <InstagramIcon className="size-4" />
                   <span className="hidden sm:inline">{INSTAGRAM_HANDLE}</span>
                 </a>
-                <CartButton />
               </nav>
             </header>
 
             {/* Street-tape marquee */}
             <div className="relative overflow-hidden py-2">
               <div className="-ml-[2%] w-[104%] -rotate-1 border-y-2 border-black bg-[#1fa8ef]">
-                <div className="pfh-marquee-track py-1.5">
-                  {[0, 1].map((dup) => (
+                <div className="flex w-full justify-center py-1.5">
+                  {[0].map((dup) => (
                     <div
                       key={dup}
                       aria-hidden={dup === 1}
@@ -180,17 +171,11 @@ export function PublicShell({
                 Stay up.
               </p>
               <p className="mt-2 text-xs text-[#f2ebe0]/45">
-                {SITE_NAME} · Los Angeles · Graphics by {ARTIST_NAME} ·{" "}
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="underline decoration-[#1fa8ef]/40 underline-offset-4 hover:text-[#f2ebe0]/80"
-                >
-                  {CONTACT_EMAIL}
-                </a>
+                {SITE_NAME} · Los Angeles · Graphics by {ARTIST_NAME}
               </p>
               <p className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-[#f2ebe0]/45">
-                <Link href="/letterheads" className="hover:text-[#f2ebe0]/80">
-                  Letterheads
+                <Link href="/shirt-work" className="hover:text-[#f2ebe0]/80">
+                  Shirt work
                 </Link>
                 <span aria-hidden>·</span>
                 <Link href="/shop" className="hover:text-[#f2ebe0]/80">
@@ -213,14 +198,9 @@ export function PublicShell({
                 >
                   {INSTAGRAM_HANDLE}
                 </a>
-                <span aria-hidden>·</span>
-                <Link href="/login" className="hover:text-[#f2ebe0]/80">
-                  Admin
-                </Link>
               </p>
             </footer>
-          </div>
-        </CartProvider>
+        </div>
       </div>
     </div>
   );
