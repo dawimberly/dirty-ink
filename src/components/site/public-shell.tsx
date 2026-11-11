@@ -6,12 +6,14 @@ import {
   CONTACT_EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
+  SHIRT_CTA_LABEL,
+  SHIRT_INQUIRY_MAILTO,
   SITE_NAME,
   SITE_WORDMARK,
 } from "@/lib/site";
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import { CartProvider } from "@/components/shop/cart-provider";
-import { CartButton } from "@/components/shop/cart-button";
+import { ShopCartButton } from "@/components/shop/shop-cart-button";
 
 const display = Bungee({
   subsets: ["latin"],
@@ -39,7 +41,7 @@ const body = DM_Sans({
 const navLinkClass =
   "rounded-lg px-3 py-2 text-[#f2ebe0]/85 transition hover:bg-[#1fa8ef]/15 hover:text-white";
 
-const MARQUEE_ITEMS = [
+const BANNER_ITEMS = [
   "ORIGINAL GRAPHICS",
   "CLOTHING BRANDS",
   "DRAWN BY HAND",
@@ -111,19 +113,14 @@ export function PublicShell({
               </Link>
               <nav className="flex items-center gap-1 text-sm font-medium sm:gap-2">
                 <a
-                  href={`mailto:${CONTACT_EMAIL}`}
+                  href={SHIRT_INQUIRY_MAILTO}
                   className="rounded-lg bg-[#1fa8ef] px-3 py-2 text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
                 >
-                  Email
+                  <span className="sm:hidden">Email</span>
+                  <span className="hidden sm:inline">{SHIRT_CTA_LABEL}</span>
                 </a>
-                <Link href="/letterheads" className={navLinkClass}>
-                  Letterheads
-                </Link>
-                <Link href="/shop" className={`hidden md:inline-flex ${navLinkClass}`}>
-                  Shop
-                </Link>
-                <Link href="/book" className={`hidden lg:inline-flex ${navLinkClass}`}>
-                  Book
+                <Link href="/shirt-work" className={navLinkClass}>
+                  Shirt work
                 </Link>
                 <Link href="/about" className={`hidden lg:inline-flex ${navLinkClass}`}>
                   About
@@ -138,30 +135,24 @@ export function PublicShell({
                   <InstagramIcon className="size-4" />
                   <span className="hidden sm:inline">{INSTAGRAM_HANDLE}</span>
                 </a>
-                <CartButton />
+                <ShopCartButton />
               </nav>
             </header>
 
-            {/* Street-tape marquee */}
+            {/* Static street-tape banner */}
             <div className="relative overflow-hidden py-2">
               <div className="-ml-[2%] w-[104%] -rotate-1 border-y-2 border-black bg-[#1fa8ef]">
-                <div className="pfh-marquee-track py-1.5">
-                  {[0, 1].map((dup) => (
-                    <div
-                      key={dup}
-                      aria-hidden={dup === 1}
-                      className="flex shrink-0 items-center"
+                <div className="flex flex-wrap items-center justify-center gap-x-1 py-1.5">
+                  {BANNER_ITEMS.map((item) => (
+                    <span
+                      key={item}
+                      className="flex items-center font-[family-name:var(--font-ink-display)] text-xs tracking-[0.12em] text-[#0b0b0e]"
                     >
-                      {MARQUEE_ITEMS.map((item) => (
-                        <span
-                          key={item}
-                          className="flex items-center font-[family-name:var(--font-ink-display)] text-xs tracking-[0.12em] text-[#0b0b0e]"
-                        >
-                          <span className="mx-4">{item}</span>
-                          <span className="text-[#0b0b0e]/60">✦</span>
-                        </span>
-                      ))}
-                    </div>
+                      <span className="mx-3 sm:mx-4">{item}</span>
+                      <span className="text-[#0b0b0e]/60" aria-hidden>
+                        ✦
+                      </span>
+                    </span>
                   ))}
                 </div>
               </div>
@@ -189,8 +180,8 @@ export function PublicShell({
                 </a>
               </p>
               <p className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-[#f2ebe0]/45">
-                <Link href="/letterheads" className="hover:text-[#f2ebe0]/80">
-                  Letterheads
+                <Link href="/shirt-work" className="hover:text-[#f2ebe0]/80">
+                  Shirt work
                 </Link>
                 <span aria-hidden>·</span>
                 <Link href="/shop" className="hover:text-[#f2ebe0]/80">
@@ -213,10 +204,6 @@ export function PublicShell({
                 >
                   {INSTAGRAM_HANDLE}
                 </a>
-                <span aria-hidden>·</span>
-                <Link href="/login" className="hover:text-[#f2ebe0]/80">
-                  Admin
-                </Link>
               </p>
             </footer>
           </div>
