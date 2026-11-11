@@ -3,12 +3,12 @@ import Image from "next/image";
 import { Bungee, DM_Sans, Permanent_Marker, Pirata_One } from "next/font/google";
 import {
   ARTIST_NAME,
-  CONTACT_EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   SITE_NAME,
   SITE_WORDMARK,
   SHIRT_GRAPHIC_INQUIRY_URL,
+  CONTACT_EMAIL,
 } from "@/lib/site";
 import { InstagramIcon } from "@/components/site/instagram-icon";
 
@@ -172,6 +172,14 @@ export function PublicShell({
               </p>
               <p className="mt-2 text-xs text-[#f2ebe0]/45">
                 {SITE_NAME} · Los Angeles · Graphics by {ARTIST_NAME}
+              </p>
+              <p className="mt-2 text-xs text-[#f2ebe0]/45">
+                <a
+                  href={`mailto:${"{"}CONTACT_EMAIL}`}
+                  className="underline decoration-[#1fa8ef]/40 underline-offset-4 hover:text-[#f2ebe0]/80"
+                >
+                  {CONTACT_EMAIL}
+                </a>
               </p>
               <p className="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs text-[#f2ebe0]/45">
                 <Link href="/shirt-work" className="hover:text-[#f2ebe0]/80">
