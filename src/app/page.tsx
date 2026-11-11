@@ -13,11 +13,9 @@ import {
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import {
   ARTIST_NAME,
-  CONTACT_EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   SHIRT_GRAPHIC_INQUIRY_URL,
-  SITE_NAME,
 } from "@/lib/site";
 
 const pageTitle = "Original Shirt Graphics by Greg Paquín | Paqing House";
@@ -67,14 +65,6 @@ export default function HomePage() {
             >
               <InstagramIcon className="size-4" />
               {INSTAGRAM_HANDLE}
-            </a>
-            <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="sr-only"
-              tabIndex={-1}
-              aria-hidden="true"
-            >
-              Email {SITE_NAME}
             </a>
           </div>
           <p className="mt-4 text-sm text-[#f2ebe0]/45">
