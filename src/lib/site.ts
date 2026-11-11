@@ -1,7 +1,7 @@
 export const SITE_NAME = "Paqing House";
 export const SITE_WORDMARK = "Paqing House";
 export const ARTIST_NAME = "Greg Paquín";
-export const SITE_TAGLINE = "Los Angeles · Clothing graphics";
+export const SITE_TAGLINE = "Los Angeles · Shirt graphics by Greg Paquín";
 
 /** Brands write here to commission original shirt art. */
 export const CONTACT_EMAIL = "paqinghouse@gmail.com";

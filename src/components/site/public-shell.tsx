@@ -13,7 +13,6 @@ import {
 } from "@/lib/site";
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import { CartProvider } from "@/components/shop/cart-provider";
-import { ShopCartButton } from "@/components/shop/shop-cart-button";
 
 const display = Bungee({
   subsets: ["latin"],
@@ -39,7 +38,7 @@ const body = DM_Sans({
 });
 
 const navLinkClass =
-  "rounded-lg px-3 py-2 text-[#f2ebe0]/85 transition hover:bg-[#1fa8ef]/15 hover:text-white";
+  "rounded-lg px-2 py-2 text-[#f2ebe0]/85 transition hover:bg-[#1fa8ef]/15 hover:text-white sm:px-3";
 
 const BANNER_ITEMS = [
   "ORIGINAL GRAPHICS",
@@ -91,7 +90,7 @@ export function PublicShell({
 
         <CartProvider>
           <div className="relative flex min-h-screen flex-col">
-            <header className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
+            <header className="mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-3 py-4 sm:gap-4 sm:px-6">
               <Link
                 href="/"
                 className="flex items-center gap-2.5"
@@ -107,19 +106,18 @@ export function PublicShell({
                     priority
                   />
                 </span>
-                <span className="font-[family-name:var(--font-ink-brand)] text-2xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-3xl">
+                <span className="font-[family-name:var(--font-ink-brand)] text-lg leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-2xl md:text-3xl">
                   {SITE_WORDMARK}
                 </span>
               </Link>
-              <nav className="flex items-center gap-1 text-sm font-medium sm:gap-2">
+              <nav className="flex items-center gap-0 text-[10px] font-medium sm:gap-2 sm:text-sm">
                 <a
                   href={SHIRT_INQUIRY_MAILTO}
-                  className="rounded-lg bg-[#1fa8ef] px-3 py-2 text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
+                  className="whitespace-nowrap rounded-lg bg-[#1fa8ef] px-2 py-2 text-center text-[10px] leading-tight text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:px-3 sm:text-xs md:text-sm"
                 >
-                  <span className="sm:hidden">Email</span>
-                  <span className="hidden sm:inline">{SHIRT_CTA_LABEL}</span>
+                  {SHIRT_CTA_LABEL}
                 </a>
-                <Link href="/shirt-work" className={navLinkClass}>
+                <Link href="/shirt-work" className={`hidden sm:inline-flex ${navLinkClass}`}>
                   Shirt work
                 </Link>
                 <Link href="/about" className={`hidden lg:inline-flex ${navLinkClass}`}>
@@ -135,7 +133,6 @@ export function PublicShell({
                   <InstagramIcon className="size-4" />
                   <span className="hidden sm:inline">{INSTAGRAM_HANDLE}</span>
                 </a>
-                <ShopCartButton />
               </nav>
             </header>
 
@@ -171,7 +168,9 @@ export function PublicShell({
                 Stay up.
               </p>
               <p className="mt-2 text-xs text-[#f2ebe0]/45">
-                {SITE_NAME} · Los Angeles · Graphics by {ARTIST_NAME} ·{" "}
+                {SITE_NAME} · Los Angeles · Graphics by {ARTIST_NAME}
+              </p>
+              <p className="mt-1 text-xs text-[#f2ebe0]/45">
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
                   className="underline decoration-[#1fa8ef]/40 underline-offset-4 hover:text-[#f2ebe0]/80"

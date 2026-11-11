@@ -7,6 +7,7 @@ import {
   HowItWorks,
   LetteringGrid,
   OtherWorkGrid,
+  ShirtGraphicCTA,
 } from "@/components/site/hire-sections";
 import {
   ARTIST_NAME,
@@ -64,6 +65,7 @@ export default function ShirtWorkPage() {
         <ApparelGrid />
         <LetteringGrid />
         <OtherWorkGrid />
+        <ShirtGraphicCTA />
         <AboutGreg />
         <HowItWorks />
         <HireContact />
