@@ -16,6 +16,7 @@ import {
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
   SHIRT_GRAPHIC_INQUIRY_URL,
+  SITE_NAME,
 } from "@/lib/site";
 
 const pageTitle = "Original Shirt Graphics by Greg Paquín | Paqing House";
