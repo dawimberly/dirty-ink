@@ -1,7 +1,7 @@
-export const SITE_NAME = "Paq'in Family House";
-export const SITE_WORDMARK = "Paqinhaüs";
+export const SITE_NAME = "Paqing House";
+export const SITE_WORDMARK = "Paqing House";
 export const ARTIST_NAME = "Greg Paquín";
-export const SITE_TAGLINE = "Los Angeles · Clothing graphics";
+export const SITE_TAGLINE = "Los Angeles · Shirt graphics by Greg Paquín";
 
 /** Brands write here to commission original shirt art. */
 export const CONTACT_EMAIL = "paqinghouse@gmail.com";
@@ -21,3 +21,6 @@ export const BOOKING_URL = `${APP_ORIGIN}/book`;
 
 export const INSTAGRAM_URL = "https://instagram.com/geepaqwin";
 export const INSTAGRAM_HANDLE = "@geepaqwin";
+
+export const SHIRT_GRAPHIC_INQUIRY_URL =
+  `mailto:${CONTACT_EMAIL}?subject=Shirt%20graphic%20inquiry`;
