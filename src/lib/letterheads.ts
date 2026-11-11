@@ -43,7 +43,7 @@ export type PortfolioPiece = {
   wide?: boolean;
 };
 
-export const PORTFOLIO: PortfolioPiece[
+export const PORTFOLIO: PortfolioPiece[] = [
   {
     id: "07",
     src: "/portfolio/07_knowpain_tee_front.jpg",
