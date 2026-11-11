@@ -54,6 +54,19 @@ export function ApparelGrid() {
   );
 }
 
+export function ShirtGraphicCTA() {
+  return (
+    <section className="rounded-2xl border border-[#1fa8ef]/30 bg-black/40 px-5 py-6 text-center sm:px-8">
+      <a
+        href={SHIRT_INQUIRY_MAILTO}
+        className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 py-3 text-sm font-semibold text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
+      >
+        {SHIRT_CTA_LABEL}
+      </a>
+    </section>
+  );
+}
+
 export function LetteringGrid() {
   return (
     <section>
