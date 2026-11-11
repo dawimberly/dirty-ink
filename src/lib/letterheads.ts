@@ -45,14 +45,15 @@ export type PortfolioPiece = {
 
 export const PORTFOLIO: PortfolioPiece[] = [
   {
-    id: "07",
-    src: "/portfolio/07_knowpain_tee_front.jpg",
-    alt: "Black tee mockup with a small script graphic on the chest",
-    title: "Script on a tee",
-    caption: "Script on a black tee.",
-    styles: ["Script"],
+    id: "15",
+    src: "/portfolio/15_adam_1.jpg",
+    alt: "Front and back tee mockup. Small chest lettering on the front, a large figure on the back",
+    title: "Front and back",
+    caption: "Front and back of a tee.",
+    styles: ["Blackletter", "Traditional"],
     group: "apparel",
     fit: "contain",
+    wide: true,
   },
   {
     id: "08",
@@ -86,15 +87,14 @@ export const PORTFOLIO: PortfolioPiece[] = [
     fit: "contain",
   },
   {
-    id: "15",
-    src: "/portfolio/15_adam_1.jpg",
-    alt: "Front and back tee mockup. Small chest lettering on the front, a large figure on the back",
-    title: "Front and back",
-    caption: "Front and back of a tee.",
-    styles: ["Blackletter", "Traditional"],
+    id: "07",
+    src: "/portfolio/07_knowpain_tee_front.jpg",
+    alt: "Black tee mockup with a small script graphic on the chest",
+    title: "Script on a tee",
+    caption: "Script on a black tee.",
+    styles: ["Script"],
     group: "apparel",
     fit: "contain",
-    wide: true,
   },
   {
     id: "17",
@@ -219,7 +219,7 @@ export const PORTFOLIO: PortfolioPiece[] = [
   {
     id: "03",
     src: "/portfolio/03_mock14563.jpg",
-    alt: "Black ink letter mark sheet with a character and a small box mark",
+    alt: "Black ink drawing of lettering with a character and small box symbol",
     title: "Lettering and character",
     caption: "Lettering with a character and a small mark.",
     styles: ["Street lettering", "Traditional"],
