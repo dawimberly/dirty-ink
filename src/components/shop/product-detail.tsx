@@ -8,7 +8,7 @@ import { useCart } from "@/components/shop/cart-provider";
 import { formatPrice, type Product } from "@/lib/products";
 
 export function ProductDetail({ product }: { product: Product }) {
-  const { addItem } = useCart();
+  const { addItem, openCart } = useCart();
   const [activeImage, setActiveImage] = useState(0);
   const [size, setSize] = useState<string | null>(
     product.sizes.length === 1 ? product.sizes[0] : null
@@ -24,6 +24,7 @@ export function ProductDetail({ product }: { product: Product }) {
       priceCents: product.priceCents,
       image: product.images[0].src,
     });
+    openCart();
     setAdded(true);
     setTimeout(() => setAdded(false), 1600);
   }

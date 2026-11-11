@@ -8,7 +8,7 @@ import { SITE_NAME } from "@/lib/site";
 export const metadata: Metadata = {
   title: `Shop — ${SITE_NAME}`,
   description:
-    "Shop Paq'in Family House streetwear and prints — original art by Greg Paquín in Los Angeles.",
+    "Shop Paqing House streetwear and prints — original art by Greg Paquín in Los Angeles.",
 };
 
 export default function ShopPage() {
@@ -19,10 +19,10 @@ export default function ShopPage() {
           Shop
         </h1>
         <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-[#f2ebe0]/55">
-          Paq&apos;in house pieces. Pick a size — we make it and ship it.
+          Paqing House pieces. Pick a size — we make it and ship it.
           Commissioned graphics for other brands start on{" "}
-          <Link href="/letterheads" className="text-[#1fa8ef] hover:text-[#4fbcf5]">
-            Letterheads
+          <Link href="/shirt-work" className="text-[#1fa8ef] hover:text-[#4fbcf5]">
+            Shirt work
           </Link>
           .
         </p>

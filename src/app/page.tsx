@@ -3,24 +3,52 @@ import Link from "next/link";
 import Image from "next/image";
 import { PublicShell } from "@/components/site/public-shell";
 import {
+  AboutGreg,
   ApparelGrid,
-  DrawingGrid,
   HireContact,
   HowItWorks,
+  LetteringGrid,
+  OtherWorkGrid,
 } from "@/components/site/hire-sections";
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import {
   ARTIST_NAME,
-  CONTACT_EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
+  OG_IMAGE_PATH,
+  SHIRT_CTA_LABEL,
+  SHIRT_INQUIRY_MAILTO,
   SITE_NAME,
   SITE_TAGLINE,
+  SITE_URL,
 } from "@/lib/site";
+
+const description = `${ARTIST_NAME} draws original hand-drawn graphics for clothing brands. Blackletter, script, street lettering, traditional drawing, splatter, and graphite. Los Angeles.`;
 
 export const metadata: Metadata = {
   title: `${SITE_NAME} — Clothing graphics`,
-  description: `${ARTIST_NAME} draws original hand-drawn graphics for clothing brands. Blackletter, script, street lettering, traditional drawing, splatter, and graphite. Los Angeles.`,
+  description,
+  openGraph: {
+    title: `${SITE_NAME} — Hire ${ARTIST_NAME} for shirt graphics`,
+    description,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: OG_IMAGE_PATH,
+        width: 1200,
+        height: 750,
+        alt: "Hand-drawn shirt graphic by Greg Paquín — front and back tee",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — Hire ${ARTIST_NAME} for shirt graphics`,
+    description,
+    images: [OG_IMAGE_PATH],
+  },
 };
 
 export default function HomePage() {
@@ -35,16 +63,16 @@ export default function HomePage() {
             Original graphics for clothing brands. Drawn by hand.
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-[#f2ebe0]/80 sm:text-lg">
-            {ARTIST_NAME} draws blackletter, script, street lettering,
+            Hire {ARTIST_NAME} to draw blackletter, script, street lettering,
             traditional work, splatter, and graphite for shirts. No AI. No
             templates.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
+              href={SHIRT_INQUIRY_MAILTO}
               className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold tracking-wide text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
             >
-              {CONTACT_EMAIL}
+              {SHIRT_CTA_LABEL}
             </a>
             <a
               href={INSTAGRAM_URL}
@@ -57,24 +85,16 @@ export default function HomePage() {
             </a>
           </div>
           <p className="mt-4 text-sm text-[#f2ebe0]/45">
-            <Link href="/letterheads" className="text-[#1fa8ef] hover:text-[#4fbcf5]">
-              Letterheads
-            </Link>
-            <span aria-hidden> · </span>
-            <Link href="/shop" className="hover:text-[#f2ebe0]/70">
-              House shop
-            </Link>
-            <span aria-hidden> · </span>
-            <Link href="/book" className="hover:text-[#f2ebe0]/70">
-              Tattoo booking
+            <Link href="/shirt-work" className="text-[#1fa8ef] hover:text-[#4fbcf5]">
+              See shirt work
             </Link>
           </p>
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 bg-[#ece7df]">
             <Image
-              src="/portfolio/21_graphite_lighthouse_v2.jpg"
-              alt="Graphite drawing of a lighthouse in a storm"
+              src="/portfolio/15_adam_1.jpg"
+              alt="Front and back tee with hand-drawn lettering and figure"
               fill
               sizes="(min-width: 1024px) 240px, 45vw"
               className="object-contain p-2"
@@ -83,8 +103,8 @@ export default function HomePage() {
           </div>
           <div className="relative mt-8 aspect-[3/4] overflow-hidden rounded-2xl border border-white/10 bg-[#ece7df]">
             <Image
-              src="/portfolio/06_PL2-OTR.jpg"
-              alt="Popular Loner blackletter and a character head"
+              src="/portfolio/08_dickies_longsleeve.jpg"
+              alt="Long sleeve with blackletter back graphic and sleeve script"
               fill
               sizes="(min-width: 1024px) 240px, 45vw"
               className="object-contain p-3"
@@ -95,8 +115,10 @@ export default function HomePage() {
       </section>
 
       <div className="flex flex-col gap-14 py-8">
-        <DrawingGrid />
         <ApparelGrid />
+        <LetteringGrid />
+        <OtherWorkGrid />
+        <AboutGreg />
         <HowItWorks />
         <HireContact />
       </div>

@@ -1,7 +1,7 @@
-# Paq'in Family House (Paqinhaüs)
+# Paqing House
 
-Public site for Greg Paquín — custom tattoo booking and original streetwear,
-hosted on Vercel. Replaces the old Shopify storefront.
+Public site for Greg Paquín — hire him for original hand-drawn shirt graphics,
+plus custom tattoo booking and house streetwear, hosted on Vercel.
 
 ## Stack
 
@@ -15,12 +15,13 @@ hosted on Vercel. Replaces the old Shopify storefront.
 | Path | Purpose |
 |------|---------|
 | `/` | Hire Greg — clothing graphics |
-| `/letterheads` | Public lettering portfolio (no login) |
+| `/shirt-work` | Full shirt / lettering portfolio (no login) |
+| `/letterheads` | Permanent redirect → `/shirt-work` |
 | `/book` | Tattoo appointment requests |
 | `/shop` | Apparel & print catalog |
 | `/shop/[slug]` | Product detail + add to bag |
 | `/checkout` | Cart checkout (payments coming soon) |
-| `/about` | The house |
+| `/about` | About Greg |
 
 Artist admin (ChairHunt) stays behind `/login` — shops tracker, bookings inbox, templates.
 
@@ -49,7 +50,7 @@ cp .env.local.example .env.local
 
 For local dev, set `NEXT_PUBLIC_APP_URL=http://localhost:3000`.
 
-Public pages (`/`, `/letterheads`, `/shop`, `/book`, `/about`, `/checkout`) render without Supabase env. Checkout pay requires `STRIPE_SECRET_KEY`.
+Public pages (`/`, `/shirt-work`, `/shop`, `/book`, `/about`, `/checkout`) render without Supabase env. Checkout pay requires `STRIPE_SECRET_KEY`.
 
 ### 3. Supabase
 

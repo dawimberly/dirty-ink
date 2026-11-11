@@ -32,9 +32,9 @@ export const PRODUCTS: Product[] = [
     artist: "Greg",
     category: "Tee",
     priceCents: 4500,
-    blurb: "Blackletter Paqinhaus mark with hand-drawn “Know Pain” lettering and red splatter.",
+    blurb: "Blackletter Paqing House mark with hand-drawn “Know Pain” lettering and red splatter.",
     description:
-      "Heavyweight cut & sew tee with original artwork by Greg Paquín. Front carries the Paqinhaus blackletter wordmark over the hand-drawn KNOWPAIN script with a red splatter wash; the story continues on the back. Oversized streetwear fit.",
+      "Heavyweight cut & sew tee with original artwork by Greg Paquín. Front carries the Paqing House blackletter wordmark over the hand-drawn KNOWPAIN script with a red splatter wash; the story continues on the back. Oversized streetwear fit.",
     images: [
       { src: "/products/knowpain-front.jpg", alt: "KNOWPAIN tee — front" },
       { src: "/products/knowpain-back.jpg", alt: "KNOWPAIN tee — back" },
@@ -67,7 +67,7 @@ export const PRODUCTS: Product[] = [
     priceCents: 4500,
     blurb: "“Mouth Bay · CA 310” street-sign graphic — shut it or I’ll stuff it.",
     description:
-      "A love letter to the 310. Green street-sign graphic reading MOUTH BAY / CA 310 with the Paqinhaus lips mark and the “Shut it or I’ll stuff it” tag — an original Greg Paquín graphic on a premium tee.",
+      "A love letter to the 310. Green street-sign graphic reading MOUTH BAY / CA 310 with the Paqing House lips mark and the “Shut it or I’ll stuff it” tag — an original Greg Paquín graphic on a premium tee.",
     images: [
       { src: "/products/mouth-bay-front.jpg", alt: "Mouth Bay tee — front" },
     ],

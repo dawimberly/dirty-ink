@@ -1,51 +1,42 @@
 import { InstagramIcon } from "@/components/site/instagram-icon";
 import { PortfolioGrid } from "@/components/site/portfolio-grid";
-import { APPAREL_PIECES, DRAWING_PIECES } from "@/lib/letterheads";
+import {
+  APPAREL_PIECES,
+  LETTERING_PIECES,
+  OTHER_PIECES,
+} from "@/lib/letterheads";
 import {
   ARTIST_NAME,
   CONTACT_EMAIL,
   INSTAGRAM_HANDLE,
   INSTAGRAM_URL,
+  SHIRT_CTA_LABEL,
+  SHIRT_INQUIRY_MAILTO,
 } from "@/lib/site";
+
+const PAST_WORK_NOTE =
+  "Past work shown for reference. Every brand gets original art.";
 
 const STEPS = [
   {
     n: "01",
-    title: "Brief",
+    title: "Sketch",
     color: "#1fa8ef",
-    body: "Send the shirt, the line, and the words. What the graphic has to do.",
+    body: `${ARTIST_NAME} draws a hand sketch from your brief — the shirt, the line, the words.`,
   },
   {
     n: "02",
-    title: "Sketch",
+    title: "Revisions",
     color: "#7ec13a",
-    body: `${ARTIST_NAME} draws it by hand. You see the direction before it is finished.`,
+    body: "Changes happen at the sketch stage, before the final art is locked.",
   },
   {
     n: "03",
-    title: "Final art",
+    title: "Print-ready files",
     color: "#e653a4",
-    body: "Print-ready art for the shirt. No templates along the way.",
+    body: "Final print-ready files for the shirt — front and back when you need both.",
   },
 ];
-
-export function DrawingGrid() {
-  return (
-    <section>
-      <div className="mb-5">
-        <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide">
-          The hand
-        </h2>
-        <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#f2ebe0]/60">
-          Lettering and drawing. Every piece is drawn by hand. No AI. No
-          templates. Paq&apos;in logos and house graphics in this grid are not
-          available for another brand to print.
-        </p>
-      </div>
-      <PortfolioGrid pieces={DRAWING_PIECES} />
-    </section>
-  );
-}
 
 export function ApparelGrid() {
   return (
@@ -55,11 +46,68 @@ export function ApparelGrid() {
           On a shirt
         </h2>
         <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#f2ebe0]/60">
-          Past work, shown on apparel. These are not for sale, and they are not
-          designs another brand can print.
+          {PAST_WORK_NOTE}
         </p>
       </div>
       <PortfolioGrid pieces={APPAREL_PIECES} />
+    </section>
+  );
+}
+
+export function LetteringGrid() {
+  return (
+    <section>
+      <div className="mb-5">
+        <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide">
+          Lettering
+        </h2>
+        <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#f2ebe0]/60">
+          {PAST_WORK_NOTE}
+        </p>
+      </div>
+      <PortfolioGrid pieces={LETTERING_PIECES} />
+    </section>
+  );
+}
+
+export function OtherWorkGrid() {
+  return (
+    <section>
+      <div className="mb-5">
+        <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide">
+          Other work
+        </h2>
+        <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#f2ebe0]/60">
+          Tattoo lettering on skin and graphite drawing from the same hand.
+        </p>
+      </div>
+      <PortfolioGrid pieces={OTHER_PIECES} />
+    </section>
+  );
+}
+
+/** @deprecated Prefer LetteringGrid + OtherWorkGrid */
+export function DrawingGrid() {
+  return (
+    <>
+      <LetteringGrid />
+      <OtherWorkGrid />
+    </>
+  );
+}
+
+export function AboutGreg() {
+  return (
+    <section>
+      <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide">
+        About Greg
+      </h2>
+      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#f2ebe0]/70 sm:text-base">
+        {ARTIST_NAME} is a Los Angeles lettering artist and illustrator with a
+        tattoo background. He works in blackletter, script, street lettering,
+        traditional drawing, splatter, and graphite. Every piece is hand-drawn —
+        no AI, no templates.
+      </p>
     </section>
   );
 }
@@ -68,7 +116,7 @@ export function HowItWorks() {
   return (
     <section>
       <h2 className="font-[family-name:var(--font-ink-display)] text-2xl tracking-wide">
-        How working together works
+        Process
       </h2>
       <ol className="mt-5 grid gap-4 sm:grid-cols-3">
         {STEPS.map((step) => (
@@ -111,10 +159,10 @@ export function HireContact() {
       </p>
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <a
-          href={`mailto:${CONTACT_EMAIL}`}
+          href={SHIRT_INQUIRY_MAILTO}
           className="inline-flex h-11 items-center justify-center rounded-lg bg-[#1fa8ef] px-6 text-sm font-semibold text-[#0b0b0e] transition hover:bg-[#4fbcf5]"
         >
-          {CONTACT_EMAIL}
+          {SHIRT_CTA_LABEL}
         </a>
         <a
           href={INSTAGRAM_URL}
@@ -126,6 +174,7 @@ export function HireContact() {
           {INSTAGRAM_HANDLE}
         </a>
       </div>
+      <p className="mt-4 text-xs text-[#f2ebe0]/45">{CONTACT_EMAIL}</p>
     </section>
   );
 }
