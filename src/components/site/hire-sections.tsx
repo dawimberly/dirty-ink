@@ -34,7 +34,7 @@ const STEPS = [
     n: "03",
     title: "Print-ready files",
     color: "#e653a4",
-    body: "Final print-ready files for the shirt — front and back when you need both.",
+    body: "Final print-ready files for the front and back of the shirt.",
   },
 ];
 
