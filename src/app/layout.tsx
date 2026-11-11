@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
-import { SITE_NAME } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,9 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
   description:
-    "Paq'in Family House — Greg Paquín draws original hand-drawn graphics for clothing brands in Los Angeles. Blackletter, script, street lettering, traditional drawing, splatter, and graphite.",
+    "Paqing House — Greg Paquín draws original, hand-drawn shirt graphics for clothing brands in Los Angeles.",
 };
 
 export default function RootLayout({
