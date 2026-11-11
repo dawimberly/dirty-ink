@@ -12,7 +12,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `About — ${SITE_NAME}`,
+  title: `About Greg — ${SITE_NAME}`,
   description: `${SITE_NAME} is ${ARTIST_NAME}'s Los Angeles studio for original, hand-drawn clothing graphics.`,
 };
 
