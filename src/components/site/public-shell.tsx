@@ -89,7 +89,7 @@ export function PublicShell({
 
         <CartProvider>
           <div className="relative flex min-h-screen flex-col">
-            <header className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
+            <header className="mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-4 py-5 sm:px-6">
               <Link
                 href="/"
                 className="flex items-center gap-2.5"
@@ -105,18 +105,18 @@ export function PublicShell({
                     priority
                   />
                 </span>
-                <span className="font-[family-name:var(--font-ink-brand)] text-2xl leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-3xl">
+                <span className="font-[family-name:var(--font-ink-brand)] text-lg leading-none text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-2xl md:text-3xl">
                   {SITE_WORDMARK}
                 </span>
               </Link>
-              <nav className="flex items-center gap-1 text-sm font-medium sm:gap-2">
+              <nav className="flex items-center gap-0 text-sm font-medium sm:gap-2">
                 <a
                   href={SHIRT_GRAPHIC_INQUIRY_URL}
-                  className="rounded-lg bg-[#1fa8ef] px-3 py-2 text-center text-xs font-semibold text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:text-sm"
+                  className="rounded-lg bg-[#1fa8ef] px-2 py-2 text-center text-[10px] font-semibold text-[#0b0b0e] transition hover:bg-[#4fbcf5] sm:px-3 sm:text-sm"
                 >
                   Get a shirt graphic drawn
                 </a>
-                <Link href="/shirt-work" className={navLinkClass}>
+                <Link href="/shirt-work" className={`hidden sm:inline-flex ${navLinkClass}`}>
                   Shirt work
                 </Link>
                 <Link href="/about" className={`hidden lg:inline-flex ${navLinkClass}`}>
@@ -126,7 +126,7 @@ export function PublicShell({
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className={`inline-flex items-center gap-1.5 ${navLinkClass}`}
+                  className={`inline-flex items-center gap-1.5 px-2 sm:px-3 ${navLinkClass}`}
                   aria-label={INSTAGRAM_HANDLE}
                 >
                   <InstagramIcon className="size-4" />
