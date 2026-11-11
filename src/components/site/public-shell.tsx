@@ -11,6 +11,7 @@ import {
   CONTACT_EMAIL,
 } from "@/lib/site";
 import { InstagramIcon } from "@/components/site/instagram-icon";
+import { CartProvider } from "@/components/shop/cart-provider";
 
 const display = Bungee({
   subsets: ["latin"],
@@ -86,7 +87,8 @@ export function PublicShell({
           }}
         />
 
-        <div className="relative flex min-h-screen flex-col">
+        <CartProvider>
+          <div className="relative flex min-h-screen flex-col">
             <header className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
               <Link
                 href="/"
@@ -175,7 +177,7 @@ export function PublicShell({
               </p>
               <p className="mt-2 text-xs text-[#f2ebe0]/45">
                 <a
-                  href={`mailto:${"{"}CONTACT_EMAIL}`}
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="underline decoration-[#1fa8ef]/40 underline-offset-4 hover:text-[#f2ebe0]/80"
                 >
                   {CONTACT_EMAIL}
@@ -208,7 +210,8 @@ export function PublicShell({
                 </a>
               </p>
             </footer>
-        </div>
+          </div>
+        </CartProvider>
       </div>
     </div>
   );
